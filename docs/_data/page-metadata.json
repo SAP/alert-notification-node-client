@@ -1,0 +1,24 @@
+{
+    "propertyFields": [
+        {
+            "name": "page",
+            "type": "number",
+            "description": "Currently looked page"
+        },
+        {
+            "name": "pageSize",
+            "type": "number",
+            "description": "Describes how much entities are present per page"
+        },
+        {
+            "name": "totalPages",
+            "type": "number",
+            "description": "Total number of pages for the given page size"
+        },
+        {
+            "name": "totalResultsCount",
+            "type": "number",
+            "description": "Total results entities accross all pages"
+        }
+    ]
+}

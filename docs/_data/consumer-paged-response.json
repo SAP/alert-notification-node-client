@@ -1,0 +1,14 @@
+{
+    "propertyFields": [
+        {
+            "name": "responseMetadata",
+            "type": "[PageMetadata](/common-objects/page-metadata) (object)",
+            "description": "Represents page's metadata, e.g. what is the currently looked page, how many pages there are, etc."
+        },
+        {
+            "name": "results",
+            "type": "[ConsumerEvent](/event-api-objects/consumer-event)[] (array<object>)",
+            "description": "An array of matched/undelivered events"
+        }
+    ]
+}

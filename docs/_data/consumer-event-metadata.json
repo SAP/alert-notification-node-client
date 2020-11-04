@@ -1,0 +1,24 @@
+{
+    "propertyFields": [
+        {
+            "name": "cacheTime",
+            "type": "string",
+            "description": "Time in UNIX epoch format when the event was stored by Alert Notification"
+        },
+        {
+            "name": "affectedActionId",
+            "type": "string",
+            "description": "Id of the action which was executed for the matched/undelivered event"
+        },
+        {
+            "name": "deliveryStatus",
+            "type": "[DeliveryStatus](/event-api-objects/consumer-event#deliverystatus) (object)",
+            "description": "Describes if the event has been delivered or not"
+        },
+        {
+            "name": "failureReasons?",
+            "type": "[FailureReason](/event-api-objects/consumer-event#failurereason) (object)",
+            "description": "Describes why the delivery of an event failed, will only be returned if a query parameter is present"
+        }
+    ]
+}

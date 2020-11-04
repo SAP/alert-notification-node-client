@@ -1,0 +1,42 @@
+{
+    "env": {
+        "browser": false
+    },
+    "extends": [
+        "google",
+        "prettier",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "prettier",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "semi": "off",
+        "@typescript-eslint/semi": "error",
+        "prettier/prettier": "error",
+        "no-unused-vars": ["error", { "vars": "all", "args": "none" }]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ],
+                "moduleDirectory": [
+                    "node_modules",
+                    "src/**/*"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "propertyFields": [
+        {
+            "name": "code",
+            "type": "number",
+            "description": "The error code that represents the failure"
+        },
+        {
+            "name": "reason",
+            "type": "string",
+            "description": "The reason why the delivery of the event has failed"
+        },
+        {
+            "name": "timestamp",
+            "type": "number",
+            "description": "Time in UNIX epoch format that specifies when the event failure occurred"
+        }
+    ]
+}

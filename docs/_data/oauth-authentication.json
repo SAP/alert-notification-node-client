@@ -1,0 +1,26 @@
+{
+    "propertyFields": [
+        {
+            "name": "username",
+            "type": "string",
+            "description": "A tecnical client's username"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "description": "A technical client's password"
+        },
+        {
+            "name": "oAuthTokenUrl",
+            "type": "string",
+            "description": "OAuth token url to call on retrieving token"
+        }
+    ],
+    "methods": [
+        {
+            "name": "getAuthorizationHeaderValue()",
+            "returnValue": "sting",
+            "description": "Calls the oAuthTokenBaseUrl and if username and password are correct will retrieve an access token which will be cached for further use. If the access token is about to expire a new request to OAuth service will be made"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "propertyFields": [
+        {
+            "name": "id?",
+            "type": "string",
+            "description": "An identification string which will be generated on its creation"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "Unique name, used for its identification"
+        },
+        {
+            "name": "state",
+            "type": "[State](/configuration-api-objects/state) (string)",
+            "description": "Identifies the subscription's current state, that is, if it's currently enabled or disabled"
+        },
+        {
+            "name": "description?",
+            "type": "string",
+            "description": "Brief description of the action, e.g. explaining what it will be used for"
+        },
+        {
+            "name": "snoozeTimestamp?",
+            "type": "number",
+            "description": "Unix timestamp format representing disablement of the subscription until the specified date and time"
+        },
+        {
+            "name": "actions?",
+            "type": "string",
+            "description": "Action names that are executed on any matched event"
+        },
+        {
+            "name": "conditions?",
+            "type": "number",
+            "description": "Condition names that are evaluated for any incoming event"
+        },
+        {
+            "name": "labels?",
+            "type": "string[]",
+            "description": "Representing meaningful identifiers, which enable custom displaying & filtering capabilities"
+        }
+    ]
+}

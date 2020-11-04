@@ -1,0 +1,14 @@
+{
+    "propertyFields": [
+        {
+            "name": "maxRetries",
+            "type": "number",
+            "description": "Maximum number of retries"
+        },
+        {
+            "name": "retryBackoff",
+            "type": "number",
+            "description": "Timeout in milliseconds used to wait before executing the next retry"
+        }
+    ]
+}

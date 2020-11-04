@@ -1,0 +1,26 @@
+{
+    "propertyFields": [
+        {
+            "name": "platform",
+            "type": "[Platform](/common-objects/region-utils#platform) (object)",
+            "description": "Platform on which SAP Cloud Platform Alert Notification resides"
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "description": "Base url of SAP Cloud Platform Alert Notification"
+        }
+    ],
+    "methods": [
+        {
+            "name": "getPlatform()",
+            "returnValue": "string",
+            "description": "Gets the platform of the Region"
+        },
+        {
+            "name": "getUrl()",
+            "returnValue": "string",
+            "description": "Gets the url of the Region"
+        }
+    ]
+}

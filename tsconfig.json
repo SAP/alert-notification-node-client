@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "declaration": true,
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "target": "es6",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "outDir": "dist",
+      "noImplicitReturns": true,
+      "noImplicitAny": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "node_modules", "__tests__"
+    ],
+    "lib": ["es2015"]
+}

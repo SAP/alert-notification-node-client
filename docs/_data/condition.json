@@ -1,0 +1,39 @@
+{
+    "propertyFields": [
+        {
+            "name": "id?",
+            "type": "string",
+            "description": "An identification string which will be generated on its creation"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "Identifies the action's current state, that is, if it's currently enabled or disabled"
+        },
+        {
+            "name": "description",
+            "type": "string",
+            "description": "Brief description of the condition, e.g. explaining what it will be used for"
+        },
+        {
+            "name": "propertykey",
+            "type": "string",
+            "description": "Property key of the event, e.g. eventType"
+        },
+        {
+            "name": "predicate",
+            "type": "[Predicate](/configuration-api-objects/condition/#predicate) (string)",
+            "description": "Predefined matching criteria"
+        },
+        {
+            "name": "propertyValue",
+            "type": "string",
+            "description": "Value to be expected when matching the propertyKey with the given predicate"
+        },
+        {
+            "name": "labels?",
+            "type": "string[]",
+            "description": "Representing meaningful identifiers, which enable custom displaying & filtering capabilities"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "propertyFields": [
+        {
+            "name": "username",
+            "type": "string",
+            "description": "A tecnical client's username"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "description": "A technical client's password"
+        }
+    ],
+    "methods": [
+        {
+            "name": "getAuthorizationHeaderValue()",
+            "returnValue": "string",
+            "description": "Gets the base64 encoded value of username and password, which will be added in the Authorization Header"
+        }
+    ]
+}

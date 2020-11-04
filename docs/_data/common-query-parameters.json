@@ -1,0 +1,14 @@
+{
+    "propertyFields": [
+        {
+            "name": "page?",
+            "type": "number",
+            "description": "The page you are looking for"
+        },
+        {
+            "name": "pageSize?",
+            "type": "number",
+            "description": "Size of a page"
+        }
+    ]
+}

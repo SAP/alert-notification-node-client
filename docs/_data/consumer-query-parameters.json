@@ -1,0 +1,59 @@
+{
+    "propertyFields": [
+        {
+            "name": "sourceEventId?",
+            "type": "string",
+            "description": "Event identifier assigned by the source that issued the event"
+        },
+        {
+            "name": "correlationId?",
+            "type": "string",
+            "description": "An event correlation identifier assigned by the source that issued the event. It is intended to correlate the event with other activities or issues"
+        },
+        {
+            "name": "resourceName?",
+            "type": "string",
+            "description": "Name of the affected resource, e.g. application's name"
+        },
+        {
+            "name": "eventType?",
+            "type": "string",
+            "description": "Type of the event, e.g. it can be HighCPUUsage, MemoryTooLow, etc."
+        },
+        {
+            "name": "severity?",
+            "type": "[Severity](/event-api-objects/severity/) (string)",
+            "description": "Represents the event impact in the context of the affected resource"
+        },
+        {
+            "name": "category?",
+            "type": "[Category](/event-api-objects/category/) (string)",
+            "description": "Represents the event impact in the context of the affected resource"
+        },
+        {
+            "name": "include?",
+            "type": "string",
+            "description": "Additional properties included in the response, e.g. 'FAILURE_REASON'"
+        },
+        {
+            "name": "cacheTimeInterval?",
+            "type": "string",
+            "description": "Time interval in UNIX epoch format that specifies the time range when the event was cached by the service. The start and end times are not included in the interval. Example:(1517216384;1517216388)"
+        },
+        {
+            "name": "creationTimeInterval?",
+            "type": "string",
+            "description": "Time interval in UNIX epoch format that specifies the time range when the event was created at the source. The start and end times are not included in the interval. Example:(1517216384;1517216388)"
+        },
+        {
+            "name": "page?",
+            "type": "number",
+            "description": "The page you are looking for"
+        },
+        {
+            "name": "pageSize?",
+            "type": "number",
+            "description": "Size of a page"
+        }
+    ]
+}
