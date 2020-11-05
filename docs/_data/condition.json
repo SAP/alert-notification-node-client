@@ -8,7 +8,7 @@
         {
             "name": "name",
             "type": "string",
-            "description": "Identifies the action's current state, that is, if it's currently enabled or disabled"
+            "description": "Unique name, used for its identification"
         },
         {
             "name": "description",

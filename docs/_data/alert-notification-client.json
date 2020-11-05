@@ -2,27 +2,27 @@
     "propertyFields": [
         {
             "name": "authentication",
-            "type": "[BasicAuthnetication](/authentication/basic) \\| [OAuthAuthentication](/authentication/oauth) (object)",
+            "type": "[BasicAuthnetication](/authentication/basic) \\| [OAuthAuthentication](/authentication/oauth)",
             "description": "Used for retrieving authorization header value"
         },
         {
             "name": "region",
-            "type": "[Region](/common-objects/region-utils#region) (object)",
+            "type": "[Region](/common-objects/region-utils#region)",
             "description": "Region on which your alert notificatiton's instance resides"
         },
         {
             "name": "axiosRequestConfig?",
-            "type": "[AxiosRequestConfig](https://github.com/axios/axios) (object)",
+            "type": "[AxiosRequestConfig](https://github.com/axios/axios)",
             "description": "Used for overwriting the default configuration of the HTTP client"
         },
         {
             "name": "axiosinstance?",
-            "type": "[AxiosInstance](https://github.com/axios/axios) (object)",
+            "type": "[AxiosInstance](https://github.com/axios/axios)",
             "description": "Used for providing an HTTP client (the library will not create a default one, if this property is provided)"
         },
         {
             "name": "retryConfig?",
-            "type": "[RetryConfig](/common-objects/retryConfig) (object)",
+            "type": "[RetryConfig](/common-objects/retryConfig)",
             "description": "Retry configuration, which enables the retriability of failed requests to Alert Notification"
         }
     ],
@@ -81,7 +81,7 @@
                     "description": "type of the searched entity"
                 },
                 {
-                    "name": "params - [CommonQueryParams](/common-objects/query-params) (object)",
+                    "name": "params? - [CommonQueryParams](/common-objects/query-params)",
                     "description": "query parameters"
                 }
             ],
@@ -107,7 +107,7 @@
             "description": "Imports a configuration. <br><br> _**Note:**_ Your current configuration will be **overwritten**.",
             "arguments": [
                 {
-                    "name": "data - [Configuration](/configuration-api-objects/entity-type) (object)",
+                    "name": "data - [Configuration](/configuration-api-objects/entity-type)",
                     "description": "configuration to be imported"
                 }
             ],
@@ -116,7 +116,7 @@
         {
             "name": "exportConfiguration()",
             "description": "Exports your current configuration.",
-            "returnValue": "Promise<[Configuration](/configuration-api-objects/entity-type) (object)>",
+            "returnValue": "Promise<[Configuration](/configuration-api-objects/entity-type)>",
             "link": "/configuration-api/examples/export-configuration"
         },
         {
@@ -124,7 +124,7 @@
             "description": "Will send an event for ingestion to Alert Notification.",
             "arguments": [
                 {
-                    "name": "event - [ResourceEvent](/event-api-objects/resource-event) (object)",
+                    "name": "event - [ResourceEvent](/event-api-objects/resource-event)",
                     "description": "an event to be sent to Alert Notification"
                 }
             ],
@@ -135,7 +135,7 @@
             "description": "Will send multiple events at once for ingestion to Alert Notification. <br><br> _**Note:**_ They will be ingested in the order they are sent, starting from the first one.",
             "arguments": [
                 {
-                    "name": "events - [ResourceEvent](/event-api-objects/resource-event)[] (object[])",
+                    "name": "events - [ResourceEvent](/event-api-objects/resource-event)[]",
                     "description": "a collection of events to be sent to Alert Notification"
                 }
             ],

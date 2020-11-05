@@ -19,8 +19,8 @@
     "methods": [
         {
             "name": "getAuthorizationHeaderValue()",
-            "returnValue": "sting",
-            "description": "Calls the oAuthTokenBaseUrl and if username and password are correct will retrieve an access token which will be cached for further use. If the access token is about to expire a new request to OAuth service will be made"
+            "returnValue": "string",
+            "description": "Calls the oAuthTokenUrl and if username and password are correct will retrieve an access token which will be cached for further use. If the access token is about to expire a new request to OAuth service will be made"
         }
     ]
 }

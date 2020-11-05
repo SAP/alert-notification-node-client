@@ -21,7 +21,7 @@ permalink: /common-objects/region-utils
 
 RegionUtils contains:
 * constants with predefined regions which represent where Alert Notification is currently onboarded
-* a class which can be used to fully customize your region with a specific url and platform.
+* a class which can be used to fully customize your region with a specific URL and platform.
 * an enum representing the environment on which Alert Notification is onboarded
 
 ## Region

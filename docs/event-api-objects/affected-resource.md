@@ -19,7 +19,7 @@ permalink: /event-api-objects/affected-resource
 
 ## Description
 
-Object representing your resource.
+Represents your resource.
 
 ## Properties
 

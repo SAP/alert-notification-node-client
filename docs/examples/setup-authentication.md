@@ -23,7 +23,7 @@ In this example you will get familiar on how to setup an authentication object f
 
 ## @Example - basic authentication
 
-You must replace _username_, _password_ and _region_ (inside properties field) with ones specific for you.
+You must replace _username_, _password_ and _region_  with ones specific for you.
 
 ```js
 import {
@@ -47,7 +47,7 @@ const client = new AlertNotificationClient({
 
 ## @Example - oauth authentication
 
-You must replace _username_, _password_, _oAuthTokenUrl_ and _region_ (inside properties field) with ones specific for you.
+You must replace _username_, _password_, _oAuthTokenUrl_ and _region_  with ones specific for you.
 
 ```js
 import {

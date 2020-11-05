@@ -5,10 +5,10 @@ import { BasicAuthentication, OAuthAuthentication, Authentication } from './auth
 import { Region } from './utils/region';
 
 import {
-    RetryConfig,
     setupAuthorizationHeaderOnRequestInterceptor,
     extractDataOnResponseInterceptor,
-    configureDefaultRetryInterceptor
+    configureDefaultRetryInterceptor,
+    RetryConfig
 } from './utils/axios-utils';
 
 import ConfigurationApiClient from './configuration-api/configuration-client';
@@ -49,15 +49,15 @@ export interface AlertNotificationConfiguration {
 }
 
 /**
- * Client used for accessing SAP Cloud Platform Alert Notification API
+ * Client used for accessing SAP Cloud Platform Alert Notification service APIs
  */
 export default class AlertNotificationClient {
     private configurationClient: ConfigurationApiClient;
     private eventClient: EventsApiClient;
 
     /**
-     * Constructs an instance of AlertNotificationClient. The instance provides an access to SAP Cloud Platform Alert Notification APIs.
-     * Construction of the instance can throw an erro in the following cases:
+     * Constructs an instance of AlertNotificationClient. The instance provides an access to SAP Cloud Platform Alert Notification service APIs.
+     * Construction of the instance can throw an error in the following cases:
      * - axiosInstance and axiosRequestConfig are present at the same time
      * - authentication and region are missing
      * - if retry configuration is present, but maxRetries and retryBackoff aren't
@@ -71,7 +71,7 @@ export default class AlertNotificationClient {
      * - authentication object - used to retrieve tha authorization header value
      * - region - used to retrieve platform and url of the SAP Cloud Platform Alert Notification service
      * - axiosRequestConfig - request configuration different from the default provided by the client
-     * - axiosInstance - own axios instance
+     * - axiosInstance - own axios instance, the client won't create one if external is provided
      * - retryConfig - retry configuration
      */
     constructor(configuration: AlertNotificationConfiguration) {
@@ -133,10 +133,7 @@ export default class AlertNotificationClient {
      * @return {Promise<Action | Condition | Subscription>} - promise which contains the data for the searched entity based on
      * the given type
      */
-    public get(
-        type: EntityType,
-        name: string
-    ): Promise<Action | Condition | Subscription> {
+    public get(type: EntityType, name: string): Promise<Action | Condition | Subscription> {
         return (this.configurationClient.getOne({ type, name }) as unknown) as Promise<
             Action | Condition | Subscription
         >;
@@ -264,7 +261,7 @@ export default class AlertNotificationClient {
 
     /**
      *
-     * Get an event that is matched by a subscription.
+     * Get an event that is matched by a subscription/s.
      *
      * @param {string} eventId is the ID that was received in the response body when event was sent to SAP Cloud Platform Alert Notification
      * @param {ConsumerQueryParameters} params - for filtering of all available events (those could be more than one with the same ID due to multiple matched subscriptions)
@@ -282,7 +279,7 @@ export default class AlertNotificationClient {
 
     /**
      *
-     * Get events that are matched by a subscription.
+     * Get events that are matched by a subscription/s.
      *
      * @param {ConsumerQueryParameters} params - for filtering of all available events
      *

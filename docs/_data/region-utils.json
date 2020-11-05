@@ -3,12 +3,12 @@
         {
             "name": "platform",
             "type": "[Platform](/common-objects/region-utils#platform) (object)",
-            "description": "Platform on which SAP Cloud Platform Alert Notification resides"
+            "description": "Platform on which Alert Notification resides"
         },
         {
             "name": "url",
             "type": "string",
-            "description": "Base url of SAP Cloud Platform Alert Notification"
+            "description": "Base url of Alert Notification"
         }
     ],
     "methods": [

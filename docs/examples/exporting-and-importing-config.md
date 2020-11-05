@@ -19,13 +19,13 @@ permalink: /examples/export-and-import/
 
 ## Description
 
-In this example you will export a configuration from one instance of Alert Notification and import it in a brand new one recently created on new onboarded region.
+In this example you will export a configuration from one instance of Alert Notification and import it in a brand new one recently created on newly onboarded region.
 
 _**Note:**_ Keep in mind that Alert Notification will never return actions' passwords and you will have to traverse the returned json and populate them yourself, of course in a secure manner.
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_ and _region_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_ and _region_  with ones specific for you.
 
 ```js
 import {

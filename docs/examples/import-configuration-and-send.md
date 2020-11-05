@@ -23,7 +23,7 @@ In this example you will import a configuration and send an event with _eventTyp
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_, _region_ and _destination_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_, _region_ and _destination_  with ones specific for you.
 
 ```js
 import {
@@ -33,7 +33,7 @@ import {
     RegionUtils,
     Severity,
     Category
-} from 'sap-cloud-platform-alert-notification-client';
+} from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

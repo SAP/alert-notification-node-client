@@ -58,7 +58,7 @@ const client = new AlertNotificationClient({
 
 ## Resources
 
-* [Configuration management in using the SAP Cloud Platform Cockpit](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/033cbf7cfab2484abad90276d3d3e776.html)
+* [Configuration management by using the SAP Cloud Platform Cockpit](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/033cbf7cfab2484abad90276d3d3e776.html)
 * [Credential management](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/80fe24f86bde4e3aac2903ac05511835.html)
 * [Catalog of available events](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/80fe24f86bde4e3aac2903ac05511835.html)
 * [Integration with SAP Cloud Platform Alert Notification](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/04c9ed027b824e93896f59c4081a704a.html)

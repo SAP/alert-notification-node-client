@@ -19,7 +19,7 @@ permalink: /event-api-objects/category
 
 ## Description
 
-It is self-explanatory.
+Represents the category of the event.
 
 ## Properties
 

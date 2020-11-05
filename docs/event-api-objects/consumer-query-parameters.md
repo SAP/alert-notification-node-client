@@ -19,7 +19,7 @@ permalink: /event-api-objects/consumer-query-parameters
 
 ## Description
 
-Describes the query parameters which are passed to the request to Undelivered or Matched APIs. They help you filtering the returned events by different identifiers and time period.
+Describes the query parameters which are passed to the request to Undelivered or Matched APIs. They help you with filtering the returned events by different identifiers and time period.
 
 ## Properties
 

@@ -3,10 +3,8 @@ import { AxiosInstance, AxiosPromise } from 'axios';
 import { ResourceEvent, ConsumerRequest, ConsumerPagedResponse } from './models';
 
 /**
- * SAP Cloud Platform Alert Notification Producer API.
+ * Class used to access SAP Cloud Platform Alert Notification Producer API.
  *
- * @class
- * @alias EventsApiClient
  */
 export default class EventsApiClient {
     private axios: AxiosInstance;

@@ -42,7 +42,7 @@ export interface AffectedResource {
 
 export interface ResourceEvent {
     /**
-     * ID of the resource event, it will be populated by SAP Cloud Platform Alert Notification service. And you
+     * ID of the resource event, it will be populated by SAP Cloud Platform Alert Notification service and you
      * will have access to it on response
      */
     id?: string;

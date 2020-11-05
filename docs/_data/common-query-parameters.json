@@ -3,7 +3,7 @@
         {
             "name": "page?",
             "type": "number",
-            "description": "The page you are looking for"
+            "description": "Looked up page"
         },
         {
             "name": "pageSize?",

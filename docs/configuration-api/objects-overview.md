@@ -9,6 +9,8 @@ permalink: /configuration-api-objects/
 
 # Configuration API overview
 
+Alert Notification's Configuration API is responsible for managing customer's configuration.
+
 ## Configuration API's objects
 
-In this section you will learn about the objects passed and received by Alert Notificaiton configuration's endpoints.
+In this section you will learn about the objects which have to be used in order to manage your configuration.

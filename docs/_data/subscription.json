@@ -27,12 +27,12 @@
         },
         {
             "name": "actions?",
-            "type": "string",
+            "type": "string[]",
             "description": "Action names that are executed on any matched event"
         },
         {
             "name": "conditions?",
-            "type": "number",
+            "type": "string[]",
             "description": "Condition names that are evaluated for any incoming event"
         },
         {

@@ -13,4 +13,4 @@ Alert Notification's Event API is responsible for ingesting customer events for 
 
 ## Event API's objects
 
-In this section you will learn about the objects passed and received by Alert Notificaiton event's endpoints.
+In this section you will learn about the objects which have to be used in order to send/get event/_s_.

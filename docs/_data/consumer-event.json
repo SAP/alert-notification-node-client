@@ -47,7 +47,7 @@
         },
         {
             "name": "metadata",
-            "type": "[ConsumerEventMetadata](/event-api-objects/consumer-event#consumer-event-metadata) (object)",
+            "type": "[ConsumerEventMetadata](/event-api-objects/consumer-event#consumereventmetadata) (object)",
             "description": "Holds a useful data about the stored event"
         },
         {

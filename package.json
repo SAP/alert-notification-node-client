@@ -1,5 +1,5 @@
 {
-  "name": "alert-notification-client",
+  "name": "alert-notification-node-client",
   "version": "1.0.0",
   "description": "SAP Cloud Platform Alert Notification Node.js API client",
   "main": "dist/index.js",

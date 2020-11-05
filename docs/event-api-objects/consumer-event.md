@@ -94,7 +94,7 @@ const failureReason = {
 
 #### Description
 
-An enum which shows the status of an event. If the event was not delivered to the its status will be _UNDELIVERED_, on the other hand if a _STORE_ action was delivered and saved the status of the event will be _MATCHED_.
+An enum which shows the status of an event. If the event was not delivered its status will be _UNDELIVERED_, on the other hand if a _STORE_ action was delivered and saved the status of the event will be _MATCHED_.
 
 #### Properties
 
@@ -108,8 +108,8 @@ An enum which shows the status of an event. If the event was not delivered to th
 ```js
 import { DeliveryStatus } from 'alert-notifcation-node-client';
 
-console.log(DeliveryStatus.UNDELIVERED); // will print 'Undelivered'
-console.log(DeliveryStatus.MATCHED); // will print 'matched'
+console.log(DeliveryStatus.UNDELIVERED); // will print 'UNDELIVERED'
+console.log(DeliveryStatus.MATCHED); // will print 'MATCHED'
 ```
 
 ### ConsumerEventMetadata

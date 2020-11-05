@@ -25,16 +25,16 @@ EntityType is an enum which helps deduce what type of entity you are trying to m
 
 | Type  | Available values |
 |:-----:|:----------------:|
-|string |     Action       |
-|string |    Condition     |
-|string |   Subscription   |
+|string |     ACTION       |
+|string |    CONDITION     |
+|string |   SUBSCRIPTION   |
 
 ## @Example
 
 ```js
 import { EntityType } from 'alert-notifcation-node-client';
 
-console.log(EntityType.Action); // will print 'Action'
-console.log(EntityType.Condition); // will print 'Condition'
-console.log(EntityType.Subscription); // will print 'Subscription'
+console.log(EntityType.ACTION); // will print 'Action'
+console.log(EntityType.CONDITION); // will print 'Condition'
+console.log(EntityType.SUBSCRIPTION); // will print 'Subscription'
 ```

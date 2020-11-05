@@ -23,7 +23,7 @@ In this example send an event with _eventType_ HighCpu, which will be matched by
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_ and  _region_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_ and  _region_  with ones specific for you.
 
 ```js
 import {
