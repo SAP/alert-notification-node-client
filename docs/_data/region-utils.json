@@ -8,7 +8,7 @@
         {
             "name": "url",
             "type": "string",
-            "description": "Base url of Alert Notification"
+            "description": "Base URL of Alert Notification"
         }
     ],
     "methods": [
@@ -20,7 +20,7 @@
         {
             "name": "getUrl()",
             "returnValue": "string",
-            "description": "Gets the url of the Region"
+            "description": "Gets the URL of the Region"
         }
     ]
 }

@@ -13,7 +13,7 @@
         {
             "name": "name",
             "type": "string",
-            "description": "Unique name, used for its identification"
+            "description": "Unique name, used for identification"
         },
         {
             "name": "state",

@@ -19,7 +19,7 @@ permalink: /authentication/basic
 
 ## Description
 
-BasicAuthnetication is a class in the context of Alert Notification's node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification.
+BasicAuthentication is a class in the context of Alert Notification's node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification.
 
 ## Constructor properties
 

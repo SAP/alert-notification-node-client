@@ -67,7 +67,7 @@ export default class AlertNotificationClient {
      * - Request interceptor for setting up an Authorization header
      * - Response interceptor for extracting the data on successful response
      *
-     * @param {AlertNotificationConfiguration} configuration - configuration object for the client. It consits of:
+     * @param {AlertNotificationConfiguration} configuration - configuration object for the client. It consists of:
      * - authentication object - used to retrieve tha authorization header value
      * - region - used to retrieve platform and url of the SAP Cloud Platform Alert Notification service
      * - axiosRequestConfig - request configuration different from the default provided by the client
@@ -205,7 +205,7 @@ export default class AlertNotificationClient {
      * Delete a configuration entity by specifying of what type it is, e.g. 'Action', 'Condition' or 'Subscription' and its name.
      *
      * @param {EntityType} type - type of the to be deleted entity
-     * @param {string} name - name of an already existant entity
+     * @param {string} name - name of an already existent entity
      *
      * @return {Promise<void>} - promise which contains nothing
      */
@@ -215,7 +215,7 @@ export default class AlertNotificationClient {
 
     /**
      *
-     * Import a configuration. Note that this operation overwrites any existant configuration.
+     * Import a configuration. Note that this operation overwrites any existent configuration.
      *
      * @param {Configuration} data - configuration which consists of actions, conditions and subscriptions
      *

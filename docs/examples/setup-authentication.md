@@ -19,7 +19,7 @@ permalink: /examples/setup-authentication/
 
 ## Description
 
-In this example you will get familiar on how to setup an authentication object for your Alert Notification client. The setup is nothing more than just providing the authentication object of your choise as an argument to your client instance's constructor
+In this example you will get familiar on how to setup an authentication object for your Alert Notification client. The setup is nothing more than just providing the authentication object of your choice as an argument to your client instance's constructor
 
 ## @Example - basic authentication
 
@@ -28,7 +28,7 @@ You must replace _username_, _password_ and _region_  with ones specific for you
 ```js
 import {
     AlertNotificationClient,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils
 } from 'alert-notification-node-client';
 
@@ -52,12 +52,12 @@ You must replace _username_, _password_, _oAuthTokenUrl_ and _region_  with ones
 ```js
 import {
     AlertNotificationClient,
-    OAuthAuthnetication,
+    OAuthAuthentication,
     RegionUtils
 } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
-    authentication: new OAuthAuthnetication({
+    authentication: new OAuthAuthentication({
         username: '<your-technical-client-username>',
         password: '<your-technical-client-password',
         oAuthTokenUrl: '<oauth-token-url>'

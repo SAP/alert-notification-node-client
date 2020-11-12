@@ -3,7 +3,7 @@
         {
             "name": "id?",
             "type": "string",
-            "description": "Identification guid of the resource event, it will be populated by Alert Notification service. And you will have access to it on response"
+            "description": "Identification guid of the resource event. It will be populated by Alert Notification service and you will have access to it on response."
         },
         {
             "name": "body",

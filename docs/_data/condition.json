@@ -8,7 +8,7 @@
         {
             "name": "name",
             "type": "string",
-            "description": "Unique name, used for its identification"
+            "description": "Unique name, used for identification"
         },
         {
             "name": "description",
@@ -16,7 +16,7 @@
             "description": "Brief description of the condition, e.g. explaining what it will be used for"
         },
         {
-            "name": "propertykey",
+            "name": "propertyKey",
             "type": "string",
             "description": "Property key of the event, e.g. eventType"
         },

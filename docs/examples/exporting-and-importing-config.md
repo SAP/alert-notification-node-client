@@ -31,7 +31,7 @@ In order for this example to work you need to replace _username_, _password_ and
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils
 } from 'alert-notification-node-client';
 

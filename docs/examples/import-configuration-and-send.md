@@ -29,10 +29,12 @@ In order for this example to work you need to replace _username_, _password_, _r
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils,
     Severity,
-    Category
+    Category,
+    State,
+    Predicate
 } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
@@ -60,7 +62,7 @@ client.importConfiguration({
             name: 'event-type-contains-HighCpu',
             description: 'Match events which body contains HighCpu',
             propertyKey: 'eventType',
-            predicate: Predicate.Contains,
+            predicate: Predicate.CONTAINS,
             propertyValue: 'HighCpu'
        }
    ],
@@ -86,7 +88,7 @@ client.importConfiguration({
             resourceType: 'application',
             resourceInstance: '123456',
             tags: {
-                deatilsLink: 'https://example.details.com'
+                detailsLink: 'https://example.details.com'
             }
         },
         eventTimestamp: 1602787032,

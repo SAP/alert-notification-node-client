@@ -2,13 +2,13 @@
     "propertyFields": [
         {
             "name": "authentication",
-            "type": "[BasicAuthnetication](/authentication/basic) \\| [OAuthAuthentication](/authentication/oauth)",
+            "type": "[BasicAuthentication](/authentication/basic) \\| [OAuthAuthentication](/authentication/oauth)",
             "description": "Used for retrieving authorization header value"
         },
         {
             "name": "region",
             "type": "[Region](/common-objects/region-utils#region)",
-            "description": "Region on which your alert notificatiton's instance resides"
+            "description": "Region on which your Alert Notification's instance resides"
         },
         {
             "name": "axiosRequestConfig?",
@@ -22,7 +22,7 @@
         },
         {
             "name": "retryConfig?",
-            "type": "[RetryConfig](/common-objects/retryConfig)",
+            "type": "[RetryConfig](/common-objects/retry-configuration)",
             "description": "Retry configuration, which enables the retriability of failed requests to Alert Notification"
         }
     ],
@@ -97,7 +97,7 @@
                 },
                 {
                     "name": "name - (string)",
-                    "description": "name of an existant entity"
+                    "description": "name of an existent entity"
                 }
             ],
             "returnValue": "Promise\\<void\\>"

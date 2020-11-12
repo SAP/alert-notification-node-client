@@ -46,9 +46,9 @@ const resourceEvent = {
         resourceType: 'application',
         resourceInstance: '123456',
         tags: {
-            deatilsLink: 'https://example.details.com'
+            detailsLink: 'https://example.details.com'
         }
-    }
+    },
     eventTimestamp: 1602787032,
     priority: 1
 };

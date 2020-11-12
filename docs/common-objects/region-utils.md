@@ -28,7 +28,7 @@ RegionUtils contains:
 
 ### Description
 
-A class which can be used to fully customize your region with a specific url and platform.
+A class which can be used to fully customize your region with a specific URL and platform.
 
 ### Constructor properties
 

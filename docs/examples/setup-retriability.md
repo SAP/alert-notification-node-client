@@ -28,7 +28,7 @@ You must replace _username_, _password_ and _region_  with ones specific for you
 ```js
 import {
     AlertNotificationClient,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils
 } from 'alert-notification-node-client';
 

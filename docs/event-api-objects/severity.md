@@ -35,9 +35,7 @@ Represents the event impact in the context of the affected resource.
 ## @Example
 
 ```js
-import { Category } from 'alert-notifcation-node-client';
+import { Severity } from 'alert-notification-node-client';
 
-console.log(Category.ALERT); // will print 'ALERT'
-console.log(Category.EXCEPTION); // will print 'EXCEPTION'
-console.log(Category.NOTIFICATION); // will print 'NOTIFICATION'
+console.log(Severity.NOTICE); // will print 'NOTICE'
 ```

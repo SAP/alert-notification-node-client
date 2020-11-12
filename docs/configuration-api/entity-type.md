@@ -32,9 +32,9 @@ EntityType is an enum which helps deduce what type of entity you are trying to m
 ## @Example
 
 ```js
-import { EntityType } from 'alert-notifcation-node-client';
+import { EntityType } from 'alert-notification-node-client';
 
-console.log(EntityType.ACTION); // will print 'Action'
-console.log(EntityType.CONDITION); // will print 'Condition'
-console.log(EntityType.SUBSCRIPTION); // will print 'Subscription'
+console.log(EntityType.ACTION); // will print 'ACTION'
+console.log(EntityType.CONDITION); // will print 'CONDITION'
+console.log(EntityType.SUBSCRIPTION); // will print 'SUBSCRIPTION'
 ```

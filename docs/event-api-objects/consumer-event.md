@@ -48,7 +48,7 @@ const consumerEvent = {
         resourceType: 'application',
         resourceInstance: '123456',
         tags: {
-            deatilsLink: 'https://example.details.com'
+            detailsLink: 'https://example.details.com'
         }
     },
     eventTimestamp: 1602787032,
@@ -106,7 +106,7 @@ An enum which shows the status of an event. If the event was not delivered its s
 #### @Example
 
 ```js
-import { DeliveryStatus } from 'alert-notifcation-node-client';
+import { DeliveryStatus } from 'alert-notification-node-client';
 
 console.log(DeliveryStatus.UNDELIVERED); // will print 'UNDELIVERED'
 console.log(DeliveryStatus.MATCHED); // will print 'MATCHED'

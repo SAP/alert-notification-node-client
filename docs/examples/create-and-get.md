@@ -31,8 +31,9 @@ In order for this example to work you need to replace _username_, _password_, _r
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
-    RegionUtils
+    BasicAuthentication,
+    RegionUtils,
+    State
 } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({

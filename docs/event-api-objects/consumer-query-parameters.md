@@ -1,12 +1,12 @@
 ---
 layout: default
-title: ConsumerQueryParamaters
+title: ConsumerQueryParameters
 parent: Event API's objects
 nav_order: 7
 permalink: /event-api-objects/consumer-query-parameters
 ---
 
-# ConsumerQueryParamaters
+# ConsumerQueryParameters
 {: .no_toc }
 
 ## Table of contents

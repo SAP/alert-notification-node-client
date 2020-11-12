@@ -13,7 +13,7 @@
         {
             "name": "oAuthTokenUrl",
             "type": "string",
-            "description": "OAuth token url to call on retrieving token"
+            "description": "OAuth token URL to call on retrieving token"
         }
     ],
     "methods": [

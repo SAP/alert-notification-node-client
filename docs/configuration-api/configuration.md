@@ -32,7 +32,7 @@ Configuration represents the assembly of actions, conditions and subscriptions
 
 _**@Example:**_
 ```js
-import { State } from 'alert-notification-node-client';
+import { State, Predicate } from 'alert-notification-node-client';
 
 const configuration =
 {
@@ -52,7 +52,7 @@ const configuration =
             name: 'event-type-contains-HighCpu',
             description: 'Match events which body contains HighCpu',
             propertyKey: 'eventType',
-            predicate: Predicate.Contains,
+            predicate: Predicate.CONTAINS,
             propertyValue: 'HighCpu'
        }
    ],
