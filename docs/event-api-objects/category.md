@@ -19,7 +19,7 @@ permalink: /event-api-objects/category
 
 ## Description
 
-It is self-explanatory.
+Represents the category of the event.
 
 ## Properties
 
@@ -32,7 +32,7 @@ It is self-explanatory.
 ## @Example
 
 ```js
-import { Category } from 'alert-notifcation-node-client';
+import { Category } from 'alert-notification-node-client';
 
 console.log(Category.ALERT); // will print 'ALERT'
 console.log(Category.EXCEPTION); // will print 'EXCEPTION'

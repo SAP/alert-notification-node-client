@@ -42,7 +42,7 @@ _**Note**_: Grant type query parameter will be added automatically by the client
 ## @Example
 
 ```js
-import { OAuthAuthentication, RegionUtils } from 'alert-notification-node-client';
+import { OAuthAuthentication } from 'alert-notification-node-client';
 
 const oAuthAuthentication = new OAuthAuthentication({
     username: 'test-username',
@@ -52,5 +52,5 @@ const oAuthAuthentication = new OAuthAuthentication({
 
 oAuthAuthentication.getAuthorizationHeaderValue()
 .then(authHeaderValue => console.log(authHeaderValue))
-.catch(error => console.log(error)); // In the current case an error will be logged, as the provided arguments are invalid. In order for the call to pass you must provide a valid arguments.
+.catch(error => console.log(error)); // In the current case an error will be logged, as the provided arguments are invalid. In order for the call to pass you must provide valid arguments.
 ```

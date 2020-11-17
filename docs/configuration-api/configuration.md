@@ -2,7 +2,7 @@
 layout: default
 title: Configuration
 parent: Configuration's API objects
-nav_order: 3
+nav_order: 6
 permalink: /configuration-api-objects/configuration/
 ---
 
@@ -32,7 +32,7 @@ Configuration represents the assembly of actions, conditions and subscriptions
 
 _**@Example:**_
 ```js
-import { State } from 'alert-notification-node-client';
+import { State, Predicate } from 'alert-notification-node-client';
 
 const configuration =
 {
@@ -52,7 +52,7 @@ const configuration =
             name: 'event-type-contains-HighCpu',
             description: 'Match events which body contains HighCpu',
             propertyKey: 'eventType',
-            predicate: Predicate.Contains,
+            predicate: Predicate.CONTAINS,
             propertyValue: 'HighCpu'
        }
    ],
@@ -61,7 +61,7 @@ const configuration =
             name: 'event-with-eventType-HighCpu-to-mail',
             state: State.ENABLED,
             actions: ['to-my-email'],
-            subscriptions: ['event-type-contains-HighCpu'],
+            conditions: ['event-type-contains-HighCpu'],
             description: 'Subscription will act when an event with eventType - HighCpu is received and will send an email to me'
         }
    ]

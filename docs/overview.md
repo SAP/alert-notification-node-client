@@ -23,13 +23,13 @@ permalink: /
 ## What is SAP Cloud Platform Alert Notifcation?
 
 SAP Cloud Platform Alert Notification is part of the DevOps portfolio of the SAP Cloud Platform. The service is specialized in instant delivery of events coming straight from the core platform services, e.g. database or application monitoring tools. This way you're always the first one notified whenever an issue with your dependency occurs. Additionally, Alert Notification provides means for posting real-time
-crucial events directly from your application. All those events altogether - either your custom events, or the platform ones, could be received on whatever channel is preferred - e-mail, Slack, custom webhook, etc.
-Furthermore, events can be even stored in Alert Notification storage and pulled from it later.
+crucial events directly from your application. All those events altogether - either your custom events or the platform ones, could be received on whatever channel is preferred - e-mail, Slack, custom webhook, etc.
+Furthermore, events can even be stored in Alert Notification storage and pulled from it later.
 
 ## Features
 
 * _Post custom events_
-* _Pull already stored events either custom, or platform events, and on the other hand, either stored by request, or stored because the requested action has failed for some reason_
+* _Pull already stored events - either custom or platform events, and on the other hand, either stored by request or stored because the requested action has failed for some reason_
 * _Manage your actions, conditions and subscriptions_
 
 ## Installation
@@ -45,10 +45,10 @@ $ npm i alert-notification-node-client
 In order to use the client you will first have to import it and create an instance:
 
 ```js
-import { AlertNotifiationClient, RegionUtils, BasicAuthentication } from 'alert-notification-node-client';
+import { AlertNotificationClient, RegionUtils, BasicAuthentication } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
-  authentication: new BasicAuthnetication({
+  authentication: new BasicAuthentication({
     username: '<your-technical-client-username>', // Replace with your username
     password: '<your-technical-client-password>' // Replace with your password
   }),
@@ -58,7 +58,7 @@ const client = new AlertNotificationClient({
 
 ## Resources
 
-* [Configuration management in using the SAP Cloud Platform Cockpit](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/033cbf7cfab2484abad90276d3d3e776.html)
+* [Configuration management by using the SAP Cloud Platform Cockpit](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/033cbf7cfab2484abad90276d3d3e776.html)
 * [Credential management](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/80fe24f86bde4e3aac2903ac05511835.html)
 * [Catalog of available events](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/80fe24f86bde4e3aac2903ac05511835.html)
 * [Integration with SAP Cloud Platform Alert Notification](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/04c9ed027b824e93896f59c4081a704a.html)

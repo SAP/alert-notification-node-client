@@ -7,7 +7,7 @@ This is the documentation of SAP Cloud Platform Alert Notification node client. 
 
 In order to run it you have to make sure that you've followed the [Jekyll's installation guide](https://jekyllrb.com/docs/installation/).
 
-After the successfuly installation, navigate to _/docs_ directory and run:
+After the successfuly installation run:
 
 ```bash
 bundle install

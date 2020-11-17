@@ -54,7 +54,7 @@ export interface Action {
      */
     name: string;
     /**
-     * Identifies the action's current state, that is, if it's currently enabled or disabled
+     * Identifies the action's current state, that is, if it's currently enabled or disabled.
      */
     state: State;
     /**
@@ -71,14 +71,14 @@ export interface Action {
     fallbackAction?: string;
     /**
      * Time in seconds to allow the current action to be retried before executing the fallback action.
-     * If 0, unefined or null the action will be retried for its maximum times and if still fails, then
+     * If 0, undefined or null the action will be retried for its maximum times and if still fails, then
      * the fallback action will be executed.
      */
     fallbackTime?: number;
     /**
      * Action specific key-value pairs describing configuration properties.
      */
-    properties: Record<string, string>;
+    properties?: Record<string, string>;
 }
 
 export interface Condition {
@@ -168,7 +168,7 @@ export interface ConfigurationRequest {
      */
     type: EntityType;
     /**
-     * Name of requested entity.
+     * Entity's unique identifier.
      */
     name?: string;
     /**

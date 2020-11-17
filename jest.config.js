@@ -24,7 +24,7 @@ module.exports = {
     "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
   testPathIgnorePatterns: [
-    "<rootDir>/build/",
+    "<rootDir>/dist/",
     "<rootDir>/node_modules/"
   ],
   transform: {

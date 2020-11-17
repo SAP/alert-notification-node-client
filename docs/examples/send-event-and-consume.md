@@ -23,14 +23,16 @@ In this example send an event with _eventType_ HighCpu, which will be matched by
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_ and  _region_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_ and  _region_  with ones specific for you.
 
 ```js
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
-    RegionUtils
+    BasicAuthentication,
+    RegionUtils,
+    State,
+    Predicate
 } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
@@ -55,7 +57,7 @@ client.importConfiguration({
             name: 'event-type-starts-with-consume',
             description: 'Match events which eventType starts with consume',
             propertyKey: 'eventType',
-            predicate: Predicate.Contains,
+            predicate: Predicate.CONTAINS,
             propertyValue: 'consume'
        }
    ],
@@ -64,7 +66,7 @@ client.importConfiguration({
             name: 'event-with-eventType-HighCpu-to-mail',
             state: State.ENABLED,
             actions: ['to-store'],
-            subscriptions: ['event-type-starts-with-consume'],
+            conditions: ['event-type-starts-with-consume'],
             description: 'Subscription will act when an event with eventType which starts with consume is received and will store it for further consuming'
         }
    ]
@@ -81,9 +83,9 @@ client.importConfiguration({
             resourceType: 'application',
             resourceInstance: '123456',
             tags: {
-                deatilsLink: 'https://example.details.com'
+                detailsLink: 'https://example.details.com'
             }
-        }
+        },
         eventTimestamp: 1602787032,
         priority: 1
     })
@@ -94,7 +96,7 @@ client.importConfiguration({
                 .then(consumedEvent => console.log(consumedEvent)) // Print the consumed event
                 .catch(error => console.log(error));
         }, 5000)
-    }) // Action you have created
+    })
     .catch(error => console.log(error));
 })
 .catch(error => console.log(error)); // Shouldn't happen if everything above is setup correctly

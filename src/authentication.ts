@@ -85,7 +85,7 @@ export class OAuthAuthentication implements Authentication {
      * Creates an instance of OAuthAuthentication.
      *
      * @param {OAuthConfig} config - contains username, password, oAuthTokenUrl and platform. All
-     * of them must be provided else error will be thrown.
+     * of them must be provided else Error will be thrown.
      */
     constructor(config: OAuthConfig) {
         if (!config) {

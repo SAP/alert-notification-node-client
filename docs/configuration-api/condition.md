@@ -19,7 +19,7 @@ permalink: /configuration-api-objects/condition/
 
 ## Description
 
-Action is an entity which represents the destination on which Alert Notification will send a processed event, e.g. Email, Slack, Webhook, etc.
+Condition is an entity which defines a condition in the context of the Alert Notification which must be met in order for some Action to be triggered
 
 ## Properties
 
@@ -72,5 +72,5 @@ Predicate is an enum value representing a matching criteria for a condition.
 ```js
 import { Predicate } from 'alert-notification-node-client';
 
-console.log(Predicate.CONTAINS); // will print 'Contains'
+console.log(Predicate.CONTAINS); // will print 'CONTAINS'
 ```

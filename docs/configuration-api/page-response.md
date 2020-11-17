@@ -2,7 +2,7 @@
 layout: default
 title: PageResponse
 parent: Configuration's API objects
-nav_order: 6
+nav_order: 7
 permalink: /configuration-api-objects/page-response/
 ---
 
@@ -20,7 +20,7 @@ permalink: /configuration-api-objects/page-response/
 
 ## Description
 
-Paged response is a common object for the Configuration API returned when searching for all entities of given type.
+Paged response is a common object for the Configuration API returned when searching for all entities of a given type.
 
 ## Constructor properties
 

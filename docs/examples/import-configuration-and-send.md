@@ -23,17 +23,19 @@ In this example you will import a configuration and send an event with _eventTyp
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_, _region_ and _destination_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_, _region_ and _destination_  with ones specific for you.
 
 ```js
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils,
     Severity,
-    Category
-} from 'sap-cloud-platform-alert-notification-client';
+    Category,
+    State,
+    Predicate
+} from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({
@@ -60,7 +62,7 @@ client.importConfiguration({
             name: 'event-type-contains-HighCpu',
             description: 'Match events which body contains HighCpu',
             propertyKey: 'eventType',
-            predicate: Predicate.Contains,
+            predicate: Predicate.CONTAINS,
             propertyValue: 'HighCpu'
        }
    ],
@@ -86,7 +88,7 @@ client.importConfiguration({
             resourceType: 'application',
             resourceInstance: '123456',
             tags: {
-                deatilsLink: 'https://example.details.com'
+                detailsLink: 'https://example.details.com'
             }
         },
         eventTimestamp: 1602787032,

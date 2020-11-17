@@ -11,11 +11,11 @@ SAP Cloud Platform Alert Notification is part of the DevOps portfolio of the SAP
 crucial events directly from your application. All those events altogether - either your custom events, or the platform ones, could be received on whatever channel is preferred - e-mail, Slack, custom webhook, etc.
 Furthermore, events can be even stored in Alert Notification storage and pulled from it later.
 
-### Features
+### Library Features
 
-* Post custom events
-* Pull already stored events either custom, or platform events, and on the other hand, either stored by request, or stored because the requested action has failed for some reason
-* Manage your actions, conditions and subscriptions
+* Post custom events;
+* Pull your stored events – either the stored on purpose ones or those that have for some reason failed to be delivered to the desired point;
+* Manage your configuration – actions, conditions and subscriptions
 
 ### Installation
 
@@ -23,11 +23,11 @@ Furthermore, events can be even stored in Alert Notification storage and pulled 
 $ npm i alert-notification-node-client
 ```
 
-## Getting started
+## Getting Started
 
-In order to get started visit the [documentation page](TODO:githubpages).
+Anything you need to get quickly started with the library is available in our [documentation page](TODO:githubpages).
 
-Here is a simple example on how to import and create your client:
+Here is a very simple example on how to import and create your first Alert Notification client:
 
 ```js
 import {
@@ -37,7 +37,7 @@ import {
     RegionUtils,
     Severity,
     Category
-} from 'sap-cloud-platform-alert-notification-client';
+} from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({
@@ -51,12 +51,12 @@ const client = new AlertNotificationClient({
 ```
 
 ### Have an issue?
-Please, let us know by filing a [new issue](https://github.com/sap-staging/clm-sl-alert-notification-client/issues/new).
+Please, let us know by filing a [new issue](https://github.com/sap-staging/alert-notification-node-client/issues/new).
 
 ### Contributing
 We're always open for improvements! If you think the library could be better, please, open an issue and propose your solution as a pull request. We will contact you for discussion as soon as possible.
 
 ### License
-This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap-staging/clm-sl-alert-notification-client/blob/master/LICENSE) file
+This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap-staging/alert-notification-node-client/blob/master/LICENSE) file
 in the top-level directory.
 

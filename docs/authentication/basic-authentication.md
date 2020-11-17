@@ -19,7 +19,7 @@ permalink: /authentication/basic
 
 ## Description
 
-BasicAuthnetication is a class in the context of Alert Notification's node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification.
+BasicAuthentication is a class in the context of Alert Notification's node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification.
 
 ## Constructor properties
 
@@ -49,5 +49,5 @@ const basicAuthentication = new BasicAuthentication({
 
 basicAuthentication.getAuthorizationHeaderValue()
 .then(authHeaderValue => console.log(authHeaderValue))
-.catch(error => console.log(error));  // The current call will print be successful and will print the basic authorization header value with encoded username and password in base64 format 'Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk'
+.catch(error => console.log(error));  // The current call will print the basic authorization header value with encoded username and password in base64 format 'Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk'
 ```

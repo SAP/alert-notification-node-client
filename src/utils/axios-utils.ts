@@ -10,25 +10,26 @@ export interface RetryConfig {
      * Timeout in milliseconds used to wait before executing the next retry.
      */
     retryBackoff: number;
+}
+
+interface RetryConfigInternal extends RetryConfig {
     /**
      * Current attempt of the retry.
      */
-    currentAttempt?: number;
+    currentAttempt: number;
     /**
      * Axios instance.
      */
-    instance?: AxiosInstance;
+    instance: AxiosInstance;
 }
 
 export interface ExtendedAxiosRequestConfig extends AxiosRequestConfig {
-    retryConfig?: RetryConfig;
+    retryConfig?: RetryConfigInternal;
 }
 
 /**
  * Sets up a request interceptor which adds the Authorization header value, for the given authentication object,
  * also removes auth field from the current axios request config.
- *
- * @function
  *
  * @param {AxiosInstance} axiosInstance - given axios instance
  * @param {Authentication} authentication - authentication object, which will take care of getting
@@ -48,7 +49,7 @@ export function setupAuthorizationHeaderOnRequestInterceptor(
                     return { ...config, ...{ headers, auth } };
                 })
                 .catch((error) => Promise.reject(error)),
-        (error) => {
+        (error: AxiosError) => {
             return Promise.reject(error);
         }
     );
@@ -57,14 +58,12 @@ export function setupAuthorizationHeaderOnRequestInterceptor(
 /**
  * Sets up a response interceptor which extracts the data when response is successful.
  *
- * @function
- *
  * @param {AxiosInstance} axiosInstance - given axios instance
  */
 export function extractDataOnResponseInterceptor(axiosInstance: AxiosInstance): void {
     axiosInstance.interceptors.response.use(
         (response: AxiosResponse) => Promise.resolve(response.data),
-        (error) => Promise.reject(error)
+        (error: AxiosError) => Promise.reject(error)
     );
 }
 
@@ -79,8 +78,6 @@ export function extractDataOnResponseInterceptor(axiosInstance: AxiosInstance): 
  * - retry configuration and axios instance are present
  * - axios request is not canceled
  * - current attempt is not greater or equal than the maxRetries property
- *
- * @function
  *
  * @param {AxiosInstance} axiosInstance - given axios instance
  */
@@ -98,11 +95,11 @@ export function configureDefaultRetryInterceptor(axiosInstance: AxiosInstance): 
                 ...{ retryConfig: { ...defaultRetryConfig, ...config.retryConfig } }
             };
         },
-        (error) => Promise.reject(error)
+        (error: AxiosError) => Promise.reject(error)
     );
 
     axiosInstance.interceptors.response.use(
-        (response) => response,
+        (response: AxiosResponse) => response,
         (error: AxiosError) => {
             let config = error.config as ExtendedAxiosRequestConfig;
 

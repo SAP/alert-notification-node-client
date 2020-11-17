@@ -19,16 +19,16 @@ permalink: /examples/setup-retriability/
 
 ## Description
 
-In order to setup retriability you will have to provide to the constructor a [RetryConfig](/event-api-objects/retry-config) object.
+In order to setup retriability you will have to provide to the constructor a [RetryConfig](/common-objects/retry-configuration) object.
 
 ## @Example
 
-You must replace _username_, _password_ and _region_ (inside properties field) with ones specific for you.
+You must replace _username_, _password_ and _region_  with ones specific for you.
 
 ```js
 import {
     AlertNotificationClient,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils
 } from 'alert-notification-node-client';
 

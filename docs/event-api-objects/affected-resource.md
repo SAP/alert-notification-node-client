@@ -19,7 +19,7 @@ permalink: /event-api-objects/affected-resource
 
 ## Description
 
-Object representing your resource.
+Represents your resource.
 
 ## Properties
 
@@ -32,14 +32,12 @@ Object representing your resource.
 
 ## @Example
 ```js
-import { Severity, Category } from 'alert-notification-node-client';
-
 const affectedResource = {
     resourceName: 'test-resource',
     resourceType: 'application',
     resourceInstance: '123456',
     tags: {
-        deatilsLink: 'https://example.details.com'
-    };
+        detailsLink: 'https://example.details.com'
+    }
 };
 ```

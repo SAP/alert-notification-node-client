@@ -12,7 +12,7 @@ import {
 } from './models';
 
 /**
- * SAP Cloud Platform Alert Notification Configuration API
+ * Class used to access SAP Cloud Platform Alert Notification Configuration API
  */
 export default class ConfigurationApiClient {
     private actionPath: string;
@@ -89,9 +89,7 @@ export default class ConfigurationApiClient {
      * Executes a request which if successful will create the given entity
      *
      * @param {ConfigurationRequest} request - an object which contains all the needed data for this request
-     * to be executed:
-     * - {type} - value which helps deduce the path to call
-     * - {data} - object holding the to be created entity
+     * to be executed.
      *
      * @return {AxiosPromise<Action | Condition | Subscription>} promise, which contains the created
      * entity
@@ -111,10 +109,7 @@ export default class ConfigurationApiClient {
      * Executes a request which if successful will update the given entity
      *
      * @param {ConfigurationRequest} request - an object which contains all the needed data for this request
-     * to be executed:
-     * - {type} to deduce the path to call
-     * - {name} - entity's identifier
-     * - {data} - object holding the updated fields of an entity
+     * to be executed.
      *
      * @return {AxiosPromise<Action | Condition | Subscription>} promise, which contains the updated
      * entity
@@ -134,9 +129,7 @@ export default class ConfigurationApiClient {
      * Executes a request which if successful will delete the given entity
      *
      * @param {ConfigurationRequest} request - an object which contains all the needed data for this request
-     * to be executed:
-     * - {type} - value which helps deduce the path to call
-     * - {data} - object holding the to be created entity
+     * to be executed.
      *
      * @return {AxiosPromise<AxiosResponse<void>>} promise, which contains nothing
      */
@@ -183,8 +176,7 @@ export default class ConfigurationApiClient {
     /**
      * Decide which url path to use based on the given entity type
      *
-     * @param {EntityType} entityType - configuration entity type, it may be
-     * any of the following: Action, Condition or Subscription
+     * @param {EntityType} entityType - type of the configuration entity
      *
      * @return {string} path to the entity
      */
@@ -197,9 +189,7 @@ export default class ConfigurationApiClient {
             case EntityType.SUBSCRIPTION:
                 return this.subscriptionPath;
             default:
-                throw new Error(
-                    'Unknown entity, must be a type from EntityType object'
-                );
+                throw new Error('Unknown entity, must be a type from EntityType object');
         }
     }
 }

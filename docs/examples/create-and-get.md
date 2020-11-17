@@ -25,14 +25,15 @@ _**Note:**_ This can be applied to any other [EntityType](/configuration-api-obj
 
 ## @Example
 
-In order for this example to work you need to replace _username_, _password_, _region_ and _destination_ (inside properties field) with ones specific for you.
+In order for this example to work you need to replace _username_, _password_, _region_ and _destination_ with ones specific for you.
 
 ```js
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
-    RegionUtils
+    BasicAuthentication,
+    RegionUtils,
+    State
 } from 'alert-notification-node-client';
 
 const client = new AlertNotificationClient({
