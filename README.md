@@ -51,12 +51,11 @@ const client = new AlertNotificationClient({
 ```
 
 ### Have an issue?
-Please, let us know by filing a [new issue](https://github.com/sap-staging/alert-notification-node-client/issues/new).
+Please, let us know by filing a [new issue](https://github.com/sap/alert-notification-node-client/issues/new).
 
 ### Contributing
 We're always open for improvements! If you think the library could be better, please, open an issue and propose your solution as a pull request. We will contact you for discussion as soon as possible.
 
 ### License
-This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap-staging/alert-notification-node-client/blob/master/LICENSE) file
+This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap/alert-notification-node-client/blob/master/LICENSE) file
 in the top-level directory.
-
