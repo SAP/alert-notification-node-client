@@ -16,11 +16,6 @@
             "description": "Used for overwriting the default configuration of the HTTP client"
         },
         {
-            "name": "axiosinstance?",
-            "type": "[AxiosInstance](https://github.com/axios/axios)",
-            "description": "Used for providing an HTTP client (the library will not create a default one, if this property is provided)"
-        },
-        {
             "name": "retryConfig?",
             "type": "[RetryConfig](/common-objects/retry-configuration)",
             "description": "Retry configuration, which enables the retriability of failed requests to Alert Notification"

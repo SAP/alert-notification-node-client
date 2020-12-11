@@ -13,47 +13,37 @@ import { buildAction, buildEvent } from './test-utils';
 import EventsApiClient from '../src/producer-api/event-producer-client';
 
 jest.mock('axios');
-jest.mock('../src/configuration-api/configuration-client')
-jest.mock('../src/producer-api/event-producer-client')
+jest.mock('../src/configuration-api/configuration-client');
+jest.mock('../src/producer-api/event-producer-client');
 jest.mock('../src/utils/axios-utils');
 
 const mockedAuthentication = {
     getAuthorizationHeaderValue: jest.fn(() => Promise.resolve('test-authorization-value'))
 };
 const region = RegionUtils.EU10;
-const axiosRequestConfig = {} as AxiosRequestConfig;
-
 
 beforeEach(() => {
     axios.create = jest.fn((_config: AxiosRequestConfig) => axios);
 });
 
 describe('when instantiating alert notification client', () => {
-
-    test('and axiosInstance and axiosRequestConfig are both provided then error is thrown', () => {
-        expect(() => new AlertNotificationClient({
-            authentication: mockedAuthentication,
-            region: region,
-            axiosInstance: axios,
-            axiosRequestConfig: axiosRequestConfig
-        })).toThrowError();
-    });
-
     describe('and retryConfig is provided', () => {
-
         test('and both maxRetries and retryBackoff are provided', () => {
-            expect(() => new AlertNotificationClient({
-                authentication: mockedAuthentication,
-                region: region,
-                retryConfig: {
-                    maxRetries: 5,
-                    retryBackoff: 1000
-                }
-            })).toBeDefined();
+            expect(
+                () =>
+                    new AlertNotificationClient({
+                        authentication: mockedAuthentication,
+                        region: region,
+                        retryConfig: {
+                            maxRetries: 5,
+                            retryBackoff: 1000
+                        }
+                    })
+            ).toBeDefined();
         });
 
         test('then retry interceptor is set', () => {
-           new AlertNotificationClient({
+            new AlertNotificationClient({
                 authentication: mockedAuthentication,
                 region: region,
                 retryConfig: {
@@ -78,7 +68,10 @@ describe('when instantiating alert notification client', () => {
         });
 
         expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledTimes(1);
-        expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledWith(axios, mockedAuthentication);
+        expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledWith(
+            axios,
+            mockedAuthentication
+        );
     });
 
     test('response data extractor interceptor is set', () => {
@@ -132,7 +125,7 @@ describe('alert configuration client methods', () => {
     });
 
     test('importConfiguration calls configurationClient.import', () => {
-        classUnderTest.importConfiguration({ actions:[], conditions: [], subscriptions: [] });
+        classUnderTest.importConfiguration({ actions: [], conditions: [], subscriptions: [] });
         expect(ConfigurationApiClient.prototype.import).toBeCalledTimes(1);
     });
 
@@ -147,7 +140,7 @@ describe('alert configuration client methods', () => {
     });
 
     test('sendEvents calls configurationClient.sendEvents', () => {
-        classUnderTest.sendEvents([ buildEvent() ]);
+        classUnderTest.sendEvents([buildEvent()]);
         expect(EventsApiClient.prototype.sendEvents).toBeCalledTimes(1);
     });
 
@@ -170,4 +163,4 @@ describe('alert configuration client methods', () => {
         classUnderTest.getUndeliveredEvents();
         expect(EventsApiClient.prototype.getUndeliveredEvents).toBeCalledTimes(1);
     });
-})
+});

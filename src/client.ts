@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 import { BasicAuthentication, OAuthAuthentication, Authentication } from './authentication';
 
@@ -39,10 +39,6 @@ export interface AlertNotificationConfiguration {
      */
     axiosRequestConfig?: AxiosRequestConfig;
     /**
-     * Axios instance
-     */
-    axiosInstance?: AxiosInstance;
-    /**
      * Retry configuration
      */
     retryConfig?: RetryConfig;
@@ -58,7 +54,6 @@ export default class AlertNotificationClient {
     /**
      * Constructs an instance of AlertNotificationClient. The instance provides an access to SAP Cloud Platform Alert Notification service APIs.
      * Construction of the instance can throw an error in the following cases:
-     * - axiosInstance and axiosRequestConfig are present at the same time
      * - authentication and region are missing
      * - if retry configuration is present, but maxRetries and retryBackoff aren't
      *
@@ -71,18 +66,11 @@ export default class AlertNotificationClient {
      * - authentication object - used to retrieve tha authorization header value
      * - region - used to retrieve platform and url of the SAP Cloud Platform Alert Notification service
      * - axiosRequestConfig - request configuration different from the default provided by the client
-     * - axiosInstance - own axios instance, the client won't create one if external is provided
      * - retryConfig - retry configuration
      */
     constructor(configuration: AlertNotificationConfiguration) {
         if (!configuration) {
             throw new Error('Configuration must not be an empty object, undefined or null');
-        }
-
-        if (configuration.axiosInstance && configuration.axiosRequestConfig) {
-            throw new Error(
-                'Axios instance and axios request config are provided at the same time, use only one'
-            );
         }
 
         if (!configuration.authentication && !configuration.region) {
@@ -92,7 +80,6 @@ export default class AlertNotificationClient {
         const baseURL = configuration.region.getUrl();
         const platform = configuration.region.getPlatform();
 
-        let axiosInstance = configuration.axiosInstance;
         let axiosRequestConfig = {
             ...{ baseURL, timeout: 2500 },
             ...configuration.axiosRequestConfig
@@ -108,9 +95,7 @@ export default class AlertNotificationClient {
             axiosRequestConfig = { ...axiosRequestConfig, ...configuration.retryConfig };
         }
 
-        if (!axiosInstance) {
-            axiosInstance = axios.create(axiosRequestConfig);
-        }
+        const axiosInstance = axios.create(axiosRequestConfig);
 
         if (configuration.retryConfig) {
             configureDefaultRetryInterceptor(axiosInstance);
