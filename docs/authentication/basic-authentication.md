@@ -40,7 +40,7 @@ BasicAuthentication is a class in the context of Alert Notification's node clien
 ## @Example
 
 ```js
-import { BasicAuthentication } from 'alert-notification-node-client';
+import { BasicAuthentication } from 'alert-notification-client';
 
 const basicAuthentication = new BasicAuthentication({
     username: 'test-username',

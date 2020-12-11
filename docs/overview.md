@@ -37,7 +37,7 @@ Furthermore, events can even be stored in Alert Notification storage and pulled 
 Node package manager will be used in order to install SAP Cloud Platform Alert Notification client:
 
 ```bash
-$ npm i alert-notification-node-client
+$ npm i alert-notification-client
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ $ npm i alert-notification-node-client
 In order to use the client you will first have to import it and create an instance:
 
 ```js
-import { AlertNotificationClient, RegionUtils, BasicAuthentication } from 'alert-notification-node-client';
+import { AlertNotificationClient, RegionUtils, BasicAuthentication } from 'alert-notification-client';
 
 const client = new AlertNotificationClient({
   authentication: new BasicAuthentication({

@@ -20,7 +20,7 @@ Furthermore, events can be even stored in Alert Notification storage and pulled 
 ### Installation
 
 ```bash
-$ npm i alert-notification-node-client
+$ npm i alert-notification-client
 ```
 
 ## Getting Started

@@ -62,7 +62,7 @@ Platform is an enum representing the environment on which Alert Notification is 
 ### @Example
 
 ```js
-import { RegionUtils } from 'alert-notification-node-client';
+import { RegionUtils } from 'alert-notification-client';
 
 console.log(RegionUtils.Platform.CF); // will print 'CF'
 console.log(RegionUtils.Platform.NEO); // will print 'NEO'
@@ -140,7 +140,7 @@ RegionUtils contains exported constants which represent predefined regions, on w
 ### @Example
 
 ```js
-import { RegionUtils } from 'alert-notification-node-client';
+import { RegionUtils } from 'alert-notification-client';
 
 console.log(RegionUtils.EU10); // will print EU10 region instance
 ```

@@ -33,7 +33,7 @@ import {
     EntityType,
     BasicAuthentication,
     RegionUtils
-} from 'alert-notification-node-client';
+} from 'alert-notification-client';
 
 const eu10Client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

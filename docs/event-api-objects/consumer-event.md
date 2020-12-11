@@ -34,7 +34,7 @@ Received when requesting Undelivered or Matched APIs. Represents a stored event 
 
 _**@Example:**_
 ```js
-import { Severity, Category } from 'alert-notification-node-client';
+import { Severity, Category } from 'alert-notification-client';
 
 const consumerEvent = {
     id: 'matched-or-undelivered-event-id',
@@ -106,7 +106,7 @@ An enum which shows the status of an event. If the event was not delivered its s
 #### @Example
 
 ```js
-import { DeliveryStatus } from 'alert-notification-node-client';
+import { DeliveryStatus } from 'alert-notification-client';
 
 console.log(DeliveryStatus.UNDELIVERED); // will print 'UNDELIVERED'
 console.log(DeliveryStatus.MATCHED); // will print 'MATCHED'

@@ -34,7 +34,7 @@ import {
     BasicAuthentication,
     RegionUtils,
     State
-} from 'alert-notification-node-client';
+} from 'alert-notification-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

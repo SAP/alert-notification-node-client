@@ -32,7 +32,7 @@ Condition is an entity which defines a condition in the context of the Alert Not
 
 ## Example
 ```js
-import { Predicate } from 'alert-notification-node-client';
+import { Predicate } from 'alert-notification-client';
 
 const condition = {
     name: 'event-type-contains-HighCpu',
@@ -70,7 +70,7 @@ Predicate is an enum value representing a matching criteria for a condition.
 
 #### Example
 ```js
-import { Predicate } from 'alert-notification-node-client';
+import { Predicate } from 'alert-notification-client';
 
 console.log(Predicate.CONTAINS); // will print 'CONTAINS'
 ```

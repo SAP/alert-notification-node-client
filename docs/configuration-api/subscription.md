@@ -32,7 +32,7 @@ Subscription is the aggregation of actions and conditions. When an event is rece
 
 ## Example
 ```js
-import { State } from 'alert-notification-node-client';
+import { State } from 'alert-notification-client';
 
 const subscription = {
     name: 'event-with-eventType-HighCpu-to-mail',

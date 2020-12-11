@@ -32,7 +32,7 @@ Configuration represents the assembly of actions, conditions and subscriptions
 
 _**@Example:**_
 ```js
-import { State, Predicate } from 'alert-notification-node-client';
+import { State, Predicate } from 'alert-notification-client';
 
 const configuration =
 {

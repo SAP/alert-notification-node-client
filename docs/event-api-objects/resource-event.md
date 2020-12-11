@@ -33,7 +33,7 @@ Object to use when you want to ingest an event in Alert Notification to alert/no
 
 ## @Example
 ```js
-import { Severity, Category } from 'alert-notification-node-client';
+import { Severity, Category } from 'alert-notification-client';
 
 const resourceEvent = {
     body: 'Your test-resource has been',
