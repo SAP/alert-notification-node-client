@@ -110,6 +110,12 @@ export interface Condition {
      * Representing meaningful identifiers, which enable custom displaying & filtering capabilities.
      */
     labels?: string[];
+    /**
+     * Explicitly set which conditions must be mandatory. If not set conditions will be treated as follows:
+     * - Conditions with different property keys will be evaluated with the AND operator
+     * - Conditions with the same property key will be evaluated with OR operator
+     */
+    mandatory?: boolean;
 }
 
 export interface Subscription {
