@@ -37,14 +37,14 @@ import {
     RegionUtils,
     Severity,
     Category
-} from 'alert-notification-node-client';
+} from 'alert-notification-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({
         username: '<your-technical-client-username>',
         password: '<your-technical-client-password'
     }),
-    region: RegionUtils.EU10;
+    region: RegionUtils.EU10
 });
 
 // After that you can use the provided methods from the alert notification instance
