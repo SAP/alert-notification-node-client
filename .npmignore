@@ -1,0 +1,12 @@
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode
+__tests__/
+docs/
+node_modules/
+jest.config.js
+tsconfig.json
+.eslintrc.json

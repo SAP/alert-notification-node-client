@@ -7,8 +7,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "compile": "tsc",
-    "build": "npm run test && tsc",
+    "prepublishOnly": "npm run test && tsc",
     "lint": "eslint --ext .ts src/**",
     "lint:fix": "eslint --ext .ts --fix src/**"
   },
