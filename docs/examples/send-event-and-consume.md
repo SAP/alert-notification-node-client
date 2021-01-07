@@ -33,7 +33,7 @@ import {
     RegionUtils,
     State,
     Predicate
-} from 'alert-notification-client';
+} from '@sap_oss/alert-notification-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

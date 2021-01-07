@@ -42,7 +42,7 @@ _**Note**_: Grant type query parameter will be added automatically by the client
 ## @Example
 
 ```js
-import { OAuthAuthentication } from 'alert-notification-client';
+import { OAuthAuthentication } from '@sap_oss/alert-notification-client';
 
 const oAuthAuthentication = new OAuthAuthentication({
     username: 'test-username',

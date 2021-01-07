@@ -32,7 +32,7 @@ EntityType is an enum which helps deduce what type of entity you are trying to m
 ## @Example
 
 ```js
-import { EntityType } from 'alert-notification-client';
+import { EntityType } from '@sap_oss/alert-notification-client';
 
 console.log(EntityType.ACTION); // will print 'ACTION'
 console.log(EntityType.CONDITION); // will print 'CONDITION'

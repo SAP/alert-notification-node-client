@@ -32,7 +32,7 @@ Represents the category of the event.
 ## @Example
 
 ```js
-import { Category } from 'alert-notification-client';
+import { Category } from '@sap_oss/alert-notification-client';
 
 console.log(Category.ALERT); // will print 'ALERT'
 console.log(Category.EXCEPTION); // will print 'EXCEPTION'

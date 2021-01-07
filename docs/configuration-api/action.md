@@ -32,7 +32,7 @@ Action is an entity which represents the destination on which Alert Notification
 
 _**@Example:**_
 ```js
-import { State } from 'alert-notification-client';
+import { State } from '@sap_oss/alert-notification-client';
 
 const action = {
     name: 'to-my-email',

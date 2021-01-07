@@ -33,7 +33,7 @@ import {
     EntityType,
     BasicAuthentication,
     RegionUtils
-} from 'alert-notification-client';
+} from '@sap_oss/alert-notification-client';
 
 const eu10Client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

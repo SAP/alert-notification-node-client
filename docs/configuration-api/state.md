@@ -31,7 +31,7 @@ State is an enum holding a value for enablement and disablement of an entity
 ## Example
 
 ```js
-import { State } from 'alert-notification-client';
+import { State } from '@sap_oss/alert-notification-client';
 
 console.log(State.ENABLED); // will print ENABLED
 console.log(State.DISABLED); // will print DISABLED
