@@ -1,5 +1,5 @@
 {
-  "name": "alert-notification-client",
+  "name": "@sap_oss/alert-notification-client",
   "version": "1.0.0",
   "description": "SAP Cloud Platform Alert Notification Node.js API client",
   "main": "dist/index.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepublishOnly": "npm run test && tsc",
+    "prepublishOnly": "npm run test && npm run lint && tsc",
     "lint": "eslint --ext .ts src/**",
     "lint:fix": "eslint --ext .ts --fix src/**"
   },
@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",

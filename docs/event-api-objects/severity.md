@@ -35,7 +35,7 @@ Represents the event impact in the context of the affected resource.
 ## @Example
 
 ```js
-import { Severity } from 'alert-notification-client';
+import { Severity } from '@sap_oss/alert-notification-client';
 
 console.log(Severity.NOTICE); // will print 'NOTICE'
 ```

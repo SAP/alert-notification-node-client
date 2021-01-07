@@ -20,7 +20,7 @@ Furthermore, events can be even stored in Alert Notification storage and pulled 
 ### Installation
 
 ```bash
-$ npm i alert-notification-client
+$ npm i @sap_oss/alert-notification-client
 ```
 
 ## Getting Started
@@ -37,7 +37,7 @@ import {
     RegionUtils,
     Severity,
     Category
-} from 'alert-notification-node-client';
+} from '@sap_oss/alert-notification-client';
 
 const client = new AlertNotificationClient({
     authentication: new BasicAuthentication({

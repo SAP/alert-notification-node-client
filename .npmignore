@@ -10,3 +10,4 @@ node_modules/
 jest.config.js
 tsconfig.json
 .eslintrc.json
+.prettierrc.json
