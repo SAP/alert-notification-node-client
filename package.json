@@ -14,6 +14,17 @@
   "author": "SAP Cloud Platform Alert Notification Development Team",
   "email": "sap.cloud.platform.alert.notification@groups.sap.com",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/alert-notification-node-client"
+  },
+  "keywords": [
+    "alerts",
+    "notifications",
+    "client",
+    "promise",
+    "node"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
