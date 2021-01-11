@@ -19,7 +19,7 @@ permalink: /event-api-objects/consumer-event
 
 ## Description
 
-Received when requesting Undelivered or Matched APIs. Represents a stored event which was either delivered or undelivered. To see which methods are returning such response see [here](/#alertnotificationclientapi).
+Received when requesting Undelivered or Matched APIs. Represents a stored event which was either delivered or undelivered. To see which methods are returning such response see [here](/alert-notification-node-client/#alert-notification-client-api).
 
 **Note**: This object is returned on response from Alert Notification's Undelivered and Matched APIs
 

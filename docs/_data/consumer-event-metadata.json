@@ -12,12 +12,12 @@
         },
         {
             "name": "deliveryStatus",
-            "type": "[DeliveryStatus](/event-api-objects/consumer-event#deliverystatus) (object)",
+            "type": "[DeliveryStatus](/alert-notification-node-client/event-api-objects/consumer-event#deliverystatus) (object)",
             "description": "Describes if the event has been delivered or not"
         },
         {
             "name": "failureReasons?",
-            "type": "[FailureReason](/event-api-objects/consumer-event#failurereason) (object)",
+            "type": "[FailureReason](/alert-notification-node-client/event-api-objects/consumer-event#failurereason) (object)",
             "description": "Describes why the delivery of an event failed, will only be returned if a query parameter is present"
         }
     ]

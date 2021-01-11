@@ -19,7 +19,7 @@ permalink: /examples/setup-retriability/
 
 ## Description
 
-In order to setup retriability you will have to provide to the constructor a [RetryConfig](/common-objects/retry-configuration) object.
+In order to setup retriability you will have to provide to the constructor a [RetryConfig](../common-objects/retry-configuration.md) object.
 
 ## @Example
 

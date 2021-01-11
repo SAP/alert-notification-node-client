@@ -22,7 +22,7 @@
         },
         {
             "name": "predicate",
-            "type": "[Predicate](/configuration-api-objects/condition/#predicate) (string)",
+            "type": "[Predicate](/alert-notification-node-client/configuration-api-objects/condition/#predicate) (string)",
             "description": "Predefined matching criteria"
         },
         {

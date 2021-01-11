@@ -103,4 +103,4 @@ const client = new AlertNotificationClient({
 
 {% endfor %}
 
-For examples regarding the client, please check [Examples](/examples) section.
+For examples regarding the client, please check [Examples](./examples/overview.md) section.
