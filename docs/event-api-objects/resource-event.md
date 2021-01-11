@@ -20,7 +20,7 @@ permalink: /event-api-objects/resource-event
 
 ## Description
 
-Object to use when you want to ingest an event in Alert Notification to alert/notify about what is happening with a resource of yours. To see the method's which are using it check [here](/#alertnotificationclientapi)
+Object to use when you want to ingest an event in Alert Notification to alert/notify about what is happening with a resource of yours. To see the methods which are using it check [here](/alert-notification-node-client/#alert-notification-client-api)
 
 ## Properties
 

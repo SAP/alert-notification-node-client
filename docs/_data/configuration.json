@@ -2,17 +2,17 @@
     "propertyFields": [
         {
             "name": "actions",
-            "type": "[Action](/configuration-api-objects/action)[] (object[])",
+            "type": "[Action](/alert-notification-node-client/configuration-api-objects/action)[] (object[])",
             "description": "Actions in the configuration"
         },
         {
             "name": "conditions",
-            "type": "[Condition](/configuration-api-objects/condition)[] (object[])",
+            "type": "[Condition](/alert-notification-node-client/configuration-api-objects/condition)[] (object[])",
             "description": "Conditions in a configuration"
         },
         {
             "name": "subscriptions",
-            "type": "[Subscription](/configuration-api-objects/subscription)[] (object[])",
+            "type": "[Subscription](/alert-notification-node-client/configuration-api-objects/subscription)[] (object[])",
             "description": "Subscriptions in a configuration"
         }
     ]

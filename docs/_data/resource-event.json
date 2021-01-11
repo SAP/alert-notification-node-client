@@ -22,17 +22,17 @@
         },
         {
             "name": "severity",
-            "type": "[Severity](/event-api-objects/severity/) (string)",
+            "type": "[Severity](/alert-notification-node-client/event-api-objects/severity/) (string)",
             "description": "Represents the event impact in the context of the affected resource"
         },
         {
             "name": "category",
-            "type": "[Category](/event-api-objects/category/) (string)",
+            "type": "[Category](/alert-notification-node-client/event-api-objects/category/) (string)",
             "description": "Represents the event impact in the context of the affected resource"
         },
         {
             "name": "resource",
-            "type": "[AffectedResource](/event-api-objects/affected-resource/) (object)",
+            "type": "[AffectedResource](/alert-notification-node-client/event-api-objects/affected-resource/) (object)",
             "description": "Identifies the action's current state, that is, if it's currently enabled or disabled"
         },
         {

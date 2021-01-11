@@ -21,7 +21,7 @@ permalink: /examples/create-and-get/
 
 In this example you will create an action and get it after its been created.
 
-_**Note:**_ This can be applied to any other [EntityType](/configuration-api-objects/entity-type). You just need to follow the method signatures from [here](/#alert-notification-client-api).
+_**Note:**_ This can be applied to any other [EntityType](../configuration-api/entity-type.md). You just need to follow the method signatures from [here](/alert-notification-node-client/#alert-notification-client-api).
 
 ## @Example
 

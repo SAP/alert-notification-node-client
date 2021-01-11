@@ -2,12 +2,12 @@
     "propertyFields": [
         {
             "name": "results",
-            "type": "[Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)[] (object[])",
+            "type": "[Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)[] (object[])",
             "description": "An array of entities"
         },
         {
             "name": "metadata",
-            "type": "[PageMetadata](/common-objects/page-metadata) (object)",
+            "type": "[PageMetadata](/alert-notification-node-client/common-objects/page-metadata) (object)",
             "description": "Describes the metadata of a paginated response"
         }
     ]

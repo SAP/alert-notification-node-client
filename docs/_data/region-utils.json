@@ -2,7 +2,7 @@
     "propertyFields": [
         {
             "name": "platform",
-            "type": "[Platform](/common-objects/region-utils#platform) (object)",
+            "type": "[Platform](/alert-notification-node-client/common-objects/region-utils#platform) (object)",
             "description": "Platform on which Alert Notification resides"
         },
         {

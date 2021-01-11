@@ -19,4 +19,4 @@ After the installation of gems is completed run the following command:
 bundle exec jekyll serve
 ```
 
-It will start the documentation on ```http://localhost:4000```.
+It will start the documentation on ```http://localhost:4000/alert-notification-node-client/```.

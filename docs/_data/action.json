@@ -17,7 +17,7 @@
         },
         {
             "name": "state",
-            "type": "[State](/configuration-api-objects/state) (string)",
+            "type": "[State](/alert-notification-node-client/configuration-api-objects/state) (string)",
             "description": "Identifies the action's current state, that is, if it's currently enabled or disabled"
         },
         {

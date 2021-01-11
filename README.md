@@ -25,7 +25,7 @@ $ npm i @sap_oss/alert-notification-client
 
 ## Getting Started
 
-Anything you need to get quickly started with the library is available in our [documentation page](TODO:githubpages).
+Anything you need to get quickly started with the library is available in our [documentation page](https://sap.github.io/alert-notification-node-client/).
 
 Here is a very simple example on how to import and create your first Alert Notification client:
 

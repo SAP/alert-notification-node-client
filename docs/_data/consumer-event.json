@@ -22,7 +22,7 @@
         },
         {
             "name": "region",
-            "type": "[Region](/common-objects/region-utils#region)",
+            "type": "[Region](/alert-notification-node-client/common-objects/region-utils#region)",
             "description": "Region on which the event was executed, e.g. 'CF_AWS_FRANKFURT' (its alias is 'EU10')"
         },
         {
@@ -32,22 +32,22 @@
         },
         {
             "name": "severity",
-            "type": "[Severity](/event-api-objects/severity) (string)",
+            "type": "[Severity](/alert-notification-node-client/event-api-objects/severity) (string)",
             "description": "Represents the event impact in the context of the affected resource"
         },
         {
             "name": "category",
-            "type": "[Category](/event-api-objects/category/) (string)",
+            "type": "[Category](/alert-notification-node-client/event-api-objects/category/) (string)",
             "description": "Represents the event impact in the context of the affected resource"
         },
         {
             "name": "resource",
-            "type": "[AffectedResource](/event-api-objects/affected-resource/) (object)",
+            "type": "[AffectedResource](/alert-notification-node-client/event-api-objects/affected-resource/) (object)",
             "description": "Identifies the action's current state, that is, if it's currently enabled or disabled"
         },
         {
             "name": "metadata",
-            "type": "[ConsumerEventMetadata](/event-api-objects/consumer-event#consumereventmetadata) (object)",
+            "type": "[ConsumerEventMetadata](/alert-notification-node-client/event-api-objects/consumer-event#consumereventmetadata) (object)",
             "description": "Holds a useful data about the stored event"
         },
         {

@@ -2,12 +2,12 @@
     "propertyFields": [
         {
             "name": "authentication",
-            "type": "[BasicAuthentication](/authentication/basic) \\| [OAuthAuthentication](/authentication/oauth)",
+            "type": "[BasicAuthentication](/alert-notification-node-client/authentication/basic) \\| [OAuthAuthentication](/alert-notification-node-client/authentication/oauth)",
             "description": "Used for retrieving authorization header value"
         },
         {
             "name": "region",
-            "type": "[Region](/common-objects/region-utils#region)",
+            "type": "[Region](/alert-notification-node-client/common-objects/region-utils#region)",
             "description": "Region on which your Alert Notification's instance resides"
         },
         {
@@ -17,7 +17,7 @@
         },
         {
             "name": "retryConfig?",
-            "type": "[RetryConfig](/common-objects/retry-configuration)",
+            "type": "[RetryConfig](/alert-notification-node-client/common-objects/retry-configuration)",
             "description": "Retry configuration, which enables the retriability of failed requests to Alert Notification"
         }
     ],
@@ -27,37 +27,37 @@
             "description": "Creates a single entity, which is of given _type_, with the given _data_ .",
             "arguments": [
                 {
-                    "name": "type - [EntityType](/configuration-api-objects/entity-type) (string)",
+                    "name": "type - [EntityType](/alert-notification-node-client/configuration-api-objects/entity-type) (string)",
                     "description": "type of the entity to be created"
                 },
                 {
-                    "name": "data - [Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)",
+                    "name": "data - [Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)",
                     "description": "data of the entity to be created"
                 }
             ],
-            "returnValue": "Promise<[Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)>"
+            "returnValue": "Promise<[Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)>"
         },
         {
             "name": "update(type, data)",
             "description": "Updates the single entity, which is of the given _type_, with the given _data_.",
             "arguments": [
                 {
-                    "name": "type - [EntityType](/configuration-api-objects/entity-type) (string)",
+                    "name": "type - [EntityType](/alert-notification-node-client/configuration-api-objects/entity-type) (string)",
                     "description": "type of the entity to be updated"
                 },
                 {
-                    "name": "data - [Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)",
+                    "name": "data - [Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)",
                     "description": "data of the entity to be updated"
                 }
             ],
-            "returnValue": "Promise<[Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)>"
+            "returnValue": "Promise<[Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)>"
         },
         {
             "name": "get(type, name)",
             "description": "Get a single entity with given _name_ of the given _type_",
             "arguments": [
                 {
-                    "name": "type - [EntityType](/configuration-api-objects/entity-type) (string)",
+                    "name": "type - [EntityType](/alert-notification-node-client/configuration-api-objects/entity-type) (string)",
                     "description": "type of the searched entity"
                 },
                 {
@@ -65,29 +65,29 @@
                     "description": "name of the searched entity"
                 }
             ],
-            "returnValue": "Promise<[Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)>"
+            "returnValue": "Promise<[Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)>"
         },
         {
             "name": "getAll(type, params?)",
             "description": "Get all entities of the given _type_, _params_ argument provides you the ability to change the pagination settings.",
             "arguments": [
                 {
-                    "name": "type - [EntityType](/configuration-api-objects/entity-type) (string)",
+                    "name": "type - [EntityType](/alert-notification-node-client/configuration-api-objects/entity-type) (string)",
                     "description": "type of the searched entity"
                 },
                 {
-                    "name": "params? - [CommonQueryParams](/common-objects/query-params)",
+                    "name": "params? - [CommonQueryParams](/alert-notification-node-client/common-objects/query-params)",
                     "description": "query parameters"
                 }
             ],
-            "returnValue": "Promise<[PageResponse](/configuration-api-objects/page-response)<[Action](/configuration-api-objects/action) \\| [Condition](/configuration-api-objects/condition) \\| [Subscription](/configuration-api-objects/subscription)>>"
+            "returnValue": "Promise<[PageResponse](/alert-notification-node-client/configuration-api-objects/page-response)<[Action](/alert-notification-node-client/configuration-api-objects/action) \\| [Condition](/alert-notification-node-client/configuration-api-objects/condition) \\| [Subscription](/alert-notification-node-client/configuration-api-objects/subscription)>>"
         },
         {
             "name": "delete(type, name)",
             "description": "Deletes an entity with the given _name_ and of the given _type_.",
             "arguments": [
                 {
-                    "name": "type - [EntityType](/configuration-api-objects/entity-type) (string)",
+                    "name": "type - [EntityType](/alert-notification-node-client/configuration-api-objects/entity-type) (string)",
                     "description": "type of the searched entity"
                 },
                 {
@@ -102,39 +102,38 @@
             "description": "Imports a configuration. <br><br> _**Note:**_ Your current configuration will be **overwritten**.",
             "arguments": [
                 {
-                    "name": "data - [Configuration](/configuration-api-objects/entity-type)",
+                    "name": "data - [Configuration](/alert-notification-node-client/configuration-api-objects/configuration)",
                     "description": "configuration to be imported"
                 }
             ],
-            "returnValue": "Promise<[Configuration](/configuration-api-objects/configuration)>"
+            "returnValue": "Promise<[Configuration](/alert-notification-node-client/configuration-api-objects/configuration)>"
         },
         {
             "name": "exportConfiguration()",
             "description": "Exports your current configuration.",
-            "returnValue": "Promise<[Configuration](/configuration-api-objects/entity-type)>",
-            "link": "/configuration-api/examples/export-configuration"
+            "returnValue": "Promise<[Configuration](/alert-notification-node-client/configuration-api-objects/configuration)>"
         },
         {
             "name": "sendEvent(event)",
             "description": "Will send an event for ingestion to Alert Notification.",
             "arguments": [
                 {
-                    "name": "event - [ResourceEvent](/event-api-objects/resource-event)",
+                    "name": "event - [ResourceEvent](/alert-notification-node-client/event-api-objects/resource-event)",
                     "description": "an event to be sent to Alert Notification"
                 }
             ],
-            "returnValue": "Promise<[ResourceEvent](/event-api-objects/resource-event)>"
+            "returnValue": "Promise<[ResourceEvent](/alert-notification-node-client/event-api-objects/resource-event)>"
         },
         {
             "name": "sendEvents(events)",
             "description": "Will send multiple events at once for ingestion to Alert Notification. <br><br> _**Note:**_ They will be ingested in the order they are sent, starting from the first one.",
             "arguments": [
                 {
-                    "name": "events - [ResourceEvent](/event-api-objects/resource-event)[]",
+                    "name": "events - [ResourceEvent](/alert-notification-node-client/event-api-objects/resource-event)[]",
                     "description": "a collection of events to be sent to Alert Notification"
                 }
             ],
-            "returnValue": "Promise<[ResourceEvent](/event-api-objects/resource-event)[]>"
+            "returnValue": "Promise<[ResourceEvent](/alert-notification-node-client/event-api-objects/resource-event)[]>"
         },
         {
             "name": "getMatchedEvent(eventId, params)",
@@ -145,22 +144,22 @@
                     "description": "event id generated by Alert Notification and returned upon send"
                 },
                 {
-                    "name": "params - [ConsumerQueryParams](/event-api-objects/consumer-query-parameters)",
+                    "name": "params - [ConsumerQueryParams](/alert-notification-node-client/event-api-objects/consumer-query-parameters)",
                     "description": "query parameters allowed when requesting Alert Notification's consumer API"
                 }
             ],
-            "returnValue": "Promise<[ConsumerPagedResponse](/event-api-objects/consumer-paged-response)[]>"
+            "returnValue": "Promise<[ConsumerPagedResponse](/alert-notification-node-client/event-api-objects/consumer-paged-response)[]>"
         },
         {
             "name": "getMatchedEvents(params)",
             "description": "Gets all matched events from Alert Notification's store. You can filter the received events by supplying _params_ object.",
             "arguments": [
                 {
-                    "name": "params - [ConsumerQueryParams](/event-api-objects/consumer-query-parameters)",
+                    "name": "params - [ConsumerQueryParams](/alert-notification-node-client/event-api-objects/consumer-query-parameters)",
                     "description": "query parameters allowed when requesting Alert Notification's consumer API"
                 }
             ],
-            "returnValue": "Promise<[ConsumerPagedResponse](/event-api-objects/consumer-paged-response)[]>"
+            "returnValue": "Promise<[ConsumerPagedResponse](/alert-notification-node-client/event-api-objects/consumer-paged-response)[]>"
         },
         {
             "name": "getUndeliveredEvent(eventId, params)",
@@ -171,22 +170,22 @@
                     "description": "event id generated by Alert Notification and returned upon send"
                 },
                 {
-                    "name": "params - [ConsumerQueryParams](/event-api-objects/consumer-query-parameters)",
+                    "name": "params - [ConsumerQueryParams](/alert-notification-node-client/event-api-objects/consumer-query-parameters)",
                     "description": "query parameters allowed when requesting Alert Notification's consumer API"
                 }
             ],
-            "returnValue": "Promise<[ConsumerPagedResponse](/event-api-objects/consumer-paged-response)[]>"
+            "returnValue": "Promise<[ConsumerPagedResponse](/alert-notification-node-client/event-api-objects/consumer-paged-response)[]>"
         },
         {
             "name": "getUndeliveredEvents(params)",
             "description": "Get all undelivered events from Alert Notification's store. You can filter the received events by supplying _params_ object.",
             "arguments": [
                 {
-                    "name": "params - [ConsumerQueryParams](/event-api-objects/consumer-query-parameters)",
+                    "name": "params - [ConsumerQueryParams](/alert-notification-node-client/event-api-objects/consumer-query-parameters)",
                     "description": "query parameters allowed when requesting Alert Notification's consumer API"
                 }
             ],
-            "returnValue": "Promise<[ConsumerPagedResponse](/event-api-objects/consumer-paged-response)[]>"
+            "returnValue": "Promise<[ConsumerPagedResponse](/alert-notification-node-client/event-api-objects/consumer-paged-response)[]>"
         }
     ]
 }
