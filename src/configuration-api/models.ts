@@ -76,6 +76,11 @@ export interface Action {
      */
     fallbackTime?: number;
     /**
+     * Time in seconds to allow the current action to be retried before being discarded.
+     * If 0, undefined or null the action will be retried for its maximum times.
+     */
+    discardAfter?: number;
+    /**
      * Action specific key-value pairs describing configuration properties.
      */
     properties?: Record<string, string>;
