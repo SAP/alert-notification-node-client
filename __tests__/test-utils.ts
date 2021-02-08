@@ -14,6 +14,7 @@ export const test_description = 'test-description';
 export const test_labels = [];
 export const test_fallback_action = '';
 export const test_fallback_time = 0;
+export const test_discard_after = 10;
 export const test_properties = {};
 export const test_property_key = 'test-property-key';
 export const test_property_value = 'test-property-value';
@@ -39,6 +40,7 @@ export function buildAction(action?: Action): Action {
         labels: test_labels,
         fallbackAction: test_fallback_action,
         fallbackTime: test_fallback_time,
+        discardAfter: test_discard_after,
         properties: test_properties,
         ...{ action }
     };
@@ -65,8 +67,8 @@ export function buildSubscription(subscription?: Subscription): Subscription {
         snoozeTimestamp: test_snoozeTimestamp,
         description: test_description,
         labels: test_labels,
-        actions: [ test_action_name ],
-        conditions: [ test_condition_name ],
+        actions: [test_action_name],
+        conditions: [test_condition_name],
         ...{ subscription }
     };
 }
@@ -82,6 +84,6 @@ export function buildEvent(event?: ResourceEvent): ResourceEvent {
             resourceName: 'test-resource-name',
             resourceType: 'test-resource-type'
         },
-        ...{event}
+        ...{ event }
     }
 }
