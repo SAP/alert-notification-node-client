@@ -3,12 +3,12 @@
         {
             "name": "platform",
             "type": "[Platform](/alert-notification-node-client/common-objects/region-utils#platform) (object)",
-            "description": "Platform on which Alert Notification resides"
+            "description": "Platform on which Alert Notification service resides"
         },
         {
             "name": "url",
             "type": "string",
-            "description": "Base URL of Alert Notification"
+            "description": "Base URL of Alert Notification service"
         }
     ],
     "methods": [

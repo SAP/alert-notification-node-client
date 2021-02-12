@@ -5,10 +5,10 @@ heading_anchors: true
 back_to_top: true
 back_to_top_text: 'Back to top'
 aux_links:
-    'SAP Cloud Platform Alert Notification node client on GitHub':
+    'SAP Alert Notification service for SAP BTP node client on GitHub':
         - '//github.com/SAP/alert-notification-node-client'
 
-title: SAP Cloud Platform Alert Notification Node client
+title: SAP Alert Notification service for SAP BTP Node client
 baseurl: '/alert-notification-node-client' # the subpath of your site, e.g. /blog
 url: '' # the base hostname & protocol for your site, e.g. http://example.com
 

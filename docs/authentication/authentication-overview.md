@@ -9,7 +9,7 @@ permalink: /authentication/
 
 ## Overview
 
-Alert Notification supports two types of authentication:
+Alert Notification service supports two types of authentication:
 
 * _Basic_
 * _OAuth_

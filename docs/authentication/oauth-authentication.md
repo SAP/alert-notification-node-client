@@ -19,7 +19,7 @@ permalink: /authentication/oauth
 
 ## Description
 
-OAuthAuthentication is a class in the context of Alert Notification's node client. It helps you with acquiring the authorization header value, when using OAuth Authentication mechanism, in order to authenticate yourself against Alert Notification.
+OAuthAuthentication is a class in the context of Alert Notification service node client. It helps you with acquiring the authorization header value, when using OAuth Authentication mechanism, in order to authenticate yourself against Alert Notification service.
 
 _**Note**_: Grant type query parameter will be added automatically by the client with value __client_credentials__.
 

@@ -1,5 +1,5 @@
 /**
- * SAP Cloud Platform Alert Notification service instance urls
+ * SAP Alert Notification service for SAP BTP service instance urls
  */
 const ANS_AP10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap10.hana.ondemand.com';
 const ANS_AP11_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap11.hana.ondemand.com';
@@ -32,8 +32,8 @@ export class Region {
     /**
      * Constructs a Region instance.
      *
-     * @param {Platform} platform - platform on which SAP Cloud Platform Alert Notification resides
-     * @param {string} url - base url of SAP Cloud Platform Alert Notification
+     * @param {Platform} platform - platform on which SAP Alert Notification service for SAP BTP resides
+     * @param {string} url - base url of SAP Alert Notification service for SAP BTP
      */
     constructor(platform: Platform, url: string) {
         this.platform = platform;
@@ -52,7 +52,7 @@ export class Region {
 
     /**
      *
-     * Get SAP Cloud Platform Alert Notification's url for the Region
+     * Get SAP Alert Notification service for SAP BTP's url for the Region
      *
      * @return {string}
      */
@@ -62,7 +62,7 @@ export class Region {
 }
 
 /**
- * All regions that SAP Cloud Platform Alert Notification is available on.
+ * All regions that SAP Alert Notification service for SAP BTP is available on.
  * Below are the aliases of those regions.
  */
 export const AE1 = new Region(Platform.NEO, ANS_EU10_INSTANCE);

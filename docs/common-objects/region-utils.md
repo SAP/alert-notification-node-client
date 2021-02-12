@@ -20,9 +20,9 @@ permalink: /common-objects/region-utils
 ## Description
 
 RegionUtils contains:
-* constants with predefined regions which represent where Alert Notification is currently onboarded
+* constants with predefined regions which represent where Alert Notification service is currently onboarded
 * a class which can be used to fully customize your region with a specific URL and platform.
-* an enum representing the environment on which Alert Notification is onboarded
+* an enum representing the environment on which Alert Notification service is onboarded
 
 ## Region
 
@@ -50,7 +50,7 @@ A class which can be used to fully customize your region with a specific URL and
 
 ### Description
 
-Platform is an enum representing the environment on which Alert Notification is onboarded.
+Platform is an enum representing the environment on which Alert Notification service is onboarded.
 
 ### Properties
 
@@ -72,7 +72,7 @@ console.log(RegionUtils.Platform.NEO); // will print 'NEO'
 
 ### Description
 
-RegionUtils contains exported constants which represent predefined regions, on which Alert Notification is onboarded.
+RegionUtils contains exported constants which represent predefined regions, on which Alert Notification service is onboarded.
 
 ### Available Constants
 

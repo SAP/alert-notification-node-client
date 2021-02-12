@@ -9,4 +9,4 @@ permalink: /common-objects/
 
 ## Overview
 
-This section describes the common objects which are used/received accross Alert Notification APIs.
+This section describes the common objects which are used/received accross Alert Notification service APIs.

@@ -19,7 +19,7 @@ permalink: /common-objects/query-params
 
 ## Description
 
-Common query parameters used when making requests to Alert Notification.
+Common query parameters used when making requests to Alert Notification service.
 
 ## Properties
 

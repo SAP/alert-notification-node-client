@@ -44,6 +44,6 @@ const client = new AlertNotificationClient({
     }
 });
 
-// Now each time a request to Alert Notification fails it will
+// Now each time a request to Alert Notification service fails it will
 // retry for up to 5 times with timeout between request for 2500 milliseconds
 ```

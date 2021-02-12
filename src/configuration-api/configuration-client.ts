@@ -12,7 +12,7 @@ import {
 } from './models';
 
 /**
- * Class used to access SAP Cloud Platform Alert Notification Configuration API
+ * Class used to access SAP Alert Notification service for SAP BTP Configuration API
  */
 export default class ConfigurationApiClient {
     private actionPath: string;

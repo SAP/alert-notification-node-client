@@ -19,7 +19,7 @@ permalink: /examples/setup-authentication/
 
 ## Description
 
-In this example you will get familiar on how to setup an authentication object for your Alert Notification client. The setup is nothing more than just providing the authentication object of your choice as an argument to your client instance's constructor
+In this example you will get familiar on how to setup an authentication object for your Alert Notification service client. The setup is nothing more than just providing the authentication object of your choice as an argument to your client instance's constructor
 
 ## @Example - basic authentication
 

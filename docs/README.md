@@ -1,7 +1,7 @@
 
 ## Overview
 
-This is the documentation of SAP Cloud Platform Alert Notification node client. It provides insights on common objects, classes and examples of the client.
+This is the documentation of Alert Notification service node client. It provides insights on common objects, classes and examples of the client.
 
 ## How to run?
 

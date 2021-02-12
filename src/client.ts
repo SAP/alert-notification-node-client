@@ -45,14 +45,14 @@ export interface AlertNotificationConfiguration {
 }
 
 /**
- * Client used for accessing SAP Cloud Platform Alert Notification service APIs
+ * Client used for accessing SAP Alert Notification service for SAP BTP service APIs
  */
 export default class AlertNotificationClient {
     private configurationClient: ConfigurationApiClient;
     private eventClient: EventsApiClient;
 
     /**
-     * Constructs an instance of AlertNotificationClient. The instance provides an access to SAP Cloud Platform Alert Notification service APIs.
+     * Constructs an instance of AlertNotificationClient. The instance provides an access to SAP Alert Notification service for SAP BTP service APIs.
      * Construction of the instance can throw an error in the following cases:
      * - authentication and region are missing
      * - if retry configuration is present, but maxRetries and retryBackoff aren't
@@ -64,7 +64,7 @@ export default class AlertNotificationClient {
      *
      * @param {AlertNotificationConfiguration} configuration - configuration object for the client. It consists of:
      * - authentication object - used to retrieve tha authorization header value
-     * - region - used to retrieve platform and url of the SAP Cloud Platform Alert Notification service
+     * - region - used to retrieve platform and url of the SAP Alert Notification service for SAP BTP service
      * - axiosRequestConfig - request configuration different from the default provided by the client
      * - retryConfig - retry configuration
      */
@@ -224,7 +224,7 @@ export default class AlertNotificationClient {
      *
      * Send an event for processing.
      *
-     * @param {ResourceEvent} event - resource event to be sent to SAP Cloud Platform Alert Notification
+     * @param {ResourceEvent} event - resource event to be sent to SAP Alert Notification service for SAP BTP
      *
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource event
      */
@@ -236,7 +236,7 @@ export default class AlertNotificationClient {
      *
      * Send events for processing.
      *
-     * @param {ResourceEvent[]} events - resource events to be sent to SAP Cloud Platform Alert Notification
+     * @param {ResourceEvent[]} events - resource events to be sent to SAP Alert Notification service for SAP BTP
      *
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource events
      */
@@ -248,7 +248,7 @@ export default class AlertNotificationClient {
      *
      * Get an event that is matched by a subscription/s.
      *
-     * @param {string} eventId is the ID that was received in the response body when event was sent to SAP Cloud Platform Alert Notification
+     * @param {string} eventId is the ID that was received in the response body when event was sent to SAP Alert Notification service for SAP BTP
      * @param {ConsumerQueryParameters} params - for filtering of all available events (those could be more than one with the same ID due to multiple matched subscriptions)
      *
      * @return {Promise<ConsumerPagedResponse>} - promise which contains paginated response for the searched matched event
@@ -280,7 +280,7 @@ export default class AlertNotificationClient {
      *
      * Get event that was not delivered to some target.
      *
-     * @param {string} eventId is the ID that was received in the response body when event was sent to SAP Cloud Platform Alert Notification
+     * @param {string} eventId is the ID that was received in the response body when event was sent to SAP Alert Notification service for SAP BTP
      * @param {CommonQueryParams} params for filtering of all available events (those could be more than one with the same ID due to multiple matched subscriptions)
      *
      * @return {Promise<ConsumerPagedResponse>} - promise which contains paginated response for the searched undelivered event

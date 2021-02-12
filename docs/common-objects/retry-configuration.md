@@ -19,7 +19,7 @@ permalink: /common-objects/retry-configuration
 
 ## Description
 
-This object is used to setup a retry configuration for the Alert Notification client. The logic behind is as simple as follows - if a request to Alert Notification fails it will be retried until the _maxRetries_ are reached and each retry will be attempted after the given _retryBackoff_.
+This object is used to setup a retry configuration for the Alert Notification service client. The logic behind is as simple as follows - if a request to Alert Notification service fails it will be retried until the _maxRetries_ are reached and each retry will be attempted after the given _retryBackoff_.
 
 ## Properties
 
