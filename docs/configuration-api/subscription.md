@@ -19,7 +19,7 @@ permalink: /configuration-api-objects/subscription/
 
 ## Description
 
-Subscription is the aggregation of actions and conditions. When an event is received in Alert Notification, it will only be processed if a subscription exists and the matching criteria of the conditions are fulfilled.
+Subscription is the aggregation of actions and conditions. When an event is received in Alert Notification service, it will only be processed if a subscription exists and the matching criteria of the conditions are fulfilled.
 
 ## Properties
 

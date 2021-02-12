@@ -19,7 +19,7 @@ permalink: /configuration-api-objects/condition/
 
 ## Description
 
-Condition is an entity which defines a condition in the context of the Alert Notification which must be met in order for some Action to be triggered
+Condition is an entity which defines a condition in the context of the Alert Notification service which must be met in order for some Action to be triggered
 
 ## Properties
 

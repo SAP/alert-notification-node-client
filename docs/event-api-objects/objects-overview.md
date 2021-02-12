@@ -9,7 +9,7 @@ permalink: /event-api-objects
 
 # Event API overview
 
-Alert Notification's Event API is responsible for ingesting customer events for further processing. They will further be evaluated for any matching criteria regarding the received event and will be delivered accordingly.
+Alert Notification service Event API is responsible for ingesting customer events for further processing. They will further be evaluated for any matching criteria regarding the received event and will be delivered accordingly.
 
 ## Event API's objects
 

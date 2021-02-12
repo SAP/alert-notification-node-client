@@ -21,7 +21,7 @@ permalink: /event-api-objects/consumer-event
 
 Received when requesting Undelivered or Matched APIs. Represents a stored event which was either delivered or undelivered. To see which methods are returning such response see [here](/alert-notification-node-client/#alert-notification-client-api).
 
-**Note**: This object is returned on response from Alert Notification's Undelivered and Matched APIs
+**Note**: This object is returned on response from Alert Notification service Undelivered and Matched APIs
 
 ## Properties
 
@@ -116,7 +116,7 @@ console.log(DeliveryStatus.MATCHED); // will print 'MATCHED'
 
 #### Description
 
-Describes details regarding the undelivered/matched event, e.g. when it was stored in Alert Notification, what is the delivery status, etc.
+Describes details regarding the undelivered/matched event, e.g. when it was stored in Alert Notification service, what is the delivery status, etc.
 
 #### Properties
 

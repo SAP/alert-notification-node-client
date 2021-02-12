@@ -3,7 +3,7 @@ import { AxiosInstance, AxiosPromise } from 'axios';
 import { ResourceEvent, ConsumerRequest, ConsumerPagedResponse } from './models';
 
 /**
- * Class used to access SAP Cloud Platform Alert Notification Producer API.
+ * Class used to access SAP Alert Notification service for SAP BTP Producer API.
  *
  */
 export default class EventsApiClient {
@@ -15,7 +15,7 @@ export default class EventsApiClient {
 
     /**
      * Constructs an instance of EventsApiClient, which is used for  making
-     * requests to SAP Cloud Platform Alert Notification Proucer API.
+     * requests to SAP Alert Notification service for SAP BTP Proucer API.
      *
      *
      * @param {string} platform - platform, which can be CloudFoundry or Neo,
@@ -32,9 +32,9 @@ export default class EventsApiClient {
 
     /**
      * Executes a request which if successful will ingest a resource event into
-     * SAP Cloud Platform Alert Notification and the system will start processing it.
+     * SAP Alert Notification service for SAP BTP and the system will start processing it.
      *
-     * @param {ResourceEvent} event - resource event to be ingested into SAP Cloud Platform Alert Notification
+     * @param {ResourceEvent} event - resource event to be ingested into SAP Alert Notification service for SAP BTP
      *
      * @return {AxiosPromise<ResourceEvent>} promise, which contains the successfully ingested event
      */
@@ -47,11 +47,11 @@ export default class EventsApiClient {
     }
 
     /**
-     * Executes a request of ingesting multiple resource events into SAP Cloud Platform Alert Notification.
+     * Executes a request of ingesting multiple resource events into SAP Alert Notification service for SAP BTP.
      * If an error occurs and one of them cannot be ingested, the ingestion will be discontinued
      * and an error will be returned. The error response will contain the accepted and rejected events.
      *
-     * @param {ResourceEvent[]} events - resource events to be ingested into Alert Notifcation, note that
+     * @param {ResourceEvent[]} events - resource events to be ingested into SAP Alert Notification service, note that
      * they will be processed in order starting from index 0
      *
      * @return {AxiosPromise<ResourceEvent[]>} promise, which contains the successfully ingested events

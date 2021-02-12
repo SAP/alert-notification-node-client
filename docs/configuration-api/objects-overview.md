@@ -9,7 +9,7 @@ permalink: /configuration-api-objects/
 
 # Configuration API overview
 
-Alert Notification's Configuration API is responsible for managing customer's configuration.
+Alert Notification service Configuration API is responsible for managing customer's configuration.
 
 ## Configuration API's objects
 

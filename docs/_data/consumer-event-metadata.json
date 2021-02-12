@@ -3,7 +3,7 @@
         {
             "name": "cacheTime",
             "type": "string",
-            "description": "Time in UNIX epoch format when the event was stored by Alert Notification"
+            "description": "Time in UNIX epoch format when the event was stored by Alert Notification service"
         },
         {
             "name": "affectedActionId",

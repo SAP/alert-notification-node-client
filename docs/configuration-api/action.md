@@ -19,7 +19,7 @@ permalink: /configuration-api-objects/action/
 
 ## Description
 
-Action is an entity which represents the destination on which Alert Notification will send a processed event, e.g. Email, Slack, Webhook, etc.
+Action is an entity which represents the destination on which Alert Notification service will send a processed event, e.g. Email, Slack, Webhook, etc.
 
 ## Properties
 
