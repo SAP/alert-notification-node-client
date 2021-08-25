@@ -5,6 +5,7 @@
 
 [![Documentation](https://img.shields.io/badge/Service_Documentation-@SAP%20Help%20Portal-ff9900.svg)](https://help.sap.com/viewer/product/ALERT_NOTIFICATION/Cloud/en-US)
 [![Blog](https://img.shields.io/badge/Service--related_Blogs-@SAP%20Community%20Portal-3399ff.svg)](https://blogs.sap.com/tag/sap-cloud-platform-alert-notification/)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/alert-notification-node-client)](https://api.reuse.software/info/github.com/SAP/alert-notification-node-client)
 
 ## About
 Alert Notification service is part of the DevOps portfolio of the SAP Business Technology Platform. The service is specialized in instant delivery of events coming straight from the core platform services, e.g. database or application monitoring tools. This way you're always the first one notified whenever an issue with your dependency occurs. Additionally, Alert Notification service provides means for posting real-time
@@ -57,5 +58,4 @@ Please, let us know by filing a [new issue](https://github.com/sap/alert-notific
 We're always open for improvements! If you think the library could be better, please, open an issue and propose your solution as a pull request. We will contact you for discussion as soon as possible.
 
 ### License
-This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap/alert-notification-node-client/blob/master/LICENSE) file
-in the top-level directory.
+This project is run under the licensing terms of Apache License 2.0. The paper could be found in the [LICENSE](https://github.com/sap/alert-notification-node-client/blob/master/LICENSE) file in the top-level directory. Detailed information including third-party components and their licensing/copyright information is available via [the REUSE tool](https://api.reuse.software/info/github.com/SAP/alert-notification-node-client).
