@@ -18,6 +18,7 @@ const ANS_JP10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.jp10.h
 const ANS_JP20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.jp20.hana.ondemand.com';
 const ANS_CA10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ca10.hana.ondemand.com';
 const ANS_EU30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu30.hana.ondemand.com';
+const ANS_IN30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.in30.hana.ondemand.com';
 
 /**
  * @enum {CF, NEO}
@@ -104,6 +105,7 @@ export const JP20 = new Region(Platform.CF, ANS_JP20_INSTANCE);
 export const US10 = new Region(Platform.CF, ANS_US10_INSTANCE);
 export const JP10 = new Region(Platform.CF, ANS_JP10_INSTANCE);
 export const EU30 = new Region(Platform.CF, ANS_EU30_INSTANCE);
+export const IN30 = new Region(Platform.CF, ANS_IN30_INSTANCE);
 /**
  * Customer facing names of the regions.
  */
@@ -141,3 +143,4 @@ export const CF_AZURE_VA = US21;
 export const CF_AZURE_SYDNEY = AP20;
 export const CF_GCP_IA = US30;
 export const CF_GCP_FRANKFURT = EU30;
+export const CF_GCP_MUMBAI = IN30;
