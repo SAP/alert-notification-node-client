@@ -34,7 +34,7 @@ Here is a very simple example on how to import and create your first Alert Notif
 import {
     AlertNotificationClient,
     EntityType,
-    BasicAutentication,
+    BasicAuthentication,
     RegionUtils,
     Severity,
     Category
