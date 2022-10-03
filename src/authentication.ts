@@ -1,5 +1,6 @@
 import Axios, { AxiosInstance } from 'axios';
 import { configureDefaultRetryInterceptor } from './utils/axios-utils';
+import * as https from 'https';
 
 export interface Credentials {
     /**
@@ -20,7 +21,15 @@ export interface OAuthConfig {
     /**
      * Password
      */
-    password: string;
+    password?: string;
+    /**
+     * Certificate
+     */
+    certificate?: string;
+    /**
+     * Private key
+     */
+    privateKey?: string;
     /**
      * OAuth token url to call on retrieving token
      */
@@ -85,8 +94,10 @@ export class OAuthAuthentication implements Authentication {
     private static readonly EXPIRES_IN_KEY = 'expires_in';
     private static readonly ACCESS_TOKEN_KEY = 'access_token';
     private static readonly TIME_DELTA_IN_MILLIS = 60000;
-
     private static readonly HTTP_CLIENT_TIMEOUT = 5000;
+    private static readonly APPLICATION_X_WWW_FORM_URLENCODED_CONTENT_TYPE =
+        'application/x-www-form-urlencoded';
+    private static readonly CLIENT_CREDENTIALS = 'client_credentials';
 
     private accessToken: string;
     private expiresIn: number;
@@ -103,8 +114,8 @@ export class OAuthAuthentication implements Authentication {
             throw new Error('OAuth configuration must be provided');
         }
 
-        if (!config.username && !config.password) {
-            throw new Error('Credentials must be provided');
+        if (!config.username) {
+            throw new Error('Username must be provided');
         }
 
         if (!config.oAuthTokenUrl) {
@@ -113,25 +124,58 @@ export class OAuthAuthentication implements Authentication {
 
         this.accessToken = '';
         this.expiresIn = 0;
+        let defaultConfig;
+        if (this.isCertificateAuthentication(config)) {
+            defaultConfig = {
+                baseURL: config.oAuthTokenUrl,
+                headers: {
+                    'Content-Type':
+                        OAuthAuthentication.APPLICATION_X_WWW_FORM_URLENCODED_CONTENT_TYPE
+                },
+                method: 'POST',
+                params: {
+                    grant_type: OAuthAuthentication.CLIENT_CREDENTIALS,
+                    client_id: `${config.username}`
+                },
+                httpsAgent: new https.Agent({
+                    cert: config.certificate,
+                    key: config.privateKey
+                }),
+                retryConfig: {
+                    maxRetries: 3,
+                    retryBackoff: 1000
+                }
+            };
 
-        const defaultConfig = {
-            auth: {
-                username: config.username,
-                password: config.password
-            },
-            baseURL: config.oAuthTokenUrl,
-            timeout: OAuthAuthentication.HTTP_CLIENT_TIMEOUT,
-            params: {
-                grant_type: 'client_credentials'
-            },
-            retryConfig: {
-                maxRetries: 3,
-                retryBackoff: 1000
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            this.axiosInstance = Axios.create(defaultConfig);
+            configureDefaultRetryInterceptor(this.axiosInstance);
+        } else {
+            if (!config.password) {
+                throw new Error('Password is missing.');
             }
-        };
+            defaultConfig = {
+                auth: {
+                    username: config.username,
+                    password: config.password
+                },
+                baseURL: config.oAuthTokenUrl,
+                timeout: OAuthAuthentication.HTTP_CLIENT_TIMEOUT,
+                params: {
+                    grant_type: OAuthAuthentication.CLIENT_CREDENTIALS
+                },
+                retryConfig: {
+                    maxRetries: 3,
+                    retryBackoff: 1000
+                }
+            };
 
-        this.axiosInstance = Axios.create(defaultConfig);
-        configureDefaultRetryInterceptor(this.axiosInstance);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            this.axiosInstance = Axios.create(defaultConfig);
+            configureDefaultRetryInterceptor(this.axiosInstance);
+        }
     }
 
     /**
@@ -178,6 +222,11 @@ export class OAuthAuthentication implements Authentication {
                     return reject(error);
                 });
         });
+    }
+
+    // eslint-disable-next-line require-jsdoc
+    private isCertificateAuthentication(config: OAuthConfig): boolean {
+        return !config.password && config.certificate != null && config.privateKey != null;
     }
 }
 

@@ -10,10 +10,11 @@ jest.mock('axios');
 jest.mock('../src/utils/axios-utils');
 
 const username = 'username';
-const password = 'passowrd';
+const password = 'password';
 const certificate = 'certificate';
 const privateKey = 'privateKey';
 const credentials = { username, password };
+const oAuthCredentialsWithCertificate = { username, certificate, privateKey };
 const testUrl = 'test-url';
 
 beforeEach(() => {
@@ -26,7 +27,7 @@ describe('BasicAuthentication', () => {
     });
 
     test('when getAuthorizationHeaderValue is called then correct value is returned', () => {
-        const expectedValue = `Basic ${Buffer.from(
+        let expectedValue = `Basic ${Buffer.from(
             `${credentials.username}:${credentials.password}`
         ).toString('base64')}`;
         return new BasicAuthentication(credentials)
@@ -55,6 +56,13 @@ describe('OAuthAuthentication', () => {
                 ...credentials
             })
         ).toBeDefined();
+    });
+
+    test('can be correctly instantiated with certificate', () => {
+        expect(new OAuthAuthentication({
+            oAuthTokenUrl: testUrl,
+            ...oAuthCredentialsWithCertificate
+        })).toBeDefined();
     });
 
     test('on instantiation retry interceptor is set', () => {
@@ -107,8 +115,17 @@ describe('OAuthAuthentication', () => {
                 );
         });
 
+        test('promise with oAuth certificate is resolved with token value', () => {
+            classUnderTest = new OAuthAuthentication({
+                oAuthTokenUrl: 'test-url',
+                ...oAuthCredentialsWithCertificate
+            });
+            return classUnderTest.getAuthorizationHeaderValue()
+                .then((actualValue) => expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`));
+        });
+
         test('promise is rejected when request to OAuth provider fails', () => {
-            const error = {
+            let error = {
                 status: 400,
                 data: {
                     message: 'bad request'
@@ -123,21 +140,21 @@ describe('OAuthAuthentication', () => {
         });
 
         test('when token is not expired request is not executed', () => {
-            return classUnderTest.getAuthorizationHeaderValue().then(() => {
-                return classUnderTest
-                    .getAuthorizationHeaderValue()
-                    .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
-            });
+            return classUnderTest.getAuthorizationHeaderValue()
+                .then(() => {
+                    return classUnderTest.getAuthorizationHeaderValue()
+                        .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
+                });
         });
 
         test('when token is expired request is executed', () => {
             oauthResponse.data.expires_in = -10000;
 
-            return classUnderTest.getAuthorizationHeaderValue().then(() => {
-                return classUnderTest
-                    .getAuthorizationHeaderValue()
-                    .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
-            });
+            return classUnderTest.getAuthorizationHeaderValue()
+                .then(() => {
+                    return classUnderTest.getAuthorizationHeaderValue()
+                        .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
+                });
         });
     });
 });
