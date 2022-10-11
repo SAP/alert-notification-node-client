@@ -1,11 +1,12 @@
-import { Region, Platform } from "../../src/utils/region";
+import { Region, Platform } from '../../src/utils/region';
 
 describe('when creating region', () => {
-    const testUrl = 'test-url';
+    const baseUrl = 'test-url';
+    const meshUrl = 'mesh-url';
     let region: Region;
 
     beforeAll(() => {
-        region = new Region(Platform.CF, testUrl);
+        region = new Region(Platform.CF, baseUrl, meshUrl);
     });
 
     test('getPlatform returns platform', () => {
@@ -13,6 +14,10 @@ describe('when creating region', () => {
     });
 
     test('getUrl returns the url', () => {
-        expect(region.getUrl()).toBe(testUrl);
+        expect(region.getUrl()).toBe(baseUrl);
+    });
+
+    test('getUrl returns the url', () => {
+        expect(region.getMeshUrl()).toBe(meshUrl);
     });
 });

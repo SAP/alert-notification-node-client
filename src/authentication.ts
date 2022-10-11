@@ -27,6 +27,17 @@ export interface OAuthConfig {
     oAuthTokenUrl: string;
 }
 
+export interface CertificateServiceConfig {
+    /**
+     * Certificate
+     */
+    certificate: string;
+    /**
+     * Private key
+     */
+    privateKey: string;
+}
+
 export interface Authentication {
     getAuthorizationHeaderValue(): Promise<string>;
 }
@@ -167,5 +178,39 @@ export class OAuthAuthentication implements Authentication {
                     return reject(error);
                 });
         });
+    }
+}
+
+/**
+ * Basic Authentication class. Retrieves the basic authorization header value.
+ */
+export class CertificateServiceAuthentication {
+    private certificate: string;
+    private privateKey: string;
+    /**
+     * Creates an instance of CertificateServiceAuthentication
+     *
+     * @param {Credentials} creds - object which contains the certificate and private key. Certificate and privateKey
+     * must be provided else an Error will be thrown.
+     */
+    constructor(creds: CertificateServiceConfig) {
+        if (!creds) {
+            throw new Error('Credentials must not be null or undefined');
+        }
+
+        if (!creds.certificate && !creds.privateKey) {
+            throw new Error('Certificate and privateKey must be provided');
+        }
+        this.certificate = creds.certificate;
+        this.privateKey = creds.privateKey;
+    }
+
+    // eslint-disable-next-line require-jsdoc
+    public getCertificate(): string {
+        return this.certificate;
+    }
+    // eslint-disable-next-line require-jsdoc
+    public getPrivateKey(): string {
+        return this.privateKey;
     }
 }
