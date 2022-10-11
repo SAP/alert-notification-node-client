@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { BasicAuthentication, OAuthAuthentication } from '../src/authentication';
+import {BasicAuthentication, CertificateServiceAuthentication, OAuthAuthentication} from '../src/authentication';
 import { configureDefaultRetryInterceptor } from '../src/utils/axios-utils';
 
 jest.mock('axios');
@@ -7,6 +7,8 @@ jest.mock('../src/utils/axios-utils');
 
 const username = 'username';
 const password = 'passowrd';
+const certificate = 'certificate';
+const privateKey = 'privateKey';
 const credentials = { username, password };
 const testUrl = 'test-url';
 
@@ -125,5 +127,23 @@ describe('OAuthAuthentication', () => {
                         .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
                 });
         });
+    });
+});
+
+describe('CertificateServiceAuthentication', () => {
+    const classUnderTest = new CertificateServiceAuthentication({
+        certificate: certificate,
+        privateKey: privateKey
+    });
+    test('can be correctly instantiated', () => {
+        expect(new CertificateServiceAuthentication({ certificate, privateKey })).toBeDefined();
+    });
+
+    test('when getCertificate is called then correct value is returned', () => {
+        expect(classUnderTest.getCertificate()).toBe(certificate);
+    });
+
+    test('when getPrivateKey is called then correct value is returned', () => {
+        expect(classUnderTest.getPrivateKey()).toBe(privateKey);
     });
 });

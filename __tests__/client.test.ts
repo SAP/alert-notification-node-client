@@ -11,6 +11,7 @@ import ConfigurationApiClient from '../src/configuration-api/configuration-clien
 
 import { buildAction, buildEvent } from './test-utils';
 import EventsApiClient from '../src/producer-api/event-producer-client';
+import { CertificateServiceAuthentication } from '../src/authentication';
 
 jest.mock('axios');
 jest.mock('../src/configuration-api/configuration-client');
@@ -57,6 +58,19 @@ describe('when instantiating alert notification client', () => {
         });
     });
 
+    test('authentication_with_certificate_service_is_provided', () => {
+        expect(
+            () =>
+                new AlertNotificationClient({
+                    authentication: new CertificateServiceAuthentication({
+                        certificate: 'certificate',
+                        privateKey: 'key'
+                    }),
+                    region: region
+                })
+        ).toBeDefined();
+    });
+
     test('authorization header interceptor is set', () => {
         new AlertNotificationClient({
             authentication: mockedAuthentication,
@@ -86,6 +100,23 @@ describe('when instantiating alert notification client', () => {
 
         expect(extractDataOnResponseInterceptor).toBeCalledTimes(1);
         expect(extractDataOnResponseInterceptor).toBeCalledWith(axios);
+    });
+
+    test('setupAuthorizationHeader is not called when authentication is with Certificate service', () => {
+        const axiosRequestConfig = new CertificateServiceAuthentication({
+            certificate: 'certificate',
+            privateKey: 'key'
+        });
+        new AlertNotificationClient({
+            authentication: axiosRequestConfig,
+            region: region,
+            retryConfig: {
+                maxRetries: 5,
+                retryBackoff: 1000
+            }
+        });
+
+        expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledTimes(0);
     });
 });
 
