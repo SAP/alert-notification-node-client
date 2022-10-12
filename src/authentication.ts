@@ -226,7 +226,7 @@ export class OAuthAuthentication implements Authentication {
 
     // eslint-disable-next-line require-jsdoc
     private isCertificateAuthentication(config: OAuthConfig): boolean {
-        return !config.password && config.certificate != null && config.privateKey != null;
+        return !config.password && !!config.certificate && !!config.privateKey;
     }
 }
 

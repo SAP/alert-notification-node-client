@@ -65,6 +65,26 @@ describe('OAuthAuthentication', () => {
         })).toBeDefined();
     });
 
+    test('can not be correctly instantiated when privateKey and certificate are empty strings', () => {
+        expect(() => {
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                username: username,
+                privateKey: '',
+                certificate: ''
+            });
+        }).toThrow('Password is missing.');
+    });
+
+    test('can not be correctly instantiated when password, certificate and privateKey are not provided', () => {
+        expect(() => {
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                username: username
+            });
+        }).toThrow('Password is missing.');
+    });
+
     test('on instantiation retry interceptor is set', () => {
         new OAuthAuthentication({
             oAuthTokenUrl: testUrl,
@@ -145,6 +165,17 @@ describe('OAuthAuthentication', () => {
                     return classUnderTest.getAuthorizationHeaderValue()
                         .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
                 });
+        });
+
+        test('can not be correctly instantiated', () => {
+            expect(() => {
+                new OAuthAuthentication({
+                    oAuthTokenUrl: testUrl,
+                    username: username,
+                    privateKey: '',
+                    certificate: ''
+                });
+            }).toThrow('Password is missing.');
         });
 
         test('when token is expired request is executed', () => {
