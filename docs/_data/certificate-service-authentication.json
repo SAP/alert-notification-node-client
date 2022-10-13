@@ -1,0 +1,26 @@
+{
+  "propertyFields": [
+    {
+      "name": "certificate",
+      "type": "string",
+      "description": "A tecnical client's certificate"
+    },
+    {
+      "name": "privateKey",
+      "type": "string",
+      "description": "A technical client's privateKey"
+    }
+  ],
+  "methods": [
+    {
+      "name": "getCertificate()",
+      "returnValue": "string",
+      "description": "Get the certificate."
+    },
+    {
+      "name": "getPrivateKey()",
+      "returnValue": "string",
+      "description": "Get the privateKey."
+    }
+  ]
+}

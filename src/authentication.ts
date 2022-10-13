@@ -79,7 +79,7 @@ export class BasicAuthentication implements Authentication {
 }
 
 /**
- * Basic Authentication class. Retrieves the bearer authorization header value.
+ * OAuth Authentication class. Retrieves the OAuth authorization header value.
  */
 export class OAuthAuthentication implements Authentication {
     private static readonly EXPIRES_IN_KEY = 'expires_in';
@@ -182,7 +182,7 @@ export class OAuthAuthentication implements Authentication {
 }
 
 /**
- * Basic Authentication class. Retrieves the basic authorization header value.
+ * Certificate service Authentication class. Provides the certificate and the private key for the building of the keystore.
  */
 export class CertificateServiceAuthentication {
     private certificate: string;

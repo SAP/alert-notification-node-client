@@ -34,7 +34,7 @@ const ANS_AP21_MESH_INSTANCE =
 const ANS_BR10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.br10.hana.ondemand.com';
 const ANS_EU10_MESH_INSTANCE =
-    'https://clm-sl-ans-canary-ans-service-api.mesh.cf.sap.hana.ondemand.com';
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu10.hana.ondemand.com';
 const ANS_EU11_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu11.hana.ondemand.com';
 const ANS_EU20_MESH_INSTANCE =
