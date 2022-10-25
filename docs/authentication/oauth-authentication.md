@@ -19,7 +19,7 @@ permalink: /authentication/oauth
 
 ## Description
 
-OAuthAuthentication is a class in the context of Alert Notification service node client. It helps you with acquiring the authorization header value, when using OAuth Authentication mechanism, in order to authenticate yourself against Alert Notification service.
+OAuthAuthentication is a class in the context of Alert Notification service node client. It helps you with acquiring the authorization header value, when using OAuth Authentication mechanism, in order to authenticate yourself against Alert Notification service. For further information go to [Credential Management](https://help.sap.com/docs/ALERT_NOTIFICATION/5967a369d4b74f7a9c2b91f5df8e6ab6/80fe24f86bde4e3aac2903ac05511835.html?locale=en-US) and select OAuth2.0 Authentication with client ID and client secret (default) option.
 
 _**Note**_: Grant type query parameter will be added automatically by the client with value __client_credentials__.
 

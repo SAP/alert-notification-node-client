@@ -4,7 +4,7 @@ import {
     BasicAuthentication,
     OAuthAuthentication,
     Authentication,
-    CertificateServiceAuthentication
+    CertificateAuthentication
 } from './authentication';
 
 import { Region } from './utils/region';
@@ -38,7 +38,7 @@ export interface AlertNotificationConfiguration {
     authentication:
         | BasicAuthentication
         | OAuthAuthentication
-        | CertificateServiceAuthentication
+        | CertificateAuthentication
         | Authentication;
     /**
      * Region
@@ -91,7 +91,7 @@ export default class AlertNotificationClient {
             ...{ timeout: 2500 },
             ...configuration.axiosRequestConfig
         };
-        if (configuration.authentication instanceof CertificateServiceAuthentication) {
+        if (configuration.authentication instanceof CertificateAuthentication) {
             const baseURL = configuration.region.getMeshUrl();
             axiosRequestConfig = {
                 ...axiosRequestConfig,
@@ -127,7 +127,7 @@ export default class AlertNotificationClient {
             configureDefaultRetryInterceptor(axiosInstance);
         }
 
-        if (!(configuration.authentication instanceof CertificateServiceAuthentication)) {
+        if (!(configuration.authentication instanceof CertificateAuthentication)) {
             setupAuthorizationHeaderOnRequestInterceptor(
                 axiosInstance,
                 configuration.authentication

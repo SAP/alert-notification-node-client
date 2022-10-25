@@ -11,7 +11,7 @@ import ConfigurationApiClient from '../src/configuration-api/configuration-clien
 
 import { buildAction, buildEvent } from './test-utils';
 import EventsApiClient from '../src/producer-api/event-producer-client';
-import { CertificateServiceAuthentication } from '../src/authentication';
+import { CertificateAuthentication } from '../src/authentication';
 
 jest.mock('axios');
 jest.mock('../src/configuration-api/configuration-client');
@@ -62,7 +62,7 @@ describe('when instantiating alert notification client', () => {
         expect(
             () =>
                 new AlertNotificationClient({
-                    authentication: new CertificateServiceAuthentication({
+                    authentication: new CertificateAuthentication({
                         certificate: 'certificate',
                         privateKey: 'key'
                     }),
@@ -103,7 +103,7 @@ describe('when instantiating alert notification client', () => {
     });
 
     test('setupAuthorizationHeader is not called when authentication is with Certificate service', () => {
-        const axiosRequestConfig = new CertificateServiceAuthentication({
+        const axiosRequestConfig = new CertificateAuthentication({
             certificate: 'certificate',
             privateKey: 'key'
         });

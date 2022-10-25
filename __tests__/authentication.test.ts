@@ -1,5 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import {BasicAuthentication, CertificateServiceAuthentication, OAuthAuthentication} from '../src/authentication';
+import {
+    BasicAuthentication,
+    CertificateAuthentication,
+    OAuthAuthentication
+} from '../src/authentication';
 import { configureDefaultRetryInterceptor } from '../src/utils/axios-utils';
 
 jest.mock('axios');
@@ -17,20 +21,22 @@ beforeEach(() => {
 });
 
 describe('BasicAuthentication', () => {
-
     test('can be correctly instantiated', () => {
         expect(new BasicAuthentication(credentials)).toBeDefined();
     });
 
     test('when getAuthorizationHeaderValue is called then correct value is returned', () => {
-        let expectedValue = `Basic ${Buffer.from(`${credentials.username}:${credentials.password}`).toString('base64')}`;
-        return new BasicAuthentication(credentials).getAuthorizationHeaderValue()
-            .then(actualValue => expect(actualValue).toBe(expectedValue));
+        const expectedValue = `Basic ${Buffer.from(
+            `${credentials.username}:${credentials.password}`
+        ).toString('base64')}`;
+        return new BasicAuthentication(credentials)
+            .getAuthorizationHeaderValue()
+            .then((actualValue) => expect(actualValue).toBe(expectedValue));
     });
 });
 
 describe('OAuthAuthentication', () => {
-    let oauthResponse: { data: { access_token: string, expires_in: number }};
+    let oauthResponse: { data: { access_token: string; expires_in: number } };
 
     beforeEach(() => {
         oauthResponse = {
@@ -43,10 +49,12 @@ describe('OAuthAuthentication', () => {
     });
 
     test('can be correctly instantiated', () => {
-        expect(new OAuthAuthentication({
-            oAuthTokenUrl: testUrl,
-            ...credentials
-        })).toBeDefined();
+        expect(
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                ...credentials
+            })
+        ).toBeDefined();
     });
 
     test('on instantiation retry interceptor is set', () => {
@@ -92,12 +100,15 @@ describe('OAuthAuthentication', () => {
         });
 
         test('promise is resolved with token value', () => {
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then((actualValue) => expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`));
+            return classUnderTest
+                .getAuthorizationHeaderValue()
+                .then((actualValue) =>
+                    expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`)
+                );
         });
 
         test('promise is rejected when request to OAuth provider fails', () => {
-            let error = {
+            const error = {
                 status: 400,
                 data: {
                     message: 'bad request'
@@ -106,37 +117,38 @@ describe('OAuthAuthentication', () => {
 
             axios.request = jest.fn().mockImplementationOnce(() => Promise.reject(error));
 
-            return classUnderTest.getAuthorizationHeaderValue()
-                .catch(actualError => expect(actualError).toEqual(error));
+            return classUnderTest
+                .getAuthorizationHeaderValue()
+                .catch((actualError) => expect(actualError).toEqual(error));
         });
 
         test('when token is not expired request is not executed', () => {
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then(() => {
-                    return classUnderTest.getAuthorizationHeaderValue()
-                        .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
-                });
+            return classUnderTest.getAuthorizationHeaderValue().then(() => {
+                return classUnderTest
+                    .getAuthorizationHeaderValue()
+                    .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
+            });
         });
 
         test('when token is expired request is executed', () => {
             oauthResponse.data.expires_in = -10000;
 
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then(() => {
-                    return classUnderTest.getAuthorizationHeaderValue()
-                        .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
-                });
+            return classUnderTest.getAuthorizationHeaderValue().then(() => {
+                return classUnderTest
+                    .getAuthorizationHeaderValue()
+                    .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
+            });
         });
     });
 });
 
-describe('CertificateServiceAuthentication', () => {
-    const classUnderTest = new CertificateServiceAuthentication({
+describe('CertificatеAuthentication', () => {
+    const classUnderTest = new CertificateAuthentication({
         certificate: certificate,
         privateKey: privateKey
     });
     test('can be correctly instantiated', () => {
-        expect(new CertificateServiceAuthentication({ certificate, privateKey })).toBeDefined();
+        expect(new CertificateAuthentication({ certificate, privateKey })).toBeDefined();
     });
 
     test('when getCertificate is called then correct value is returned', () => {

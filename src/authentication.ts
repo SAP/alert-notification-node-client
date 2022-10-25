@@ -27,7 +27,7 @@ export interface OAuthConfig {
     oAuthTokenUrl: string;
 }
 
-export interface CertificateServiceConfig {
+export interface CertificateConfig {
     /**
      * Certificate
      */
@@ -182,9 +182,9 @@ export class OAuthAuthentication implements Authentication {
 }
 
 /**
- * Certificate service Authentication class. Provides the certificate and the private key for the building of the keystore.
+ * Certificate Authentication class. Provides the certificate and the private key for the building of the keystore.
  */
-export class CertificateServiceAuthentication {
+export class CertificateAuthentication {
     private certificate: string;
     private privateKey: string;
     /**
@@ -193,7 +193,7 @@ export class CertificateServiceAuthentication {
      * @param {Credentials} creds - object which contains the certificate and private key. Certificate and privateKey
      * must be provided else an Error will be thrown.
      */
-    constructor(creds: CertificateServiceConfig) {
+    constructor(creds: CertificateConfig) {
         if (!creds) {
             throw new Error('Credentials must not be null or undefined');
         }
