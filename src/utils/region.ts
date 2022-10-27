@@ -74,19 +74,19 @@ export enum Platform {
 export class Region {
     private platform: Platform;
     private url: string;
-    private meshUrl: string;
+    private mTLSUrl: string;
 
     /**
      * Constructs a Region instance.
      *
      * @param {Platform} platform - platform on which SAP Alert Notification service for SAP BTP resides
      * @param {string} url - base url of SAP Alert Notification service for SAP BTP
-     * @param {string} meshUrl - mesh url of SAP Alert Notification service for SAP BTP
+     * @param {string} mTLSUrl - mTLS url of SAP Alert Notification service for SAP BTP
      */
-    constructor(platform: Platform, url: string, meshUrl: string) {
+    constructor(platform: Platform, url: string, mTLSUrl: string) {
         this.platform = platform;
         this.url = url;
-        this.meshUrl = meshUrl;
+        this.mTLSUrl = mTLSUrl;
     }
 
     /**
@@ -114,8 +114,8 @@ export class Region {
      *
      * @return {string}
      */
-    getMeshUrl(): string {
-        return this.meshUrl;
+    getmTLSUrl(): string {
+        return this.mTLSUrl;
     }
 }
 

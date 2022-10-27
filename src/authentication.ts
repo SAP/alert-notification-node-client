@@ -194,12 +194,10 @@ export class CertificateAuthentication {
      * must be provided else an Error will be thrown.
      */
     constructor(creds: CertificateConfig) {
-        if (!creds) {
-            throw new Error('Credentials must not be null or undefined');
-        }
-
-        if (!creds.certificate && !creds.privateKey) {
-            throw new Error('Certificate and privateKey must be provided');
+        if (!creds || !creds.certificate || !creds.privateKey) {
+            throw new Error(
+                'Both certificate and privateKey must be provided when using CertificateAuthentication'
+            );
         }
         this.certificate = creds.certificate;
         this.privateKey = creds.privateKey;

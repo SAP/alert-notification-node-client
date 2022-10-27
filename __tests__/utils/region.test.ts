@@ -18,6 +18,6 @@ describe('when creating region', () => {
     });
 
     test('getUrl returns the url', () => {
-        expect(region.getMeshUrl()).toBe(meshUrl);
+        expect(region.getmTLSUrl()).toBe(meshUrl);
     });
 });

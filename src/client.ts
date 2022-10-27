@@ -92,7 +92,7 @@ export default class AlertNotificationClient {
             ...configuration.axiosRequestConfig
         };
         if (configuration.authentication instanceof CertificateAuthentication) {
-            const baseURL = configuration.region.getMeshUrl();
+            const baseURL = configuration.region.getmTLSUrl();
             axiosRequestConfig = {
                 ...axiosRequestConfig,
                 ...{

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Certificate Authentication
+title: mTLS Authentication
 parent: Authentication
 nav_order: 2
-permalink: /authentication/certificate-authentication
+permalink: /authentication/mtls-authentication
 ---
 
-# Certificate Authentication
+# mTLS Authentication
 {: .no_toc }
 
 ## Table of contents
