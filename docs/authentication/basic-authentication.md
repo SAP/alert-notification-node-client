@@ -19,7 +19,7 @@ permalink: /authentication/basic
 
 ## Description
 
-BasicAuthentication is a class in the context of Alert Notification service node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification service.
+BasicAuthentication is a class in the context of Alert Notification service node client. It helps you with acquiring the authorization header value, when using Basic Authentication mechanism, in order to authenticate yourself against Alert Notification service. For further information go to [Credential Management](https://help.sap.com/docs/ALERT_NOTIFICATION/5967a369d4b74f7a9c2b91f5df8e6ab6/80fe24f86bde4e3aac2903ac05511835.html?locale=en-US) and select Basic Access Authentication option.
 
 ## Constructor properties
 

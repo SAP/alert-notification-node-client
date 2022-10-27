@@ -27,6 +27,17 @@ export interface OAuthConfig {
     oAuthTokenUrl: string;
 }
 
+export interface CertificateConfig {
+    /**
+     * Certificate
+     */
+    certificate: string;
+    /**
+     * Private key
+     */
+    privateKey: string;
+}
+
 export interface Authentication {
     getAuthorizationHeaderValue(): Promise<string>;
 }
@@ -68,7 +79,7 @@ export class BasicAuthentication implements Authentication {
 }
 
 /**
- * Basic Authentication class. Retrieves the bearer authorization header value.
+ * OAuth Authentication class. Retrieves the OAuth authorization header value.
  */
 export class OAuthAuthentication implements Authentication {
     private static readonly EXPIRES_IN_KEY = 'expires_in';
@@ -167,5 +178,37 @@ export class OAuthAuthentication implements Authentication {
                     return reject(error);
                 });
         });
+    }
+}
+
+/**
+ * Certificate Authentication class. Provides the certificate and the private key for the building of the keystore.
+ */
+export class CertificateAuthentication {
+    private certificate: string;
+    private privateKey: string;
+    /**
+     * Creates an instance of CertificateServiceAuthentication
+     *
+     * @param {Credentials} creds - object which contains the certificate and private key. Certificate and privateKey
+     * must be provided else an Error will be thrown.
+     */
+    constructor(creds: CertificateConfig) {
+        if (!creds || !creds.certificate || !creds.privateKey) {
+            throw new Error(
+                'Both certificate and privateKey must be provided when using CertificateAuthentication'
+            );
+        }
+        this.certificate = creds.certificate;
+        this.privateKey = creds.privateKey;
+    }
+
+    // eslint-disable-next-line require-jsdoc
+    public getCertificate(): string {
+        return this.certificate;
+    }
+    // eslint-disable-next-line require-jsdoc
+    public getPrivateKey(): string {
+        return this.privateKey;
     }
 }

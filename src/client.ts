@@ -1,6 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-import { BasicAuthentication, OAuthAuthentication, Authentication } from './authentication';
+import {
+    BasicAuthentication,
+    OAuthAuthentication,
+    Authentication,
+    CertificateAuthentication
+} from './authentication';
 
 import { Region } from './utils/region';
 
@@ -24,12 +29,17 @@ import EventsApiClient from './producer-api/event-producer-client';
 import { ResourceEvent } from './producer-api/models';
 import { PageResponse, CommonQueryParams } from './utils/common';
 import { ConsumerPagedResponse, ConsumerQueryParameters } from './producer-api/models';
+import * as https from 'https';
 
 export interface AlertNotificationConfiguration {
     /**
      * Authentication to use for retrieving authorization header value.
      */
-    authentication: BasicAuthentication | OAuthAuthentication | Authentication;
+    authentication:
+        | BasicAuthentication
+        | OAuthAuthentication
+        | CertificateAuthentication
+        | Authentication;
     /**
      * Region
      */
@@ -76,14 +86,30 @@ export default class AlertNotificationClient {
         if (!configuration.authentication && !configuration.region) {
             throw new Error('Authentication and region objects are required');
         }
-
-        const baseURL = configuration.region.getUrl();
         const platform = configuration.region.getPlatform();
-
         let axiosRequestConfig = {
-            ...{ baseURL, timeout: 2500 },
+            ...{ timeout: 2500 },
             ...configuration.axiosRequestConfig
         };
+        if (configuration.authentication instanceof CertificateAuthentication) {
+            const baseURL = configuration.region.getmTLSUrl();
+            axiosRequestConfig = {
+                ...axiosRequestConfig,
+                ...{
+                    baseURL,
+                    httpsAgent: new https.Agent({
+                        cert: configuration.authentication.getCertificate(),
+                        key: configuration.authentication.getPrivateKey()
+                    })
+                }
+            };
+        } else {
+            const baseURL = configuration.region.getUrl();
+            axiosRequestConfig = {
+                ...axiosRequestConfig,
+                ...{ baseURL }
+            };
+        }
 
         if (configuration.retryConfig) {
             if (!configuration.retryConfig.maxRetries && !configuration.retryConfig.retryBackoff) {
@@ -101,7 +127,12 @@ export default class AlertNotificationClient {
             configureDefaultRetryInterceptor(axiosInstance);
         }
 
-        setupAuthorizationHeaderOnRequestInterceptor(axiosInstance, configuration.authentication);
+        if (!(configuration.authentication instanceof CertificateAuthentication)) {
+            setupAuthorizationHeaderOnRequestInterceptor(
+                axiosInstance,
+                configuration.authentication
+            );
+        }
         extractDataOnResponseInterceptor(axiosInstance);
 
         this.eventClient = new EventsApiClient(platform, axiosInstance);

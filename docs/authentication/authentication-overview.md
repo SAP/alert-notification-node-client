@@ -9,11 +9,11 @@ permalink: /authentication/
 
 ## Overview
 
-Alert Notification service supports two types of authentication:
+Alert Notification service supports three types of authentication:
 
 * _Basic_
 * _OAuth_
-
+* _mTLS_
 ## Resources
 
 * [Credential management](https://help.sap.com/viewer/5967a369d4b74f7a9c2b91f5df8e6ab6/Cloud/en-US/b90ed0f3a9604f8e844c73a78d5fad45.html)
