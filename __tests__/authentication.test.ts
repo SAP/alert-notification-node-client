@@ -13,8 +13,9 @@ const username = 'username';
 const password = 'password';
 const certificate = 'certificate';
 const privateKey = 'privateKey';
-const credentials = { username, password };
+const basicCredentials = { username, password };
 const oAuthCredentialsWithCertificate = { username, certificate, privateKey };
+const mTLSCredentials = { certificate, privateKey };
 const testUrl = 'test-url';
 
 beforeEach(() => {
@@ -23,14 +24,14 @@ beforeEach(() => {
 
 describe('BasicAuthentication', () => {
     test('can be correctly instantiated', () => {
-        expect(new BasicAuthentication(credentials)).toBeDefined();
+        expect(new BasicAuthentication(basicCredentials)).toBeDefined();
     });
 
     test('when getAuthorizationHeaderValue is called then correct value is returned', () => {
-        let expectedValue = `Basic ${Buffer.from(
-            `${credentials.username}:${credentials.password}`
+        const expectedValue = `Basic ${Buffer.from(
+            `${basicCredentials.username}:${basicCredentials.password}`
         ).toString('base64')}`;
-        return new BasicAuthentication(credentials)
+        return new BasicAuthentication(basicCredentials)
             .getAuthorizationHeaderValue()
             .then((actualValue) => expect(actualValue).toBe(expectedValue));
     });
@@ -53,16 +54,18 @@ describe('OAuthAuthentication', () => {
         expect(
             new OAuthAuthentication({
                 oAuthTokenUrl: testUrl,
-                ...credentials
+                ...basicCredentials
             })
         ).toBeDefined();
     });
 
     test('can be correctly instantiated with certificate', () => {
-        expect(new OAuthAuthentication({
-            oAuthTokenUrl: testUrl,
-            ...oAuthCredentialsWithCertificate
-        })).toBeDefined();
+        expect(
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                ...oAuthCredentialsWithCertificate
+            })
+        ).toBeDefined();
     });
 
     test('can not be correctly instantiated when privateKey and certificate are empty strings', () => {
@@ -88,7 +91,7 @@ describe('OAuthAuthentication', () => {
     test('on instantiation retry interceptor is set', () => {
         new OAuthAuthentication({
             oAuthTokenUrl: testUrl,
-            ...credentials
+            ...basicCredentials
         });
 
         expect(configureDefaultRetryInterceptor).toBeCalledTimes(1);
@@ -97,13 +100,13 @@ describe('OAuthAuthentication', () => {
     test('correct axios request config is set', () => {
         new OAuthAuthentication({
             oAuthTokenUrl: testUrl,
-            ...credentials
+            ...basicCredentials
         });
 
         expect(axios.create).toHaveBeenCalledWith({
             auth: {
-                username: credentials.username,
-                password: credentials.password
+                username: basicCredentials.username,
+                password: basicCredentials.password
             },
             baseURL: testUrl,
             timeout: 5000,
@@ -123,7 +126,7 @@ describe('OAuthAuthentication', () => {
         beforeEach(() => {
             classUnderTest = new OAuthAuthentication({
                 oAuthTokenUrl: 'test-url',
-                ...credentials
+                ...basicCredentials
             });
         });
 
@@ -140,12 +143,15 @@ describe('OAuthAuthentication', () => {
                 oAuthTokenUrl: 'test-url',
                 ...oAuthCredentialsWithCertificate
             });
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then((actualValue) => expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`));
+            return classUnderTest
+                .getAuthorizationHeaderValue()
+                .then((actualValue) =>
+                    expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`)
+                );
         });
 
         test('promise is rejected when request to OAuth provider fails', () => {
-            let error = {
+            const error = {
                 status: 400,
                 data: {
                     message: 'bad request'
@@ -160,11 +166,11 @@ describe('OAuthAuthentication', () => {
         });
 
         test('when token is not expired request is not executed', () => {
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then(() => {
-                    return classUnderTest.getAuthorizationHeaderValue()
-                        .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
-                });
+            return classUnderTest.getAuthorizationHeaderValue().then(() => {
+                return classUnderTest
+                    .getAuthorizationHeaderValue()
+                    .then(() => expect(axios.request).toHaveBeenCalledTimes(1));
+            });
         });
 
         test('can not be correctly instantiated', () => {
@@ -181,22 +187,19 @@ describe('OAuthAuthentication', () => {
         test('when token is expired request is executed', () => {
             oauthResponse.data.expires_in = -10000;
 
-            return classUnderTest.getAuthorizationHeaderValue()
-                .then(() => {
-                    return classUnderTest.getAuthorizationHeaderValue()
-                        .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
-                });
+            return classUnderTest.getAuthorizationHeaderValue().then(() => {
+                return classUnderTest
+                    .getAuthorizationHeaderValue()
+                    .then(() => expect(axios.request).toHaveBeenCalledTimes(2));
+            });
         });
     });
 });
 
 describe('CertificatеAuthentication', () => {
-    const classUnderTest = new CertificateAuthentication({
-        certificate: certificate,
-        privateKey: privateKey
-    });
+    const classUnderTest = new CertificateAuthentication(mTLSCredentials);
     test('can be correctly instantiated', () => {
-        expect(new CertificateAuthentication({ certificate, privateKey })).toBeDefined();
+        expect(new CertificateAuthentication(mTLSCredentials)).toBeDefined();
     });
 
     test('when getCertificate is called then correct value is returned', () => {
