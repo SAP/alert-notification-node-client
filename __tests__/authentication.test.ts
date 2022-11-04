@@ -10,10 +10,12 @@ jest.mock('axios');
 jest.mock('../src/utils/axios-utils');
 
 const username = 'username';
-const password = 'passowrd';
+const password = 'password';
 const certificate = 'certificate';
 const privateKey = 'privateKey';
-const credentials = { username, password };
+const basicCredentials = { username, password };
+const oAuthCredentialsWithCertificate = { username, certificate, privateKey };
+const mTLSCredentials = { certificate, privateKey };
 const testUrl = 'test-url';
 
 beforeEach(() => {
@@ -22,14 +24,14 @@ beforeEach(() => {
 
 describe('BasicAuthentication', () => {
     test('can be correctly instantiated', () => {
-        expect(new BasicAuthentication(credentials)).toBeDefined();
+        expect(new BasicAuthentication(basicCredentials)).toBeDefined();
     });
 
     test('when getAuthorizationHeaderValue is called then correct value is returned', () => {
         const expectedValue = `Basic ${Buffer.from(
-            `${credentials.username}:${credentials.password}`
+            `${basicCredentials.username}:${basicCredentials.password}`
         ).toString('base64')}`;
-        return new BasicAuthentication(credentials)
+        return new BasicAuthentication(basicCredentials)
             .getAuthorizationHeaderValue()
             .then((actualValue) => expect(actualValue).toBe(expectedValue));
     });
@@ -52,15 +54,44 @@ describe('OAuthAuthentication', () => {
         expect(
             new OAuthAuthentication({
                 oAuthTokenUrl: testUrl,
-                ...credentials
+                ...basicCredentials
             })
         ).toBeDefined();
+    });
+
+    test('can be correctly instantiated with certificate', () => {
+        expect(
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                ...oAuthCredentialsWithCertificate
+            })
+        ).toBeDefined();
+    });
+
+    test('can not be correctly instantiated when privateKey and certificate are empty strings', () => {
+        expect(() => {
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                username: username,
+                privateKey: '',
+                certificate: ''
+            });
+        }).toThrow('Password is missing.');
+    });
+
+    test('can not be correctly instantiated when password, certificate and privateKey are not provided', () => {
+        expect(() => {
+            new OAuthAuthentication({
+                oAuthTokenUrl: testUrl,
+                username: username
+            });
+        }).toThrow('Password is missing.');
     });
 
     test('on instantiation retry interceptor is set', () => {
         new OAuthAuthentication({
             oAuthTokenUrl: testUrl,
-            ...credentials
+            ...basicCredentials
         });
 
         expect(configureDefaultRetryInterceptor).toBeCalledTimes(1);
@@ -69,13 +100,13 @@ describe('OAuthAuthentication', () => {
     test('correct axios request config is set', () => {
         new OAuthAuthentication({
             oAuthTokenUrl: testUrl,
-            ...credentials
+            ...basicCredentials
         });
 
         expect(axios.create).toHaveBeenCalledWith({
             auth: {
-                username: credentials.username,
-                password: credentials.password
+                username: basicCredentials.username,
+                password: basicCredentials.password
             },
             baseURL: testUrl,
             timeout: 5000,
@@ -95,11 +126,23 @@ describe('OAuthAuthentication', () => {
         beforeEach(() => {
             classUnderTest = new OAuthAuthentication({
                 oAuthTokenUrl: 'test-url',
-                ...credentials
+                ...basicCredentials
             });
         });
 
         test('promise is resolved with token value', () => {
+            return classUnderTest
+                .getAuthorizationHeaderValue()
+                .then((actualValue) =>
+                    expect(actualValue).toEqual(`Bearer ${oauthResponse.data.access_token}`)
+                );
+        });
+
+        test('promise with oAuth certificate is resolved with token value', () => {
+            classUnderTest = new OAuthAuthentication({
+                oAuthTokenUrl: 'test-url',
+                ...oAuthCredentialsWithCertificate
+            });
             return classUnderTest
                 .getAuthorizationHeaderValue()
                 .then((actualValue) =>
@@ -130,6 +173,17 @@ describe('OAuthAuthentication', () => {
             });
         });
 
+        test('can not be correctly instantiated', () => {
+            expect(() => {
+                new OAuthAuthentication({
+                    oAuthTokenUrl: testUrl,
+                    username: username,
+                    privateKey: '',
+                    certificate: ''
+                });
+            }).toThrow('Password is missing.');
+        });
+
         test('when token is expired request is executed', () => {
             oauthResponse.data.expires_in = -10000;
 
@@ -143,12 +197,9 @@ describe('OAuthAuthentication', () => {
 });
 
 describe('CertificatеAuthentication', () => {
-    const classUnderTest = new CertificateAuthentication({
-        certificate: certificate,
-        privateKey: privateKey
-    });
+    const classUnderTest = new CertificateAuthentication(mTLSCredentials);
     test('can be correctly instantiated', () => {
-        expect(new CertificateAuthentication({ certificate, privateKey })).toBeDefined();
+        expect(new CertificateAuthentication(mTLSCredentials)).toBeDefined();
     });
 
     test('when getCertificate is called then correct value is returned', () => {

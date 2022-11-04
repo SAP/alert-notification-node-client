@@ -23,6 +23,8 @@ OAuthAuthentication is a class in the context of Alert Notification service node
 
 _**Note**_: Grant type query parameter will be added automatically by the client with value __client_credentials__.
 
+_**Note**_: In case you want the acquiring of the authorization header value to be realized with __certificate__ and __privateKey__, client id query parameter will be added automatically by the client with value of the __username__ field.
+
 ## Constructor properties
 
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
@@ -48,6 +50,21 @@ const oAuthAuthentication = new OAuthAuthentication({
     username: 'test-username',
     password: 'test-password',
     oAuthTokenUrl: 'https://test.oauth.service.com/oauth/token'
+});
+
+oAuthAuthentication.getAuthorizationHeaderValue()
+.then(authHeaderValue => console.log(authHeaderValue))
+.catch(error => console.log(error)); // In the current case an error will be logged, as the provided arguments are invalid. In order for the call to pass you must provide valid arguments.
+```
+
+```js
+import { OAuthAuthentication } from '@sap_oss/alert-notification-client';
+
+const oAuthAuthentication = new OAuthAuthentication({
+    username: 'test-username',
+    certificate: 'test-certificate',
+    privateKey: 'test-privateKey',
+    oAuthTokenUrl: 'https://test.oauth.cert.service.com/oauth/token'
 });
 
 oAuthAuthentication.getAuthorizationHeaderValue()
