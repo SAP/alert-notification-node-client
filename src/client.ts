@@ -10,10 +10,10 @@ import {
 import { Region } from './utils/region';
 
 import {
-    setupAuthorizationHeaderOnRequestInterceptor,
     extractDataOnResponseInterceptor,
     configureDefaultRetryInterceptor,
-    RetryConfig
+    RetryConfig,
+    setupAuthorizationHeaderOnRequestInterceptor
 } from './utils/axios-utils';
 
 import ConfigurationApiClient from './configuration-api/configuration-client';
@@ -29,17 +29,22 @@ import EventsApiClient from './producer-api/event-producer-client';
 import { ResourceEvent } from './producer-api/models';
 import { PageResponse, CommonQueryParams } from './utils/common';
 import { ConsumerPagedResponse, ConsumerQueryParameters } from './producer-api/models';
+import { DestinationConfiguration } from './utils/destination-configuration';
 import * as https from 'https';
 
 export interface AlertNotificationConfiguration {
     /**
      * Authentication to use for retrieving authorization header value.
      */
-    authentication:
+    authentication?:
         | BasicAuthentication
         | OAuthAuthentication
         | CertificateAuthentication
         | Authentication;
+    /**
+     * Authentication to use for retrieving authorization header value.
+     */
+    destinationConfiguration?: DestinationConfiguration;
     /**
      * Region
      */
@@ -83,8 +88,18 @@ export default class AlertNotificationClient {
             throw new Error('Configuration must not be an empty object, undefined or null');
         }
 
-        if (!configuration.authentication && !configuration.region) {
-            throw new Error('Authentication and region objects are required');
+        if (!configuration.region) {
+            throw new Error('Region object are required');
+        }
+
+        if (!configuration.authentication && !configuration.destinationConfiguration) {
+            throw new Error('Authentication or Destination configuration object is required');
+        }
+
+        if (configuration.authentication && configuration.destinationConfiguration) {
+            throw new Error(
+                'Either Authentication or Destination configuration object must be provided'
+            );
         }
         const platform = configuration.region.getPlatform();
         let axiosRequestConfig = {
@@ -103,14 +118,22 @@ export default class AlertNotificationClient {
                     })
                 }
             };
-        } else {
+        } else if (
+            configuration.authentication instanceof OAuthAuthentication ||
+            configuration.authentication instanceof BasicAuthentication
+        ) {
             const baseURL = configuration.region.getUrl();
             axiosRequestConfig = {
                 ...axiosRequestConfig,
                 ...{ baseURL }
             };
+        } else {
+            const baseURL = configuration.region.getmTLSUrl();
+            axiosRequestConfig = {
+                ...axiosRequestConfig,
+                ...{ baseURL }
+            };
         }
-
         if (configuration.retryConfig) {
             if (!configuration.retryConfig.maxRetries && !configuration.retryConfig.retryBackoff) {
                 throw new Error(
@@ -127,18 +150,24 @@ export default class AlertNotificationClient {
             configureDefaultRetryInterceptor(axiosInstance);
         }
 
-        if (!(configuration.authentication instanceof CertificateAuthentication)) {
+        if (configuration.destinationConfiguration != null) {
             setupAuthorizationHeaderOnRequestInterceptor(
                 axiosInstance,
-                configuration.authentication
+                configuration.destinationConfiguration.getAuthentication()
             );
+        } else {
+            if (!(configuration.authentication instanceof CertificateAuthentication)) {
+                setupAuthorizationHeaderOnRequestInterceptor(
+                    axiosInstance,
+                    Promise.resolve(configuration.authentication)
+                );
+            }
         }
         extractDataOnResponseInterceptor(axiosInstance);
 
         this.eventClient = new EventsApiClient(platform, axiosInstance);
         this.configurationClient = new ConfigurationApiClient(platform, axiosInstance);
     }
-
     /**
      *
      * Get one configuration entity by specifying the type, e.g. 'Action', 'Condition' or 'Subscription' and its name
@@ -259,7 +288,7 @@ export default class AlertNotificationClient {
      *
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource event
      */
-    public sendEvent(event: ResourceEvent): Promise<ResourceEvent> {
+    public async sendEvent(event: ResourceEvent): Promise<ResourceEvent> {
         return (this.eventClient.sendEvent(event) as unknown) as Promise<ResourceEvent>;
     }
 

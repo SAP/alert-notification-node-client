@@ -11,16 +11,19 @@ import ConfigurationApiClient from '../src/configuration-api/configuration-clien
 
 import { buildAction, buildEvent } from './test-utils';
 import EventsApiClient from '../src/producer-api/event-producer-client';
-import { CertificateAuthentication } from '../src/authentication';
+import { BasicAuthentication, CertificateAuthentication } from '../src/authentication';
+import { DestinationConfiguration } from '../src/utils/destination-configuration';
 
 jest.mock('axios');
 jest.mock('../src/configuration-api/configuration-client');
 jest.mock('../src/producer-api/event-producer-client');
 jest.mock('../src/utils/axios-utils');
+jest.mock('../src/utils/destination-configuration');
 
 const mockedAuthentication = {
     getAuthorizationHeaderValue: jest.fn(() => Promise.resolve('test-authorization-value'))
 };
+
 const region = RegionUtils.EU10;
 
 beforeEach(() => {
@@ -58,6 +61,42 @@ describe('when instantiating alert notification client', () => {
         });
     });
 
+    test('destination_configuration_is_provided_and_authentication_is_not_provided', () => {
+        expect(
+            () =>
+                new AlertNotificationClient({
+                    destinationConfiguration: new DestinationConfiguration({
+                        username: 'username',
+                        destinationName: 'dest-name',
+                        password: 'password',
+                        destinationUrl: 'destUrl',
+                        oAuthTokenUrl: 'oAuthUrl'
+                    }),
+                    region: region
+                })
+        ).toBeDefined();
+    });
+
+    test('destination_configuration_is_provided_and_authentication_is_provided', () => {
+        expect(
+            () =>
+                new AlertNotificationClient({
+                    authentication: new BasicAuthentication({
+                        username: 'username',
+                        password: 'password'
+                    }),
+                    destinationConfiguration: new DestinationConfiguration({
+                        username: 'username',
+                        destinationName: 'dest-name',
+                        password: 'password',
+                        destinationUrl: 'destUrl',
+                        oAuthTokenUrl: 'oAuthUrl'
+                    }),
+                    region: region
+                })
+        ).toThrow('Either Authentication or Destination configuration object must be provided');
+    });
+
     test('authentication_with_certificate_service_is_provided', () => {
         expect(
             () =>
@@ -71,7 +110,7 @@ describe('when instantiating alert notification client', () => {
         ).toBeDefined();
     });
 
-    test('authorization header interceptor is set', () => {
+    test('authorization header interceptor is set when authentication is provided', () => {
         new AlertNotificationClient({
             authentication: mockedAuthentication,
             region: region,
