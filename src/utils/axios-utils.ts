@@ -50,21 +50,20 @@ export function setupAuthorizationHeaderOnRequestInterceptor(
                                 httpsAgent: authentication.getHttpsAgent()
                             }
                         };
-                    } else {
-                        return authentication
-                            .getAuthorizationHeaderValue()
-                            .then((headerValue: string) => {
-                                const headers = {
-                                    ...config.headers,
-                                    ...{ Authorization: headerValue }
-                                };
-                                let auth;
-                                return { ...config, ...{ headers, auth } };
-                            })
-                            .catch((error: AxiosError) => {
-                                return Promise.reject(error);
-                            });
                     }
+                    return authentication
+                        .getAuthorizationHeaderValue()
+                        .then((headerValue: string) => {
+                            const headers = {
+                                ...config.headers,
+                                ...{ Authorization: headerValue }
+                            };
+                            let auth;
+                            return { ...config, ...{ headers, auth } };
+                        })
+                        .catch((error: AxiosError) => {
+                            return Promise.reject(error);
+                        });
                 })
                 .catch((error) => {
                     return Promise.reject(error);

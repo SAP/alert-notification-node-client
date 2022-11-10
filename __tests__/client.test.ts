@@ -69,7 +69,7 @@ describe('when instantiating alert notification client', () => {
                         username: 'username',
                         destinationName: 'dest-name',
                         password: 'password',
-                        destinationUrl: 'destUrl',
+                        destinationServiceBaseUrl: 'destUrl',
                         oAuthTokenUrl: 'oAuthUrl'
                     }),
                     region: region
@@ -89,7 +89,7 @@ describe('when instantiating alert notification client', () => {
                         username: 'username',
                         destinationName: 'dest-name',
                         password: 'password',
-                        destinationUrl: 'destUrl',
+                        destinationServiceBaseUrl: 'destUrl',
                         oAuthTokenUrl: 'oAuthUrl'
                     }),
                     region: region
@@ -123,7 +123,7 @@ describe('when instantiating alert notification client', () => {
         expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledTimes(1);
         expect(setupAuthorizationHeaderOnRequestInterceptor).toBeCalledWith(
             axios,
-            mockedAuthentication
+            Promise.resolve(mockedAuthentication)
         );
     });
 

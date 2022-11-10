@@ -19,7 +19,7 @@ permalink: /authentication/mtls-authentication-using-the-Destination-service
 
 ## Description
 
-DestinationConfiguration is a class in the context of Alert Notification service Node client. It is used to trigger the mTLS authentication using the Destination service, you just need to provide the clientID, Client secret, OAuth url, Destination service configuration URL generated from your Destination Service instance (e.g. from a Service Key or Service Binding) and the name of the destination where your Alert Notification credentials are configured. For further information go to [Credential Management](https://help.sap.com/docs/ALERT_NOTIFICATION/5967a369d4b74f7a9c2b91f5df8e6ab6/80fe24f86bde4e3aac2903ac05511835.html?locale=en-US) and select Mutual TLS Authentication with Destination Service option.
+DestinationConfiguration is a class in the context of Alert Notification service Node client. It is used to trigger the mTLS authentication, Basic authentication or oAuth authentication using the Destination service, you just need to provide the clientID, Client secret, OAuth url, Destination service configuration URL generated from your Destination Service instance (e.g. from a Service Key or Service Binding) and the name of the destination where your Alert Notification credentials are configured. For further information go to [Credential Management](https://help.sap.com/docs/ALERT_NOTIFICATION/5967a369d4b74f7a9c2b91f5df8e6ab6/80fe24f86bde4e3aac2903ac05511835.html?locale=en-US) and select Mutual TLS Authentication with Destination Service option.
 ## Constructor properties
 
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally

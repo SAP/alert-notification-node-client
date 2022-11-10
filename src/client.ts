@@ -92,10 +92,6 @@ export default class AlertNotificationClient {
             throw new Error('Region object is required');
         }
 
-        if (!configuration.authentication && !configuration.destinationConfiguration) {
-            throw new Error('Authentication or Destination configuration object is required');
-        }
-
         if (configuration.authentication && configuration.destinationConfiguration) {
             throw new Error(
                 'Either Authentication or Destination configuration object must be provided'

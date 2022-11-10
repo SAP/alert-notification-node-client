@@ -2,8 +2,6 @@ import axios, { AxiosInstance } from 'axios';
 import { setupAuthorizationHeaderOnRequestInterceptor } from './axios-utils';
 import { BasicAuthentication, OAuthAuthentication } from '../authentication';
 import { KeyStore, KeystoreFormat } from './key-store';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const jks = require('jks-js');
 
 export interface Credentials {
     /**
@@ -21,7 +19,7 @@ export interface Credentials {
     /**
      * Destination service configuration URL used to retrieve destination
      */
-    destinationUrl: string;
+    destinationServiceBaseUrl: string;
     /**
      * Oauth token URL used to retrieve access token
      */
@@ -47,17 +45,19 @@ export class DestinationConfiguration {
      */
     constructor(config: Credentials) {
         if (!config) {
-            throw new Error('Configuration cannot be undefined');
+            throw new Error('Configuration cannot be null, undefined or empty object');
         }
 
         if (
             !config.username ||
             !config.password ||
             !config.destinationName ||
-            !config.destinationUrl ||
+            !config.destinationServiceBaseUrl ||
             !config.oAuthTokenUrl
         ) {
-            throw new Error('Full configuration must be provided');
+            throw new Error(
+                'Username, password, destinationName, destinationUrl and oAuthTokenUrl configuration must be provided'
+            );
         }
         const oAuthAuthentication = new OAuthAuthentication({
             username: config.username,
@@ -67,7 +67,7 @@ export class DestinationConfiguration {
 
         const axiosRequestConfig = {
             baseURL:
-                config.destinationUrl +
+                config.destinationServiceBaseUrl +
                 DestinationConfiguration.DESTINATION_PATH +
                 config.destinationName,
             timeout: 2500,
@@ -183,6 +183,8 @@ export class DestinationConfiguration {
 
     // eslint-disable-next-line require-jsdoc
     private buildJksKeyStore(encodedKeyStore: string, password: string): KeyStore {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const jks = require('jks-js');
         const pemKeyStore = jks.toPem(this.decodeKeyStore(encodedKeyStore), password);
         const commonName = Object.keys(pemKeyStore).toString();
         return new KeyStore(
