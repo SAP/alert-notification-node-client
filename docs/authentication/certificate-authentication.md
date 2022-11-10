@@ -26,7 +26,7 @@ CertificateAuthentication is a class in the context of Alert Notification servic
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
 
 | Field | Type | Description |
-|:---:|:--:|:---------:| {% for field in site.data.certificate-service-authentication.propertyFields %}
+|:---:|:--:|:---------:| {% for field in site.data.certificate-authentication.propertyFields %}
 | {{field.name}} | {{ field.type }} | {{field.description}} | {% endfor %}
 
 ## Methods
@@ -34,7 +34,7 @@ CertificateAuthentication is a class in the context of Alert Notification servic
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
 
 | Name | Returns | Description |
-|:---:|:--:|:---------:| {% for method in site.data.certificate-service-authentication.methods %}
+|:---:|:--:|:---------:| {% for method in site.data.certificate-authentication.methods %}
 | {{method.name}} | {{method.returnValue}}|{{method.description}} | {% endfor %}
 
 ## @Example
