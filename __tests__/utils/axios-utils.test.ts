@@ -5,7 +5,7 @@ import {
     extractDataOnResponseInterceptor,
     setupAuthorizationHeaderOnRequestInterceptor
 } from '../../src/utils/axios-utils';
-import { KeyStore, KeystoreFormats } from '../../src/utils/key-store';
+import { KeyStore, KeystoreFormat } from '../../src/utils/key-store';
 
 jest.useFakeTimers();
 
@@ -26,7 +26,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
     describe('sets up a request handler when destination is provided', () => {
         test('build httpsAgent with pem keystore', () => {
             const keyStore = new KeyStore(
-                KeystoreFormats.P12,
+                KeystoreFormat.P12,
                 'passphrase',
                 Buffer.from('keystore'),
                 null,
@@ -44,7 +44,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
         });
 
         test('build httpsAgent with jks keystore', () => {
-            const keyStore = new KeyStore(KeystoreFormats.JKS, 'passphrase', null, 'cert', 'key');
+            const keyStore = new KeyStore(KeystoreFormat.JKS, 'passphrase', null, 'cert', 'key');
             setupAuthorizationHeaderOnRequestInterceptor(classUnderTest, Promise.resolve(keyStore));
 
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;

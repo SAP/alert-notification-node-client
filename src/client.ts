@@ -89,7 +89,7 @@ export default class AlertNotificationClient {
         }
 
         if (!configuration.region) {
-            throw new Error('Region object are required');
+            throw new Error('Region object is required');
         }
 
         if (!configuration.authentication && !configuration.destinationConfiguration) {
@@ -288,7 +288,7 @@ export default class AlertNotificationClient {
      *
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource event
      */
-    public async sendEvent(event: ResourceEvent): Promise<ResourceEvent> {
+    public sendEvent(event: ResourceEvent): Promise<ResourceEvent> {
         return (this.eventClient.sendEvent(event) as unknown) as Promise<ResourceEvent>;
     }
 

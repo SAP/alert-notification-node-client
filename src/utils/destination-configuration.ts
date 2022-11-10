@@ -1,8 +1,9 @@
 import axios, { AxiosInstance } from 'axios';
 import { setupAuthorizationHeaderOnRequestInterceptor } from './axios-utils';
 import { BasicAuthentication, OAuthAuthentication } from '../authentication';
-import { KeyStore, KeystoreFormats } from './key-store';
-import jks = require('jks-js');
+import { KeyStore, KeystoreFormat } from './key-store';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const jks = require('jks-js');
 
 export interface Credentials {
     /**
@@ -18,17 +19,17 @@ export interface Credentials {
      */
     destinationName: string;
     /**
-     * Destination url to call on retrieving destination
+     * Destination service configuration URL used to retrieve destination
      */
     destinationUrl: string;
     /**
-     * OAuth token url to call on retrieving token
+     * Oauth token URL used to retrieve access token
      */
     oAuthTokenUrl: string;
 }
 
 /**
- * Destination Service Configuration class. Retrieves the destination from destination service and build authentication.
+ * Destination Service Configuration class. Retrieves the destination from Destination service and build authentication context
  */
 export class DestinationConfiguration {
     private axiosInstance: AxiosInstance;
@@ -46,7 +47,7 @@ export class DestinationConfiguration {
      */
     constructor(config: Credentials) {
         if (!config) {
-            throw new Error('Configuration must not be undefined');
+            throw new Error('Configuration cannot be undefined');
         }
 
         if (
@@ -56,7 +57,7 @@ export class DestinationConfiguration {
             !config.destinationUrl ||
             !config.oAuthTokenUrl
         ) {
-            throw new Error('All of the configurations must be provided');
+            throw new Error('Full configuration must be provided');
         }
         const oAuthAuthentication = new OAuthAuthentication({
             username: config.username,
@@ -131,13 +132,13 @@ export class DestinationConfiguration {
         const keyStoreFormat = destination.certificates[0].Name.substr(
             destination.certificates[0].Name.length - 3
         );
-        if (keyStoreFormat == KeystoreFormats.JKS) {
+        if (keyStoreFormat == KeystoreFormat.JKS) {
             return this.buildJksKeyStore(
                 destination.certificates[0].Content,
                 destination.destinationConfiguration.KeyStorePassword
             );
         }
-        if (keyStoreFormat == KeystoreFormats.PEM) {
+        if (keyStoreFormat == KeystoreFormat.PEM) {
             return this.buildPemKeyStore(
                 destination.certificates[0].Content,
                 destination.destinationConfiguration.KeyStorePassword
@@ -171,13 +172,13 @@ export class DestinationConfiguration {
             .split(this.retrieveDelimiterForPem(password));
         const key = keyStore[0] + this.retrieveDelimiterForPem(password);
         const certificate = keyStore[1];
-        return new KeyStore(KeystoreFormats.PEM, password, undefined, certificate, key);
+        return new KeyStore(KeystoreFormat.PEM, password, undefined, certificate, key);
     }
 
     // eslint-disable-next-line require-jsdoc
     private buildP12KeyStore(encodedKeyStore: string, password: string): KeyStore {
         const keyStore = this.decodeKeyStore(encodedKeyStore);
-        return new KeyStore(KeystoreFormats.PFX, password, keyStore, undefined, undefined);
+        return new KeyStore(KeystoreFormat.PFX, password, keyStore, undefined, undefined);
     }
 
     // eslint-disable-next-line require-jsdoc
@@ -185,7 +186,7 @@ export class DestinationConfiguration {
         const pemKeyStore = jks.toPem(this.decodeKeyStore(encodedKeyStore), password);
         const commonName = Object.keys(pemKeyStore).toString();
         return new KeyStore(
-            KeystoreFormats.JKS,
+            KeystoreFormat.JKS,
             password,
             undefined,
             pemKeyStore[commonName].cert,

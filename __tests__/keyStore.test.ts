@@ -1,4 +1,4 @@
-import { KeyStore, KeystoreFormats } from '../src/utils/key-store';
+import { KeyStore, KeystoreFormat } from '../src/utils/key-store';
 
 const passphrase = 'password';
 const keystore = Buffer.from('keystore');
@@ -8,7 +8,7 @@ const key = 'key';
 describe('Key store', () => {
     test('can be correctly instantiated with Pem keystore', () => {
         const classUnderTest = new KeyStore(
-            KeystoreFormats.PEM,
+            KeystoreFormat.PEM,
             passphrase,
             undefined,
             certificate,
@@ -23,7 +23,7 @@ describe('Key store', () => {
 
     test('can be correctly instantiated with JKS keystore', () => {
         const classUnderTest = new KeyStore(
-            KeystoreFormats.JKS,
+            KeystoreFormat.JKS,
             passphrase,
             undefined,
             certificate,
@@ -38,7 +38,7 @@ describe('Key store', () => {
 
     test('can be correctly instantiated with PFX keystore', () => {
         const classUnderTest = new KeyStore(
-            KeystoreFormats.PFX,
+            KeystoreFormat.PFX,
             passphrase,
             keystore,
             undefined,

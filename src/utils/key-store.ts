@@ -1,6 +1,6 @@
 import * as https from 'https';
 
-export enum KeystoreFormats {
+export enum KeystoreFormat {
     JKS = 'jks',
     P12 = 'p12',
     PFX = 'pfx',
@@ -9,7 +9,7 @@ export enum KeystoreFormats {
 
 // eslint-disable-next-line require-jsdoc
 export class KeyStore {
-    private format: KeystoreFormats;
+    private format: KeystoreFormat;
     private keyStore: Buffer | undefined;
     private certificate: string | undefined;
     private key: string | undefined;
@@ -18,7 +18,7 @@ export class KeyStore {
 
     // eslint-disable-next-line require-jsdoc
     constructor(
-        format: KeystoreFormats,
+        format: KeystoreFormat,
         passphrase: string,
         keystore?: Buffer,
         certificate?: string,
@@ -33,7 +33,7 @@ export class KeyStore {
     }
 
     // eslint-disable-next-line require-jsdoc
-    getFormat(): KeystoreFormats {
+    getFormat(): KeystoreFormat {
         return this.format;
     }
 
@@ -44,7 +44,7 @@ export class KeyStore {
 
     // eslint-disable-next-line require-jsdoc
     private buildHttpsAgent(): https.Agent {
-        if (this.getFormat() == KeystoreFormats.JKS || this.getFormat() == KeystoreFormats.PEM) {
+        if (this.getFormat() == KeystoreFormat.JKS || this.getFormat() == KeystoreFormat.PEM) {
             return new https.Agent({
                 cert: this.certificate,
                 key: this.key,
