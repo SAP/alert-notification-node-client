@@ -13,7 +13,7 @@ permalink: /authentication/mtls-authentication-using-the-Destination-service
 {: .no_toc .text-delta }
 
 1. TOC
-   {:toc}
+{:toc}
 
 ---
 
@@ -25,7 +25,7 @@ DestinationConfiguration is a class in the context of Alert Notification service
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
 
 | Field | Type | Description |
-|:---:|:--:|:---------:| {% for field in site.data.certificate-service-authentication.propertyFields %}
+|:---:|:--:|:---------:| {% for field in site.data.destination-service.propertyFields %}
 | {{field.name}} | {{ field.type }} | {{field.description}} | {% endfor %}
 
 ## Methods
@@ -33,7 +33,7 @@ DestinationConfiguration is a class in the context of Alert Notification service
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
 
 | Name | Returns | Description |
-|:---:|:--:|:---------:| {% for method in site.data.certificate-service-authentication.methods %}
+|:---:|:--:|:---------:| {% for method in site.destination-service.methods %}
 | {{method.name}} | {{method.returnValue}}|{{method.description}} | {% endfor %}
 
 ## @Example
