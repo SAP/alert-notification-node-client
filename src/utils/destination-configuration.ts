@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { setupAuthorizationHeaderOnRequestInterceptor } from './axios-utils';
 import { BasicAuthentication, OAuthAuthentication } from '../authentication';
 import { KeyStore, KeystoreFormat } from './key-store';
-import jks = require('jks-js');
+import { toPem } from 'jks-js';
 
 export interface Credentials {
     /**
@@ -184,7 +184,7 @@ export class DestinationConfiguration {
 
     // eslint-disable-next-line require-jsdoc
     private buildJksKeyStore(encodedKeyStore: string, password: string): KeyStore {
-        const pemKeyStore = jks.toPem(this.decodeKeyStore(encodedKeyStore), password);
+        const pemKeyStore = toPem(this.decodeKeyStore(encodedKeyStore), password);
         const commonName = Object.keys(pemKeyStore).toString();
         return new KeyStore(
             KeystoreFormat.JKS,
