@@ -1,0 +1,36 @@
+{
+  "propertyFields": [
+    {
+      "name": "username",
+      "type": "string",
+      "description": "Client id provided form Destination Service binding"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "description": "Client secret provided from Destination Service binding"
+    },
+    {
+      "name": "destinationUrl",
+      "type": "string",
+      "description": "Destination Service configuration URL provided from Destination Service binding"
+    },
+    {
+      "name": "destinationName",
+      "type": "string",
+      "description": "Name of configured destination"
+    },
+    {
+      "name": "oAuthTokenUrl",
+      "type": "string",
+      "description": "OAuth URL to retrieve access token"
+    }
+  ],
+  "methods": [
+    {
+      "name": "getAuthentication",
+      "returnValue": "Promise<any>",
+      "description": "Get the authentication from the destination."
+    }
+  ]
+}

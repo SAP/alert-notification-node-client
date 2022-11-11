@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Authentication } from '../authentication';
+import { KeyStore } from './key-store';
 
 export interface RetryConfig {
     /**
@@ -32,23 +32,43 @@ export interface ExtendedAxiosRequestConfig extends AxiosRequestConfig {
  * also removes auth field from the current axios request config.
  *
  * @param {AxiosInstance} axiosInstance - given axios instance
- * @param {Authentication} authentication - authentication object, which will take care of getting
+ * @param {Authentication} authenticationPromise - authentication object, which will take care of getting
  * the authorization header value
  */
 export function setupAuthorizationHeaderOnRequestInterceptor(
     axiosInstance: AxiosInstance,
-    authentication: Authentication
+    authenticationPromise: Promise<any>
 ): void {
     axiosInstance.interceptors.request.use(
-        (config: AxiosRequestConfig) =>
-            authentication
-                .getAuthorizationHeaderValue()
-                .then((headerValue) => {
-                    const headers = { ...config.headers, ...{ Authorization: headerValue } };
-                    let auth;
-                    return { ...config, ...{ headers, auth } };
+        (config: AxiosRequestConfig) => {
+            return authenticationPromise
+                .then((authentication) => {
+                    if (authentication instanceof KeyStore) {
+                        return {
+                            ...config,
+                            ...{
+                                httpsAgent: authentication.getHttpsAgent()
+                            }
+                        };
+                    }
+                    return authentication
+                        .getAuthorizationHeaderValue()
+                        .then((headerValue: string) => {
+                            const headers = {
+                                ...config.headers,
+                                ...{ Authorization: headerValue }
+                            };
+                            let auth;
+                            return { ...config, ...{ headers, auth } };
+                        })
+                        .catch((error: AxiosError) => {
+                            return Promise.reject(error);
+                        });
                 })
-                .catch((error) => Promise.reject(error)),
+                .catch((error) => {
+                    return Promise.reject(error);
+                });
+        },
         (error: AxiosError) => {
             return Promise.reject(error);
         }
