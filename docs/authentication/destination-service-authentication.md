@@ -33,7 +33,7 @@ DestinationConfiguration is a class in the context of Alert Notification service
 [comment]: <> For loop must remain on the lines, if changed table won't behave normally
 
 | Name | Returns | Description |
-|:---:|:--:|:---------:| {% for method in site.destination-service.methods %}
+|:---:|:--:|:---------:| {% for method in site.data.destination-service.methods %}
 | {{method.name}} | {{method.returnValue}}|{{method.description}} | {% endfor %}
 
 ## @Example
