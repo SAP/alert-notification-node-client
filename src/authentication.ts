@@ -124,58 +124,55 @@ export class OAuthAuthentication implements Authentication {
 
         this.accessToken = '';
         this.expiresIn = 0;
-        let defaultConfig;
+        let defaultConfig = {
+            retryConfig: {
+                maxRetries: 3,
+                retryBackoff: 1000
+            },
+            timeout: OAuthAuthentication.HTTP_CLIENT_TIMEOUT
+        };
         if (this.isCertificateAuthentication(config)) {
             defaultConfig = {
-                baseURL: config.oAuthTokenUrl,
-                headers: {
-                    'Content-Type':
-                        OAuthAuthentication.APPLICATION_X_WWW_FORM_URLENCODED_CONTENT_TYPE
-                },
-                method: 'POST',
-                params: {
-                    grant_type: OAuthAuthentication.CLIENT_CREDENTIALS,
-                    client_id: `${config.username}`
-                },
-                httpsAgent: new https.Agent({
-                    cert: config.certificate,
-                    key: config.privateKey
-                }),
-                retryConfig: {
-                    maxRetries: 3,
-                    retryBackoff: 1000
+                ...defaultConfig,
+                ...{
+                    baseURL: config.oAuthTokenUrl,
+                    headers: {
+                        'Content-Type':
+                            OAuthAuthentication.APPLICATION_X_WWW_FORM_URLENCODED_CONTENT_TYPE
+                    },
+                    method: 'POST',
+                    params: {
+                        grant_type: OAuthAuthentication.CLIENT_CREDENTIALS,
+                        client_id: `${config.username}`
+                    },
+                    httpsAgent: new https.Agent({
+                        cert: config.certificate,
+                        key: config.privateKey
+                    })
                 }
             };
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            this.axiosInstance = Axios.create(defaultConfig);
-            configureDefaultRetryInterceptor(this.axiosInstance);
         } else {
             if (!config.password) {
                 throw new Error('Password is missing.');
             }
             defaultConfig = {
-                auth: {
-                    username: config.username,
-                    password: config.password
-                },
-                baseURL: config.oAuthTokenUrl,
-                timeout: OAuthAuthentication.HTTP_CLIENT_TIMEOUT,
-                params: {
-                    grant_type: OAuthAuthentication.CLIENT_CREDENTIALS
-                },
-                retryConfig: {
-                    maxRetries: 3,
-                    retryBackoff: 1000
+                ...defaultConfig,
+                ...{
+                    auth: {
+                        username: config.username,
+                        password: config.password
+                    },
+                    baseURL: config.oAuthTokenUrl,
+                    params: {
+                        grant_type: OAuthAuthentication.CLIENT_CREDENTIALS
+                    }
                 }
             };
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            this.axiosInstance = Axios.create(defaultConfig);
-            configureDefaultRetryInterceptor(this.axiosInstance);
         }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.axiosInstance = Axios.create(defaultConfig);
+        configureDefaultRetryInterceptor(this.axiosInstance);
     }
 
     /**
