@@ -14,7 +14,8 @@
       "forceConsistentCasingInFileNames": true
     },
     "include": [
-      "src/**/*"
+      "src/**/*",
+      "jks-js.d.ts"
     ],
     "exclude": [
       "node_modules", "__tests__"
