@@ -41,7 +41,7 @@ export class DestinationConfiguration {
     /**
      * Creates an instance of DestinationServiceConfiguration.
      *
-     * @param {Credentials} config - contains username, password, destinationName, destinationUrl and oAuthTokenUrl. All
+     * @param {CredentialsForDestinationService} config - contains username, password, destinationName, destinationUrl and oAuthTokenUrl. All
      * of them must be provided else Error will be thrown.
      */
     constructor(config: CredentialsForDestinationService) {
