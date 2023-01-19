@@ -4,7 +4,7 @@ import { BasicAuthentication, OAuthAuthentication } from '../authentication';
 import { KeyStore, KeystoreFormat } from './key-store';
 import { toPem } from 'jks-js';
 
-export interface Credentials {
+export interface CredentialsForDestinationService {
     /**
      * Username
      */
@@ -44,7 +44,7 @@ export class DestinationConfiguration {
      * @param {Credentials} config - contains username, password, destinationName, destinationUrl and oAuthTokenUrl. All
      * of them must be provided else Error will be thrown.
      */
-    constructor(config: Credentials) {
+    constructor(config: CredentialsForDestinationService) {
         if (!config) {
             throw new Error('Configuration cannot be null, undefined or empty object');
         }
