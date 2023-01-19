@@ -1,10 +1,16 @@
 import AlertNotificationClient, { AlertNotificationConfiguration } from './client';
 
 export {
+    DestinationConfiguration,
+    CredentialsForDestinationService
+} from './utils/destination-configuration';
+
+export {
     Credentials,
     OAuthConfig,
     BasicAuthentication,
-    OAuthAuthentication
+    OAuthAuthentication,
+    CertificateAuthentication
 } from './authentication';
 
 export * as RegionUtils from './utils/region';
