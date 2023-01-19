@@ -1,5 +1,5 @@
 import AlertNotificationClient, { AlertNotificationConfiguration } from './client';
-export{ DestinationConfiguration , CredentialsForDestinationService } from './utils/destination-configuration';
+export{ DestinationConfiguration, CredentialsForDestinationService } from './utils/destination-configuration';
 
 export {
     Credentials,
