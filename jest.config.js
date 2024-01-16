@@ -28,6 +28,8 @@ module.exports = {
     "<rootDir>/node_modules/"
   ],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.[t|j]sx?$": "babel-jest"
   },
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!axios)'],
 };

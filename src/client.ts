@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { InternalAxiosRequestConfig } from 'axios';
 
 import {
     BasicAuthentication,
@@ -52,7 +52,7 @@ export interface AlertNotificationConfiguration {
     /**
      * Axios request config
      */
-    axiosRequestConfig?: AxiosRequestConfig;
+    axiosRequestConfig?: InternalAxiosRequestConfig;
     /**
      * Retry configuration
      */
