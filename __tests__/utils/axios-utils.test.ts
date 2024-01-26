@@ -196,7 +196,7 @@ describe('when configureDefaultRetryInterceptor is called', () => {
 
         test('rejects the request if it is canceled', () => {
             const originalIsCancel = axios.isCancel;
-            axios.isCancel = jest.fn().mockReturnValue(true);
+            jest.spyOn(axios, 'isCancel').mockReturnValue(true);
 
             return onRejectedHandler(errorWithRetryConfig).catch((actualError) => {
                 expect(actualError).toBe(errorWithRetryConfig);

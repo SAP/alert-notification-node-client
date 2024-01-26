@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { KeyStore } from './key-store';
 
 export interface RetryConfig {
@@ -23,7 +23,7 @@ interface RetryConfigInternal extends RetryConfig {
     instance: AxiosInstance;
 }
 
-export interface ExtendedAxiosRequestConfig extends AxiosRequestConfig {
+export interface ExtendedAxiosRequestConfig extends InternalAxiosRequestConfig {
     retryConfig?: RetryConfigInternal;
 }
 
@@ -40,7 +40,7 @@ export function setupAuthorizationHeaderOnRequestInterceptor(
     authenticationPromise: Promise<any>
 ): void {
     axiosInstance.interceptors.request.use(
-        (config: AxiosRequestConfig) => {
+        (config: InternalAxiosRequestConfig) => {
             return authenticationPromise
                 .then((authentication) => {
                     if (authentication instanceof KeyStore) {

@@ -175,7 +175,7 @@ export default class AlertNotificationClient {
      * the given type
      */
     public get(type: EntityType, name: string): Promise<Action | Condition | Subscription> {
-        return (this.configurationClient.getOne({ type, name }) as unknown) as Promise<
+        return this.configurationClient.getOne({ type, name }) as unknown as Promise<
             Action | Condition | Subscription
         >;
     }
@@ -196,7 +196,7 @@ export default class AlertNotificationClient {
         type: EntityType,
         params?: CommonQueryParams
     ): Promise<PageResponse<Action | Condition | Subscription>> {
-        return (this.configurationClient.getAll({ type, params }) as unknown) as Promise<
+        return this.configurationClient.getAll({ type, params }) as unknown as Promise<
             PageResponse<Action | Condition | Subscription>
         >;
     }
@@ -216,7 +216,7 @@ export default class AlertNotificationClient {
         type: EntityType,
         data: Action | Condition | Subscription
     ): Promise<Action | Condition | Subscription> {
-        return (this.configurationClient.create({ type, data }) as unknown) as Promise<
+        return this.configurationClient.create({ type, data }) as unknown as Promise<
             Action | Condition | Subscription
         >;
     }
@@ -236,7 +236,7 @@ export default class AlertNotificationClient {
         type: EntityType,
         data: Action | Condition | Subscription
     ): Promise<Action | Condition | Subscription> {
-        return (this.configurationClient.update({ type, data }) as unknown) as Promise<
+        return this.configurationClient.update({ type, data }) as unknown as Promise<
             Action | Condition | Subscription
         >;
     }
@@ -251,7 +251,7 @@ export default class AlertNotificationClient {
      * @return {Promise<void>} - promise which contains nothing
      */
     public delete(type: EntityType, name: string): Promise<void> {
-        return (this.configurationClient.delete({ type, name }) as unknown) as Promise<void>;
+        return this.configurationClient.delete({ type, name }) as unknown as Promise<void>;
     }
 
     /**
@@ -263,7 +263,7 @@ export default class AlertNotificationClient {
      * @return {Promise<Configuration>} - promise which contains the imported configuration
      */
     public importConfiguration(data: Configuration): Promise<Configuration> {
-        return (this.configurationClient.import(data) as unknown) as Promise<Configuration>;
+        return this.configurationClient.import(data) as unknown as Promise<Configuration>;
     }
 
     /**
@@ -273,7 +273,7 @@ export default class AlertNotificationClient {
      * @return {Promise<Configuration>} - promise which contains the current configuration
      */
     public exportConfiguration(): Promise<Configuration> {
-        return (this.configurationClient.export() as unknown) as Promise<Configuration>;
+        return this.configurationClient.export() as unknown as Promise<Configuration>;
     }
 
     /**
@@ -285,7 +285,7 @@ export default class AlertNotificationClient {
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource event
      */
     public sendEvent(event: ResourceEvent): Promise<ResourceEvent> {
-        return (this.eventClient.sendEvent(event) as unknown) as Promise<ResourceEvent>;
+        return this.eventClient.sendEvent(event) as unknown as Promise<ResourceEvent>;
     }
 
     /**
@@ -297,7 +297,7 @@ export default class AlertNotificationClient {
      * @return {Promise<ResourceEvent>} - promise which contains the ingested resource events
      */
     public sendEvents(events: ResourceEvent[]): Promise<ResourceEvent[]> {
-        return (this.eventClient.sendEvents(events) as unknown) as Promise<ResourceEvent[]>;
+        return this.eventClient.sendEvents(events) as unknown as Promise<ResourceEvent[]>;
     }
 
     /**
@@ -313,9 +313,10 @@ export default class AlertNotificationClient {
         eventId: string,
         params?: ConsumerQueryParameters
     ): Promise<ConsumerPagedResponse> {
-        return (this.eventClient.getMatchedEvents({ eventId, params }) as unknown) as Promise<
-            ConsumerPagedResponse
-        >;
+        return this.eventClient.getMatchedEvents({
+            eventId,
+            params
+        }) as unknown as Promise<ConsumerPagedResponse>;
     }
 
     /**
@@ -327,9 +328,9 @@ export default class AlertNotificationClient {
      * @return {Promise<ConsumerPagedResponse>} - promise which contains paginated response for the searched matched events
      */
     public getMatchedEvents(params?: ConsumerQueryParameters): Promise<ConsumerPagedResponse> {
-        return (this.eventClient.getMatchedEvents({ params }) as unknown) as Promise<
-            ConsumerPagedResponse
-        >;
+        return this.eventClient.getMatchedEvents({
+            params
+        }) as unknown as Promise<ConsumerPagedResponse>;
     }
 
     /**
@@ -345,9 +346,10 @@ export default class AlertNotificationClient {
         eventId: string,
         params?: CommonQueryParams
     ): Promise<ConsumerPagedResponse> {
-        return (this.eventClient.getUndeliveredEvents({ eventId, params }) as unknown) as Promise<
-            ConsumerPagedResponse
-        >;
+        return this.eventClient.getUndeliveredEvents({
+            eventId,
+            params
+        }) as unknown as Promise<ConsumerPagedResponse>;
     }
 
     /**
@@ -359,8 +361,8 @@ export default class AlertNotificationClient {
      * @return {Promise<ConsumerPagedResponse>} - promise which contains paginated response for the searched undelivered events
      */
     public getUndeliveredEvents(params?: ConsumerQueryParameters): Promise<ConsumerPagedResponse> {
-        return (this.eventClient.getUndeliveredEvents({ params }) as unknown) as Promise<
-            ConsumerPagedResponse
-        >;
+        return this.eventClient.getUndeliveredEvents({
+            params
+        }) as unknown as Promise<ConsumerPagedResponse>;
     }
 }
