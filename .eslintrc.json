@@ -17,6 +17,7 @@
         "prettier",
         "@typescript-eslint"
     ],
+    "ignorePatterns": ["**/node_modules/**"],
     "rules": {
         "semi": "off",
         "@typescript-eslint/semi": "error",
