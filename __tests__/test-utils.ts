@@ -15,6 +15,7 @@ export const test_labels = [];
 export const test_fallback_action = '';
 export const test_fallback_time = 0;
 export const test_discard_after = 10;
+export const test_enable_delivery_status = false;
 export const test_properties = {};
 export const test_property_key = 'test-property-key';
 export const test_property_value = 'test-property-value';
@@ -41,6 +42,7 @@ export function buildAction(action?: Action): Action {
         fallbackAction: test_fallback_action,
         fallbackTime: test_fallback_time,
         discardAfter: test_discard_after,
+        enableDeliveryStatus: test_enable_delivery_status,
         properties: test_properties,
         ...{ action }
     };

@@ -81,6 +81,12 @@ export interface Action {
      */
     discardAfter?: number;
     /**
+     * Choose to trigger delivery status event for each event matched for delivery through this action.
+     * To receive this event, subscribe to it by referring to the Delivery Status event catalog topic.
+     * The page can be found on the SAP Alert Notification service Help Portal documentation.
+     */
+    enableDeliveryStatus?: boolean;
+    /**
      * Action specific key-value pairs describing configuration properties.
      */
     properties?: Record<string, string>;

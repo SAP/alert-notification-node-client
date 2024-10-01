@@ -46,6 +46,11 @@
             "description": "Time in seconds to allow the current action to be retried before being discarded. If 0, undefined or null the action will be retried for its maximum times."
         },
         {
+            "name": "enableDeliveryStatus?",
+            "type": "boolean",
+            "description": "Choose to trigger delivery status event for each event matched for delivery through this action. To receive this event, subscribe to it by referring to the Delivery Status event catalog topic outlined in the SAP Alert Notification service Help Portal documentation."
+        },
+        {
             "name": "labels?",
             "type": "string[]",
             "description": "Representing meaningful identifiers, which enable custom displaying & filtering capabilities"
