@@ -48,6 +48,15 @@ const client = new AlertNotificationClient({
     region: RegionUtils.EU10;
 });
 
+
+// Or with a destinationName
+const client = new AlertNotificationClient({
+    authentication: new DestinationAuthentification({
+        destinationName: 'myWonderfulDestination'
+    }),
+    region: RegionUtils.EU10;
+});
+
 // After that you can use the provided methods from the Alert Notification service instance
 ```
 
