@@ -31,9 +31,10 @@
         }
     },
     "dependencies": {
+        "@sap-cloud-sdk/connectivity": "^3.24.0",
         "axios": ">=1.6.0",
-        "jks-js": "^1.1.0",
-        "follow-redirects": ">=1.15.6"
+        "follow-redirects": ">=1.15.6",
+        "jks-js": "^1.1.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.18.10",

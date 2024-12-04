@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import {
     BasicAuthentication,
+    DestinationAuthentication,
     CertificateAuthentication,
     OAuthAuthentication
 } from '../src/authentication';
@@ -36,6 +37,33 @@ describe('BasicAuthentication', () => {
             .then((actualValue) => expect(actualValue).toBe(expectedValue));
     });
 });
+
+// Fake a destination to be existing locally
+process.env.destinations = JSON.stringify([{
+    "URL": "https://destination.example.com",
+    "Name": "localDestination",
+    "Authentication": "BasicAuthentication",
+    "User": "username",
+    "Password": "password",
+    "Type": "HTTP",
+    "ProxyType": "Internet"
+}]);
+
+describe('DestinationAuthentication', () => {
+    test('can be correctly instantiated', () => {
+        expect(new DestinationAuthentication("localDestination")).toBeDefined();
+    });
+
+    test('when getAuthorizationHeaderValue is called then correct value is returned', () => {
+        const expectedValue = `Basic ${Buffer.from(
+            `${basicCredentials.username}:${basicCredentials.password}`
+        ).toString('base64')}`;
+        return new DestinationAuthentication("localDestination")
+            .getAuthorizationHeaderValue()
+            .then((actualValue) => expect(actualValue).toBe(expectedValue));
+    });
+});
+
 
 describe('OAuthAuthentication', () => {
     let oauthResponse: { data: { access_token: string; expires_in: number } };
