@@ -1,0 +1,16 @@
+{
+    "propertyFields": [
+        {
+            "name": "destinationName",
+            "type": "string",
+            "description": "The name of the destination configured on your bound destination-service instance"
+        }
+    ],
+    "methods": [
+        {
+            "name": "getAuthorizationHeaderValue()",
+            "returnValue": "string",
+            "description": "Gets the related Authorization Header from the destination by using the SAP Cloud SDK."
+        }
+    ]
+}
