@@ -10,7 +10,8 @@ export {
     OAuthConfig,
     BasicAuthentication,
     OAuthAuthentication,
-    CertificateAuthentication
+    CertificateAuthentication,
+    DestinationAuthentication
 } from './authentication';
 
 export * as RegionUtils from './utils/region';

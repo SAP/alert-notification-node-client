@@ -4,7 +4,8 @@ import {
     BasicAuthentication,
     OAuthAuthentication,
     Authentication,
-    CertificateAuthentication
+    CertificateAuthentication,
+    DestinationAuthentication
 } from './authentication';
 
 import { Region } from './utils/region';
@@ -37,10 +38,11 @@ export interface AlertNotificationConfiguration {
      * Authentication to use for retrieving authorization header value.
      */
     authentication?:
-        | BasicAuthentication
-        | OAuthAuthentication
-        | CertificateAuthentication
-        | Authentication;
+    | BasicAuthentication
+    | OAuthAuthentication
+    | CertificateAuthentication
+    | Authentication
+    | DestinationAuthentication;
     /**
      * Authentication to use for retrieving authorization header value.
      */
@@ -116,7 +118,8 @@ export default class AlertNotificationClient {
             };
         } else if (
             configuration.authentication instanceof OAuthAuthentication ||
-            configuration.authentication instanceof BasicAuthentication
+            configuration.authentication instanceof BasicAuthentication ||
+            configuration.authentication instanceof DestinationAuthentication
         ) {
             const baseURL = configuration.region.getUrl();
             axiosRequestConfig = {
