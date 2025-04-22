@@ -15,6 +15,7 @@ const ANS_EU20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu20.h
 const ANS_US10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us10.hana.ondemand.com';
 const ANS_US20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us20.hana.ondemand.com';
 const ANS_US21_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.hana.ondemand.com';
+const ANS_US11_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.hana.ondemand.com';
 const ANS_CH20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ch20.hana.ondemand.com';
 const ANS_US30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us30.hana.ondemand.com';
 const ANS_JP10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.jp10.hana.ondemand.com';
@@ -53,6 +54,8 @@ const ANS_US10_MESH_INSTANCE =
 const ANS_US20_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.us20.hana.ondemand.com';
 const ANS_US21_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.us21.hana.ondemand.com';
+const ANS_US11_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.us21.hana.ondemand.com';
 const ANS_CH20_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ch20.hana.ondemand.com';
@@ -168,6 +171,7 @@ export const AP11 = new Region(Platform.CF, ANS_AP11_INSTANCE, ANS_AP11_MESH_INS
 export const AP12 = new Region(Platform.CF, ANS_AP12_INSTANCE, ANS_AP12_MESH_INSTANCE);
 export const US20 = new Region(Platform.CF, ANS_US20_INSTANCE, ANS_US20_MESH_INSTANCE);
 export const US21 = new Region(Platform.CF, ANS_US21_INSTANCE, ANS_US21_MESH_INSTANCE);
+export const US11 = new Region(Platform.CF, ANS_US11_INSTANCE, ANS_US11_MESH_INSTANCE);
 export const US30 = new Region(Platform.CF, ANS_US30_INSTANCE, ANS_US30_MESH_INSTANCE);
 export const AP20 = new Region(Platform.CF, ANS_AP20_INSTANCE, ANS_AP20_MESH_INSTANCE);
 export const AP21 = new Region(Platform.CF, ANS_AP21_INSTANCE, ANS_AP21_MESH_INSTANCE);
@@ -219,6 +223,7 @@ export const CF_AZURE_TOKYO = JP20;
 export const CF_GCP_OSAKA = JP30;
 export const CF_AZURE_WA = US20;
 export const CF_AZURE_VA = US21;
+export const CF_AWS_US_WEST = US11;
 export const CF_AZURE_SYDNEY = AP20;
 export const CF_GCP_IA = US30;
 export const CF_GCP_FRANKFURT = EU30;
