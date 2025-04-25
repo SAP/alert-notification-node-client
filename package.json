@@ -1,6 +1,6 @@
 {
     "name": "@sap_oss/alert-notification-client",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "description": "SAP Alert Notification service for SAP BTP Node.js API client",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
