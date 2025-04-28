@@ -1,18 +1,34 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Debug Jest Tests",
-            "type": "node",
-            "request": "launch",
-            "runtimeArgs": [
-              "--inspect-brk",
-              "${workspaceRoot}/node_modules/.bin/jest",
-              "--runInBand"
-            ],
-            "console": "externalTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "port": 9229
-          }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
+      ],
+      "console": "externalTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "Debug Jest Test (selected file)",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--no-cache",
+        "--detectOpenHandles",
+        "${fileBasenameNoExtension}"
+      ],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outputCapture": "std" // provide winston messages too
+    }
+  ]
 }

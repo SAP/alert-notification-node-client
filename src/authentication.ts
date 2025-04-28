@@ -1,7 +1,7 @@
 import Axios, { AxiosInstance } from 'axios';
 import { configureDefaultRetryInterceptor } from './utils/axios-utils';
 import * as https from 'https';
-
+import * as sdkConnectivity from '@sap-cloud-sdk/connectivity';
 export interface Credentials {
     /**
      * Username
@@ -86,6 +86,40 @@ export class BasicAuthentication implements Authentication {
         return Promise.resolve(`Basic ${this.basicAuthorizationHeader}`);
     }
 }
+
+export class DestinationAuthentication implements Authentication {
+    private _destinationName: string;
+
+    constructor(destinationName: string) {
+        if (!destinationName || destinationName === '') {
+            throw new Error('destinationName must be provided');
+        }
+        this._destinationName = destinationName;
+    }
+
+    /***
+     * _getAuthHeadersFromDestination
+     * @description Get the Authorization headers from the destination service (using the SAP Cloud SDK)
+     * @returns {Promise<Record<string, string>>} - promise containing the Authorization headers
+     */
+    private async _getAuthHeadersFromDestination(): Promise<Record<string, string>> {
+        return sdkConnectivity.getDestination({ destinationName: this._destinationName }).then((destination) => {
+            if (!destination) throw new Error("Destination with name " + this._destinationName + " not found!");
+            return sdkConnectivity.buildHeadersForDestination(destination);
+        });
+    }
+
+    /**
+     * getAuthorizationHeaderValue
+     * @returns {string} The Authorization header value, derived by the destination
+     */
+    public async getAuthorizationHeaderValue(): Promise<string> {
+        return this._getAuthHeadersFromDestination().then((headers) => {
+            return Promise.resolve(`${headers.authorization}`);
+        });
+    }
+}
+
 
 /**
  * OAuth Authentication class. Retrieves the OAuth authorization header value.
