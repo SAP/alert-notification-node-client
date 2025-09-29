@@ -3,6 +3,7 @@
  */
 const ANS_AP10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap10.hana.ondemand.com';
 const ANS_SA31_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.sa31.hana.ondemand.com';
+const ANS_EU01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu01.hana.ondemand.com';
 const ANS_AP11_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap11.hana.ondemand.com';
 const ANS_AP12_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap12.hana.ondemand.com';
 const ANS_AP20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap20.hana.ondemand.com';
@@ -31,6 +32,8 @@ const ANS_AP10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap10.hana.ondemand.com';
 const ANS_SA31_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.sa31.hana.ondemand.com';
+const ANS_EU01_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu01.hana.ondemand.com';
 const ANS_AP11_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap11.hana.ondemand.com';
 const ANS_AP12_MESH_INSTANCE =
@@ -163,6 +166,7 @@ export const EU11 = new Region(Platform.CF, ANS_EU11_INSTANCE, ANS_EU11_MESH_INS
 export const EU20 = new Region(Platform.CF, ANS_EU20_INSTANCE, ANS_EU20_MESH_INSTANCE);
 export const AP10 = new Region(Platform.CF, ANS_AP10_INSTANCE, ANS_AP10_MESH_INSTANCE);
 export const SA31 = new Region(Platform.CF, ANS_SA31_INSTANCE, ANS_SA31_MESH_INSTANCE);
+export const EU01 = new Region(Platform.CF, ANS_EU01_INSTANCE, ANS_EU01_MESH_INSTANCE);
 export const BR10 = new Region(Platform.CF, ANS_BR10_INSTANCE, ANS_BR10_MESH_INSTANCE);
 export const BR30 = new Region(Platform.CF, ANS_BR30_INSTANCE, ANS_BR30_MESH_INSTANCE);
 export const CA10 = new Region(Platform.CF, ANS_CA10_INSTANCE, ANS_CA10_MESH_INSTANCE);
@@ -205,6 +209,7 @@ export const NEO_SHANGHAI = CN1;
 export const NEO_MOSCOW = RU1;
 export const CF_AWS_SYDNEY = AP10;
 export const CF_GCP_DAMMAM = SA31;
+export const CF_CCEE_FRANKFURT = EU01;
 export const CF_AWS_SINGAPORE = AP11;
 export const CF_AWS_SEOUL = AP12;
 export const CF_AWS_SAO_PAULO = BR10;
