@@ -246,5 +246,5 @@ export const CF_AZURE_SYDNEY = AP20;
 export const CF_GCP_IA = US30;
 export const CF_GCP_FRANKFURT = EU30;
 export const CF_GCP_MUMBAI = IN30;
-export const CF_GCP_DAMMAM_PUBLIC = SA30;
+export const CF_GCP_DAMMAM_PUBLIC_SECTOR = SA30;
 export const CF_CCEE_DUBAI = AE01;
