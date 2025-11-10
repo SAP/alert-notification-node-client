@@ -28,6 +28,8 @@ const ANS_CA10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ca10.h
 const ANS_CA20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ca10.hana.ondemand.com';
 const ANS_EU30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu30.hana.ondemand.com';
 const ANS_IN30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.in30.hana.ondemand.com';
+const ANS_SA30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.sa30.hana.ondemand.com';
+const ANS_AE01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ae01.hana.ondemand.com';
 
 const ANS_AP10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap10.hana.ondemand.com';
@@ -83,6 +85,10 @@ const ANS_EU30_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu30.hana.ondemand.com';
 const ANS_IN30_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.in30.hana.ondemand.com';
+const ANS_SA30_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.sa30.hana.ondemand.com';
+const ANS_AE01_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.ae01.hana.ondemand.com';
 
 /**
  * @enum {CF, NEO}
@@ -191,6 +197,8 @@ export const JP31 = new Region(Platform.CF, ANS_JP31_INSTANCE, ANS_JP31_MESH_INS
 export const AP31 = new Region(Platform.CF, ANS_AP31_INSTANCE, ANS_AP31_MESH_INSTANCE);
 export const EU30 = new Region(Platform.CF, ANS_EU30_INSTANCE, ANS_EU30_MESH_INSTANCE);
 export const IN30 = new Region(Platform.CF, ANS_IN30_INSTANCE, ANS_IN30_MESH_INSTANCE);
+export const SA30 = new Region(Platform.CF, ANS_SA30_INSTANCE, ANS_SA30_MESH_INSTANCE);
+export const AE01 = new Region(Platform.CF, ANS_AE01_INSTANCE, ANS_AE01_MESH_INSTANCE);
 /**
  * Customer facing names of the regions.
  */
@@ -238,3 +246,5 @@ export const CF_AZURE_SYDNEY = AP20;
 export const CF_GCP_IA = US30;
 export const CF_GCP_FRANKFURT = EU30;
 export const CF_GCP_MUMBAI = IN30;
+export const CF_GCP_DAMMAM_PUBLIC_SECTOR = SA30;
+export const CF_CCEE_DUBAI = AE01;
