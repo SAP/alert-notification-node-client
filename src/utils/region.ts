@@ -13,6 +13,7 @@ const ANS_BR30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.br10.h
 const ANS_EU10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu10.hana.ondemand.com';
 const ANS_EU11_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu11.hana.ondemand.com';
 const ANS_EU20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu20.hana.ondemand.com';
+const ANS_EU31_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu20.hana.ondemand.com';
 const ANS_US10_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us10.hana.ondemand.com';
 const ANS_US20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us20.hana.ondemand.com';
 const ANS_US21_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.hana.ondemand.com';
@@ -54,6 +55,8 @@ const ANS_EU10_MESH_INSTANCE =
 const ANS_EU11_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu11.hana.ondemand.com';
 const ANS_EU20_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu20.hana.ondemand.com';
+const ANS_EU31_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu20.hana.ondemand.com';
 const ANS_US10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.us10.hana.ondemand.com';
@@ -173,6 +176,7 @@ export const JP1 = new Region(Platform.NEO, ANS_JP10_INSTANCE, ANS_JP10_MESH_INS
 export const EU10 = new Region(Platform.CF, ANS_EU10_INSTANCE, ANS_EU10_MESH_INSTANCE);
 export const EU11 = new Region(Platform.CF, ANS_EU11_INSTANCE, ANS_EU11_MESH_INSTANCE);
 export const EU20 = new Region(Platform.CF, ANS_EU20_INSTANCE, ANS_EU20_MESH_INSTANCE);
+export const EU31 = new Region(Platform.CF, ANS_EU31_INSTANCE, ANS_EU31_MESH_INSTANCE);
 export const AP10 = new Region(Platform.CF, ANS_AP10_INSTANCE, ANS_AP10_MESH_INSTANCE);
 export const SA31 = new Region(Platform.CF, ANS_SA31_INSTANCE, ANS_SA31_MESH_INSTANCE);
 export const EU01 = new Region(Platform.CF, ANS_EU01_INSTANCE, ANS_EU01_MESH_INSTANCE);
@@ -237,6 +241,7 @@ export const CF_AZURE_SINGAPORE = AP21;
 export const CF_GCP_SINGAPORE = AP31;
 export const CF_AZURE_SWITZERLAND = CH20;
 export const CF_AZURE_NETHERLANDS = EU20;
+export const CF_GCP_NETHERLANDS = EU31;
 export const CF_AZURE_TOKYO = JP20;
 export const CF_GCP_OSAKA = JP30;
 export const CF_AZURE_WA = US20;
