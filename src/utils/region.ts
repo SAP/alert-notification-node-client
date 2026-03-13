@@ -40,6 +40,7 @@ const ANS_US02_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.h
 const ANS_JP01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.jp10.hana.ondemand.com';
 const ANS_AP01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap20.hana.ondemand.com';
 const ANS_EU02_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu02.hana.ondemand.com';
+const ANS_UK20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.uk20.hana.ondemand.com';
 
 const ANS_AP10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap10.hana.ondemand.com';
@@ -119,6 +120,8 @@ const ANS_AP01_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap20.hana.ondemand.com';
 const ANS_EU02_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu02.hana.ondemand.com';
+const ANS_UK20_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.uk20.hana.ondemand.com';
 
 /**
  * @enum {CF, NEO}
@@ -239,6 +242,7 @@ export const US02 = new Region(Platform.CF, ANS_US02_INSTANCE, ANS_US02_MESH_INS
 export const JP01 = new Region(Platform.CF, ANS_JP01_INSTANCE, ANS_JP01_MESH_INSTANCE);
 export const AP01 = new Region(Platform.CF, ANS_AP01_INSTANCE, ANS_AP01_MESH_INSTANCE);
 export const EU02 = new Region(Platform.CF, ANS_EU02_INSTANCE, ANS_EU02_MESH_INSTANCE);
+export const UK20 = new Region(Platform.CF, ANS_UK20_INSTANCE, ANS_UK20_MESH_INSTANCE);
 /**
  * Customer facing names of the regions.
  */
@@ -298,3 +302,4 @@ export const CF_CCEE_COLORADO_WEST = US02;
 export const CF_CCEE_TOKYO = JP01;
 export const CF_CCEE_SYDNEY = AP01;
 export const CF_CCEE_ROT_EU_ACCESS = EU02;
+export const CF_AZURE_LONDON = UK20;
