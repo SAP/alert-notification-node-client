@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosHeaders, InternalAxiosRequestConfig } from 'axios';
 
 import {
     configureDefaultRetryInterceptor,
@@ -15,11 +15,11 @@ const mockedAuthentication = {
 };
 
 let classUnderTest: AxiosInstance;
-let axiosRequestConfig: AxiosRequestConfig;
+let axiosRequestConfig: InternalAxiosRequestConfig;
 
 beforeEach(() => {
     classUnderTest = axios.create();
-    axiosRequestConfig = {};
+    axiosRequestConfig = { headers: new AxiosHeaders() };
 });
 
 describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
@@ -35,7 +35,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
             setupAuthorizationHeaderOnRequestInterceptor(classUnderTest, Promise.resolve(keyStore));
 
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
-            return fullfilledHandler(axiosRequestConfig).then((adjustedConfig) => {
+            return Promise.resolve(fullfilledHandler(axiosRequestConfig)).then((adjustedConfig: any) => {
                 expect(adjustedConfig.httpsAgent.options.pfx).toBeDefined();
                 expect(adjustedConfig.httpsAgent.options.passphrase).toBe('passphrase');
                 expect(adjustedConfig.httpsAgent.options.cert).toBeUndefined();
@@ -48,7 +48,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
             setupAuthorizationHeaderOnRequestInterceptor(classUnderTest, Promise.resolve(keyStore));
 
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
-            return fullfilledHandler(axiosRequestConfig).then((adjustedConfig) => {
+            return Promise.resolve(fullfilledHandler(axiosRequestConfig)).then((adjustedConfig: any) => {
                 expect(adjustedConfig.httpsAgent.options.pfx).toBeUndefined();
                 expect(adjustedConfig.httpsAgent.options.passphrase).toBe('passphrase');
                 expect(adjustedConfig.httpsAgent.options.cert).toBeDefined();
@@ -60,10 +60,10 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
     describe('sets up a request handler which', () => {
         beforeEach(() => {
             axiosRequestConfig = {
-                headers: {
+                headers: new AxiosHeaders({
                     'content-length': 'application-json',
                     'test-header': 'test-value'
-                }
+                })
             };
 
             setupAuthorizationHeaderOnRequestInterceptor(
@@ -80,7 +80,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
             axiosRequestConfig = { ...axiosRequestConfig, auth };
 
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
-            return fullfilledHandler(axiosRequestConfig).then((adjustedConfig) =>
+            return Promise.resolve(fullfilledHandler(axiosRequestConfig)).then((adjustedConfig: any) =>
                 expect(adjustedConfig.auth).not.toBeDefined()
             );
         });
@@ -88,7 +88,7 @@ describe('when setupAuthorizationHeaderOnRequestInterceptor is called', () => {
         test('populates headers field with Authorization header', () => {
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
 
-            return fullfilledHandler(axiosRequestConfig).then((adjustedConfig) =>
+            return Promise.resolve(fullfilledHandler(axiosRequestConfig)).then((adjustedConfig: any) =>
                 expect(adjustedConfig.headers.Authorization).toEqual(authorizationValue)
             );
         });
@@ -106,12 +106,15 @@ describe('when extractDataOnResponseInterceptor is called', () => {
                     test: 'test-value'
                 },
                 status: 200,
+                statusText: 'OK',
+                headers: new AxiosHeaders(),
+                config: axiosRequestConfig,
                 otherObject: {
                     other: 'other-data'
                 }
             };
 
-            return fullfilledHandler(responseObject).then((actualdata) =>
+            return Promise.resolve(fullfilledHandler(responseObject)).then((actualdata) =>
                 expect(actualdata).toEqual(responseObject.data)
             );
         });
@@ -134,7 +137,7 @@ describe('when configureDefaultRetryInterceptor is called', () => {
     describe('sets up a request handler which', () => {
         test('sets default retry configuration if it is not provided', () => {
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
-            const adjustedRequestConfig = fullfilledHandler(axiosRequestConfig);
+            const adjustedRequestConfig = fullfilledHandler(axiosRequestConfig) as any;
 
             expect(adjustedRequestConfig.retryConfig).toStrictEqual({
                 currentAttempt: 0,
@@ -145,10 +148,10 @@ describe('when configureDefaultRetryInterceptor is called', () => {
         });
 
         test('sets the provided retry configuration', () => {
-            axiosRequestConfig = { ...axiosRequestConfig, ...{ retryConfig } };
+            axiosRequestConfig = { ...axiosRequestConfig, ...{ retryConfig } } as any;
 
             const fullfilledHandler = classUnderTest.interceptors.request['handlers'][0].fulfilled;
-            const adjustedRequestConfig = fullfilledHandler(axiosRequestConfig);
+            const adjustedRequestConfig = fullfilledHandler(axiosRequestConfig) as any;
 
             expect(adjustedRequestConfig.retryConfig).toStrictEqual({
                 ...retryConfig,
