@@ -31,6 +31,16 @@ const ANS_EU30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu30.h
 const ANS_IN30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.in30.hana.ondemand.com';
 const ANS_SA30_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.sa30.hana.ondemand.com';
 const ANS_AE01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ae01.hana.ondemand.com';
+const ANS_EU13_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu20.hana.ondemand.com';
+const ANS_US01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us20.hana.ondemand.com';
+const ANS_US32_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us20.hana.ondemand.com';
+const ANS_US22_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.hana.ondemand.com';
+const ANS_EU22_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu30.hana.ondemand.com';
+const ANS_US02_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.us21.hana.ondemand.com';
+const ANS_JP01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.jp10.hana.ondemand.com';
+const ANS_AP01_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.ap20.hana.ondemand.com';
+const ANS_EU02_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.eu02.hana.ondemand.com';
+const ANS_UK20_INSTANCE = 'https://clm-sl-ans-live-ans-service-api.cfapps.uk20.hana.ondemand.com';
 
 const ANS_AP10_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap10.hana.ondemand.com';
@@ -92,6 +102,26 @@ const ANS_SA30_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.sa30.hana.ondemand.com';
 const ANS_AE01_MESH_INSTANCE =
     'https://clm-sl-ans-live-ans-service-api.mesh.cf.ae01.hana.ondemand.com';
+const ANS_EU13_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu20.hana.ondemand.com';
+const ANS_US01_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.us20.hana.ondemand.com';
+const ANS_US32_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.us20.hana.ondemand.com';
+const ANS_US22_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.us21.hana.ondemand.com';
+const ANS_EU22_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu30.hana.ondemand.com';
+const ANS_US02_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.us21.hana.ondemand.com';
+const ANS_JP01_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.jp10.hana.ondemand.com';
+const ANS_AP01_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.ap20.hana.ondemand.com';
+const ANS_EU02_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.eu02.hana.ondemand.com';
+const ANS_UK20_MESH_INSTANCE =
+    'https://clm-sl-ans-live-ans-service-api.mesh.cf.uk20.hana.ondemand.com';
 
 /**
  * @enum {CF, NEO}
@@ -203,6 +233,16 @@ export const EU30 = new Region(Platform.CF, ANS_EU30_INSTANCE, ANS_EU30_MESH_INS
 export const IN30 = new Region(Platform.CF, ANS_IN30_INSTANCE, ANS_IN30_MESH_INSTANCE);
 export const SA30 = new Region(Platform.CF, ANS_SA30_INSTANCE, ANS_SA30_MESH_INSTANCE);
 export const AE01 = new Region(Platform.CF, ANS_AE01_INSTANCE, ANS_AE01_MESH_INSTANCE);
+export const EU13 = new Region(Platform.CF, ANS_EU13_INSTANCE, ANS_EU13_MESH_INSTANCE);
+export const US01 = new Region(Platform.CF, ANS_US01_INSTANCE, ANS_US01_MESH_INSTANCE);
+export const US32 = new Region(Platform.CF, ANS_US32_INSTANCE, ANS_US32_MESH_INSTANCE);
+export const US22 = new Region(Platform.CF, ANS_US22_INSTANCE, ANS_US22_MESH_INSTANCE);
+export const EU22 = new Region(Platform.CF, ANS_EU22_INSTANCE, ANS_EU22_MESH_INSTANCE);
+export const US02 = new Region(Platform.CF, ANS_US02_INSTANCE, ANS_US02_MESH_INSTANCE);
+export const JP01 = new Region(Platform.CF, ANS_JP01_INSTANCE, ANS_JP01_MESH_INSTANCE);
+export const AP01 = new Region(Platform.CF, ANS_AP01_INSTANCE, ANS_AP01_MESH_INSTANCE);
+export const EU02 = new Region(Platform.CF, ANS_EU02_INSTANCE, ANS_EU02_MESH_INSTANCE);
+export const UK20 = new Region(Platform.CF, ANS_UK20_INSTANCE, ANS_UK20_MESH_INSTANCE);
 /**
  * Customer facing names of the regions.
  */
@@ -253,3 +293,13 @@ export const CF_GCP_FRANKFURT = EU30;
 export const CF_GCP_MUMBAI = IN30;
 export const CF_GCP_DAMMAM_PUBLIC_SECTOR = SA30;
 export const CF_CCEE_DUBAI = AE01;
+export const CF_AWS_MILAN = EU13;
+export const CF_CCEE_STERLING = US01;
+export const CF_GCP_US_EAST = US32;
+export const CF_AZURE_US_EAST = US22;
+export const CF_AZURE_FRANKFURT = EU22;
+export const CF_CCEE_COLORADO_WEST = US02;
+export const CF_CCEE_TOKYO = JP01;
+export const CF_CCEE_SYDNEY = AP01;
+export const CF_CCEE_ROT_EU_ACCESS = EU02;
+export const CF_AZURE_LONDON = UK20;
