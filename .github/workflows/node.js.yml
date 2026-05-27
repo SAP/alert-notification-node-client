@@ -10,6 +10,9 @@ on:
       - rel-1.*
     types: [opened, edited, synchronize, ready_for_review, reopened]
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
 
